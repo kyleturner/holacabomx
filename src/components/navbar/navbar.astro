@@ -3,6 +3,7 @@ import Container from "@components/container.astro";
 import Link from "@components/ui/link.astro";
 import Dropdown from "./dropdown.astro";
 import { Astronav, MenuItems, MenuIcon } from "astro-navbar";
+import { Icon } from "astro-icon";
 
 const menuitems = [
   {
@@ -13,11 +14,15 @@ const menuitems = [
     ],
   },
   {
-    title: "About",
-    path: "/about",
+    title: "Discover",
+    path: "/discover",
   },
+  // {
+  //   title: "About",
+  //   path: "/about",
+  // },
   {
-    title: "Experiences",
+    title: "Blog",
     path: "/blog",
   },
   {
@@ -64,6 +69,15 @@ const menuitems = [
               </>
             ))
           }
+          <li>
+            <Link
+            href="#"
+            target="_blank"
+            class="flex lg:px-3 py-3 text-slate-200 hover:text-slate-600"
+            rel="noopener">
+            <Icon class="h-4 md:h-6" name="simple-icons:instagram" />
+          </Link>    
+          </li>
         </ul>
       </MenuItems>
     </Astronav>

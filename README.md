@@ -1,5 +1,7 @@
 # Hola Cabo
 
+`pnpm astro preview --host 0.0.0.0`
+
 Astro + Netlify
 
 ## Installation

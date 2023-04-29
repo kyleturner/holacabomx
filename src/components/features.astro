@@ -1,73 +1,76 @@
 ---
 // @ts-ignore
 import { Icon } from "astro-icon";
+import Link from "@components/ui/link.astro";
 
 const features = [
   {
-    title: "Beaches",
+    title: "Top beaches & escapes",
     description:
-      "Best beaches to visit, including the ones off the beaten path, and the top activities at each beach.",
-    icon: "bx:bxs-key",
+      "Unwind and soak up the sun on world-class beaches, including our secret spots and hidden gems.",
+    icon: "bx:bxs-sun",
   },
   {
-    title: "Restaurants, Coffee Shops & Cafes",
+    title: "Food: in every category",
     description:
-      "Authentic Mexican cuisine? The freshest sushi you'll ever have in your life? The best margarita in town? Look no further.",
+      "Michelin-star dining, local authentic cuisine, the best sushi we've ever had, & our top picks for best marg in town. Mouth watering yet?",
     icon: "bx:bxs-pizza",
   },
   {
-    title: "Cocktails, Bars & Nightlife",
+    title: "Cocktails, bars & nightlife",
     description:
-      "Vibrant nightlife",
+      "Craft cocktail lover? Best sports bar? Live music seeker? Late-night DJ popups?",
     icon: "bx:bxs-moon",
   },
   {
-    title: "Must-See Attractions",
+    title: "Must-see spots & private events",
     description:
-      "Historical, cultural, or just plan awesome... you want want to miss the things on our list!",
-    icon: "bx:bxs-coffee",
+      "Historical, cultural, off the beaten path, invite only, or just amazing, these are the ones you won't want to miss!",
+    icon: "bx:bxs-crown",
   },
   {
-    title: "Pro Tips & Tricks",
+    title: "Local pro tips & tricks",
     description:
-      "Tips for navigating the local culture and customs, including language and currency exchange.",
-    icon: "bx:bxs-music",
+      "Navigating customs, culture, language, currency, renting a condo, or buying a home: let us make your transition to 'No Bad Days' life seamless.",
+    icon: "bx:bxs-lock",
   },
   {
-    title: "Activities",
+    title: "Endless activities",
     description:
-      "Boating, whale-watching, surfing, snorkeling, ATV-rides, hiking... you name it, we have it here in Baja Sur. Let us connect you with the best in the business for the best experience (and price).",
-    icon: "bx:bxs-star",
+      "Boating, whale-watching, surfing, snorkeling, golfing, ATV-rides & more. Let us connect you with the best experiences (and price).",
+    icon: "bx:bxs-ship",
   },
   {
     title: "Hotels & Airbnbs",
     description:
-      "Vibrant nightlife",
+      "Unwind in paradise. Find your perfect stay with our partnering hotels and premium Airbnb hosts.",
     icon: "bx:bxs-building",
   },
   {
-    title: "Transportation Services",
+    title: "Exclusive transportation services",
     description:
-      "Vibrant nightlife",
+      "Experience the ultimate in comfort and luxury with our hand-picked private transportation services.",
     icon: "bx:bxs-taxi",
   },
 ];
 ---
 
 <div class="mt-16 md:mt-0">
-  <h2 class="text-4xl lg:text-5xl font-bold lg:tracking-tight">
+  <h2 id="learn-more-scroll-id" class="text-4xl lg:text-5xl font-bold lg:tracking-tight">
     We've got you covered
   </h2>
   <p class="text-lg mt-4 text-slate-600">
-    Bringing you the best in every category the area has to offer.
+    Bringing you the best in every category because we love this place so much.
   </p>
+</div>
+<div class="mt-8"><Link href="/blog">See all experiences →</Link>
 </div>
 
 <div class="grid sm:grid-cols-2 md:grid-cols-3 mt-16 gap-16">
   {
     features.map((item) => (
       <div class="flex gap-4 items-start">
-        <div class="mt-1 bg-black rounded-full  p-2 w-8 h-8 shrink-0">
+        <div class="mt-1 bg-color-brand-primary rounded-full  p-2 w-8 h-8 shrink-0">
           <Icon class="text-white" name={item.icon} />
         </div>
         <div>
