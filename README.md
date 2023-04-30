@@ -1,6 +1,8 @@
 # Hola Cabo
 
-`pnpm astro preview --host 0.0.0.0`
+`pnpm astro dev --host 0.0.0.0`
+
+https://icones.js.org/collection/bxs
 
 Astro + Netlify
 

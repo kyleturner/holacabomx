@@ -4,6 +4,7 @@ import Container from "@components/container.astro";
 import Sectionhead from "@components/sectionhead.astro";
 import Pricing from "@components/pricing.astro";
 import Link from "@components/ui/link.astro";
+import { getEntryBySlug } from "astro:content";
 
 const pricing = [
   {
@@ -30,6 +31,10 @@ const pricing = [
     },
   },
 ];
+
+//const entry = await getEntryBySlug("guides", "cabo");
+import {Content as CaboContent} from '../../content/guides/cabo.mdx';
+
 ---
 
 <Layout title="Pricing">
@@ -38,6 +43,11 @@ const pricing = [
       <Fragment slot="title">The Locals Guide to Los Cabos</Fragment>
       <Fragment slot="desc">The curated insider recommendations from local experts.</Fragment>
     </Sectionhead>
+
+    <!-- <div class="grid gap-10 mx-auto max-w-screen-lg mt-12"> -->
+    <CaboContent /> 
+    <!-- </div> -->
+
     <div class="grid gap-10 mx-auto max-w-screen-lg mt-12">
       {pricing.map((item) => <Pricing plan={item} />)}
     </div>

@@ -7,10 +7,13 @@ import { Icon } from "astro-icon";
 
 const menuitems = [
   {
-    title: "Guides",
+    title: "Digital Guides",
     path: "#",
     children: [
-      { title: "Local-First Guide to Cabo", path: "guides/cabo" },
+      { title: "Cabo San Lucas", path: "guides/cabo" },
+      { title: "San Jose del Cabo", path: "guides/sanjose" },
+      { title: "Todos Santos", path: "guides/todos" },
+      { title: "East Cape", path: "guides/east-cape" },
     ],
   },
   {
@@ -22,8 +25,8 @@ const menuitems = [
   //   path: "/about",
   // },
   {
-    title: "Blog",
-    path: "/blog",
+    title: "Experiences",
+    path: "/experiences",
   },
   {
     title: "Contact",
@@ -71,7 +74,7 @@ const menuitems = [
           }
           <li>
             <Link
-            href="#"
+            href="https://instagram.com/holacabo"
             target="_blank"
             class="flex lg:px-3 py-3 text-slate-200 hover:text-slate-600"
             rel="noopener">
