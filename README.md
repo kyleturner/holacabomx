@@ -3,6 +3,9 @@
 `pnpm astro dev --host 0.0.0.0`
 
 https://icones.js.org/collection/bxs
+https://beta.pickaxeproject.com/user/control-panel/HolaCabo_JURPA?admin=A53740GKNWRXMECJ2DBF
+
+ToC animation: https://kld.dev/toc-animation/#live-demos
 
 Astro + Netlify
 
