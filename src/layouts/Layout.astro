@@ -11,7 +11,7 @@ export interface Props {
 const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
 
 const resolvedImageWithDomain = new URL(
-  "/opengraph.jpg",
+  "public/hero3.jpeg",
   Astro.site
 ).toString();
 
@@ -27,10 +27,10 @@ const makeTitle = title
     scroll-behavior: smooth;
   }
   .color-brand-primary { 
-    color: #73A9AD;
+    color: #17867b;
   }
   .bg-color-brand-primary { 
-    background-color: #73A9AD;
+    background-color: #17867b;
   }
 </style>
 
@@ -41,7 +41,7 @@ const makeTitle = title
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <!-- <link rel="preload" as="image" href={src} alt="Hero" /> -->
+    <link rel="preload" as="image" href="public/hero3.jpeg" alt="HolaCabo" />
     <SEO
       title={makeTitle}
       description="Say hello to the best of Los Cabos with HolaCabo. Food • Cocktails • Lifestyle • Events"
@@ -54,7 +54,7 @@ const makeTitle = title
           image: resolvedImageWithDomain,
         },
         image: {
-          alt: "Homepage Screenshot",
+          alt: "Welcome to paradise",
         },
       }}
     />

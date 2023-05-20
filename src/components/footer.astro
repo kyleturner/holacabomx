@@ -1,4 +1,21 @@
-<footer class="my-20">
+---
+import Link from "./ui/link.astro";
+---
+
+<footer>
+  <div
+  class="bg-color-brand-primary p-16 md:px-20 md:py-20 mt-20 mx-auto flex flex-col">
+    <h2 class="text-slate-900 text-4xl md:text-6xl tracking-tight">
+      Ready for your best vacation yet?
+    </h2>
+    <p class="text-white mt-4 text-lg md:text-xl">
+      Discover what we have to offer by searching our extensive Baja Sur database of everything listed above.
+    </p>
+    <div class="flex mt-5">
+      <Link href="#" style="inverted">Search Los Cabos</Link>
+    </div>
+  </div>
+<!-- 
   <p class="text-center text-sm text-slate-500">
     Copyright © {new Date().getFullYear()} Hola Cabo. All rights reserved.
   </p>
@@ -10,5 +27,5 @@
       class="hover:underline">
       Web3 Templates
     </a>
-  </p>
+  </p> -->
 </footer>

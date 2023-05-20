@@ -1,40 +1,35 @@
 ---
-import { Picture } from "@astrojs/image/components";
-import heroImage from "assets/hero-2.jpeg";
 import Link from "@components/ui/link.astro";
 import { Icon } from "astro-icon";
 ---
 <!-- Styles scoped to this component, only. -->
 <style>
 .home {
-  color: black;
-  background-color: rgb(5, 5, 5);
-  background-image: url("../assets/hero-2.jpeg");
+  background-color: rgba(5, 5, 5, 1.0);
+  background-image: url("public/hero3.jpeg");
   background-position: center;
   background-repeat: no-repeat; 
   background-size: cover;
-  animation: fadeIn 2s;
   padding: 64px;
-  min-height: 600px;
-  /* opacity: .25; */
+  min-height: 700px;
 }
-@keyframes fadeIn {
-  0% { opacity: 0; }
-  /* 50% { opacity: 0.25; } */
-  100% { opacity: 0.5; }
+.header-text {
+  background-color: rgba(42,54,59, 0.6); 
+  color: white;
+  padding: 20px;
 }
 </style>
 
 <main 
-  class="home grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24 mb-16">
+  class="home grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24 mb-16" onload="this.style.opacity=1">
   <div class="py-6 md:order-1 hidden md:block">
   </div>
   <div>
     <h1
-      class="text-5xl lg:text-6xl xl:text-7xl font-bold lg:tracking-tight xl:tracking-tighter">
+      class="header-text text-5xl lg:text-6xl xl:text-7xl font-bold lg:tracking-tight xl:tracking-tighter">
       Your local inside scoop on the best of Baja Sur
     </h1>
-    <p class="text-lg mt-4 text-white max-w-xl">
+    <p class="header-text text-xl text-white max-w-xl">
       Unlock the ultimate guides to unforgettable experiences in Cabo San Lucas, San Jose, Todos Santos, East Cape & more.
     </p>
     <div class="mt-6 flex flex-col sm:flex-row gap-3">

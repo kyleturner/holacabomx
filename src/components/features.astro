@@ -1,6 +1,12 @@
 ---
 // @ts-ignore
 import { Icon } from "astro-icon";
+import { Picture } from "@astrojs/image/components";
+import beachesImage from "assets/beaches.jpeg";
+import cocktailsImage from "assets/cocktails.jpeg";
+import eventsImage from "assets/events.jpeg";
+import hotelsImage from "assets/hotels.jpeg";
+import foodImage from "assets/food.jpeg";
 import Link from "@components/ui/link.astro";
 
 const features = [
@@ -9,48 +15,56 @@ const features = [
     description:
       "Unwind and soak up the sun on world-class beaches, including our secret spots and hidden gems.",
     icon: "bx:bxs-sun",
+    image: beachesImage
   },
   {
-    title: "Food: in every category",
+    title: "Food for every occasion",
     description:
       "Michelin-star dining, local authentic cuisine, the best sushi we've ever had, & our top picks for best marg in town. Mouth watering yet?",
     icon: "bx:bxs-pizza",
+    image: foodImage,
   },
   {
-    title: "Cocktails, bars & nightlife",
+    title: "Delicious cocktails & vibrant nightlife",
     description:
       "Craft cocktail lover? Best sports bar? Live music seeker? Late-night DJ popups?",
     icon: "bx:bxs-moon",
+    image: cocktailsImage
   },
   {
     title: "Must-see spots & private events",
     description:
       "Historical, cultural, off the beaten path, invite only, or just amazing, these are the ones you won't want to miss!",
     icon: "bx:bxs-crown",
+    image: eventsImage
   },
   {
     title: "Local pro tips & tricks",
     description:
       "Navigating customs, culture, language, currency, renting a condo, or buying a home: let us make your transition to 'No Bad Days' life seamless.",
     icon: "bx:bxs-lock",
+    image: beachesImage
   },
   {
     title: "Endless activities",
     description:
       "Boating, whale-watching, surfing, snorkeling, golfing, ATV-rides & more. Let us connect you with the best experiences (and price).",
     icon: "bx:bxs-ship",
+    image: eventsImage,
   },
   {
     title: "Hotels & Airbnbs",
     description:
       "Unwind in paradise. Find your perfect stay with our partnering hotels and premium Airbnb hosts.",
     icon: "bx:bxs-building",
+    image: hotelsImage,
   },
   {
     title: "Exclusive transportation services",
     description:
       "Experience the ultimate in comfort and luxury with our hand-picked private transportation services.",
     icon: "bx:bxs-taxi",
+    image: hotelsImage
   },
 ];
 ---
@@ -69,7 +83,16 @@ const features = [
 <div class="grid sm:grid-cols-2 md:grid-cols-3 mt-16 gap-16 mb-16">
   {
     features.map((item) => (
-      <div class="flex gap-4 items-start">
+      <div>
+        <Picture
+        src={item.image}
+        alt="Hola Cabo"
+        widths={[256, 512]}
+        aspectRatio="1:1"
+        sizes="(max-width: 256px) 100vw, 256"
+        loading="eager"
+        />  
+      <div class="flex gap-4 items-start mt-8">
         <div class="mt-1 bg-color-brand-primary rounded-full  p-2 w-8 h-8 shrink-0">
           <Icon class="text-white" name={item.icon} />
         </div>
@@ -78,6 +101,7 @@ const features = [
           <p class="text-slate-500 mt-2 leading-relaxed">{item.description}</p>
         </div>
       </div>
+    </div>
     ))
   }
 </div>
