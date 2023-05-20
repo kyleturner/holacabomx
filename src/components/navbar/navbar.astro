@@ -6,7 +6,7 @@ import Dropdown from "./dropdown.astro";
 import { Astronav, MenuItems, MenuIcon } from "astro-navbar";
 import { Icon } from "astro-icon";
 import { Picture } from "@astrojs/image/components";
-import heroImage from "assets/hero.png";
+import heroImage from "assets/holacabo.png";
 
 // Filter experiences entries with 'draft: false' & date before current date
 const publishedGuides = await getCollection("guides", ({ data }) => {
@@ -16,23 +16,27 @@ const publishedGuides = await getCollection("guides", ({ data }) => {
 
 const menuitems = [
   {
+    title: "Welcome",
+    path: "/"
+  },
+  //   {
+  //   title: "Discover",
+  //   path: "/discover",
+  // },
+  {
     title: "Digital Guides",
     path: "#",
     children: [
-      { title: "Cabo San Lucas", path: "guides/cabo" },
-      { title: "San Jose del Cabo", path: "guides/sanjose" },
-      { title: "Todos Santos", path: "guides/todos" },
-      { title: "East Cape", path: "guides/east-cape" },
-      { title: "Valle de Guadalupe", path: "guides/valle-guadalupe" },
-      { title: "✨ Baja Explorer Pack", path: "guides/baja-explorer" },
+      { title: "Cabo San Lucas", path: "/guides/cabo" },
+      { title: "San Jose del Cabo", path: "/guides/sanjose" },
+      { title: "Todos Santos", path: "/guides/todos" },
+      { title: "East Cape", path: "/guides/east-cape" },
+      { title: "Valle de Guadalupe", path: "/guides/valle-guadalupe" },
+      { title: "✨ Baja Explorer Pack", path: "/guides/baja-explorer" },
     ],
   },
   {
-    title: "Discover",
-    path: "/discover",
-  },
-  {
-    title: "Experiences",
+    title: "Our Experiences",
     path: "/experiences",
   },
   {
