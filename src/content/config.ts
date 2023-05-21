@@ -18,8 +18,53 @@ const experiencesCollection = defineCollection({
   }),
 });
 
+const guidesCollection = defineCollection({
+  schema: z.object({
+    draft: z.boolean(),
+    paid: z.boolean(),
+    title: z.string(),
+    snippet: z.string(),
+    image: z.object({
+      src: z.string(),
+      alt: z.string(),
+    }),
+    publishDate: z.string().transform(str => new Date(str)),
+    author: z.string().default('Hola Cabo'),
+    category: z.string(),
+    tags: z.array(z.string()),
+  }),
+});
+
+const teasersCollection = defineCollection({
+  schema: z.object({
+    draft: z.boolean(),
+    paid: z.boolean(),
+    title: z.string(),
+    snippet: z.string(),
+    image: z.object({
+      src: z.string(),
+      alt: z.string(),
+    }),
+    publishDate: z.string().transform(str => new Date(str)),
+    author: z.string().default('Hola Cabo'),
+    category: z.string(),
+    tags: z.array(z.string()),
+    plan: z.object({
+      name: z.string(),
+      price: z.number(),
+      features: z.array(z.string()),
+      button: z.object({
+        text: z.string(),
+        link: z.string(),
+      })
+    }),
+  }),
+});
+
 // 3. Export a single `collections` object to register your collection(s)
 //    This key should match your collection directory name in "src/content"
 export const collections = {
-  'experiences': experiencesCollection
+  'experiences': experiencesCollection,
+  'guides': guidesCollection,
+  'teasers': teasersCollection,
 };

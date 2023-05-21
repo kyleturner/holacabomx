@@ -7,8 +7,8 @@ import Pricing from "@components/pricing.astro";
 
 // Generate a new path for every collection entry
 export async function getStaticPaths() {
-  const guideEntries = await getCollection("guides");
-  return guideEntries.map((entry) => ({
+  const teasers = await getCollection("teasers");
+  return teasers.map((entry) => ({
     params: { slug: entry.slug },
     props: { entry },
   }));
@@ -73,7 +73,7 @@ const { Content } = await entry.render();
       <Content />
     </div>
     <div class="grid gap-10 mx-auto max-w-screen-lg mt-12">
-      {<Pricing plan={entry.data.pricing} />}
+      {<Pricing plan={entry.data.plan} />}
     </div>
     <div class="text-center mt-8">
       <a

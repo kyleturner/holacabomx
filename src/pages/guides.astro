@@ -1,0 +1,60 @@
+---
+import { getCollection } from "astro:content";
+import { Picture } from "@astrojs/image/components";
+import Layout from "@layouts/Layout.astro";
+import Container from "@components/container.astro";
+import Sectionhead from "@components/sectionhead.astro";
+
+// Filter entries with 'draft: false' & date before current date
+const publishedTeasers = await getCollection("teasers", ({ data }) => {
+  return !data.draft && !data.paid && data.publishDate < new Date();
+});
+
+// Sort content entries by publication date
+publishedTeasers.sort(function (a, b) {
+  return b.data.publishDate.valueOf() - a.data.publishDate.valueOf();
+});
+---
+
+<Layout title="guides">
+  <Container>
+    <Sectionhead>
+      <Fragment slot="title">Digital Guides</Fragment>
+      <Fragment slot="desc">
+        Paid guides with exclusive content and deals only available here.
+      </Fragment>
+    </Sectionhead>
+    <main class="mt-16">
+      <ul class="grid sm:grid-cols-2 md:grid-cols-2 gap-16 max-w-4xl mx-auto">
+        {
+          publishedTeasers.map((guide, index) => (
+            <li>
+              <a href={`/teasers/${guide.slug}`}>
+                <div class="grid gap-5">
+                  <Picture
+                    src={guide.data.image.src}
+                    alt={guide.data.image.alt}
+                    sizes="(max-width: 800px) 100vw, 800px"
+                    widths={[200, 400, 800]}
+                    aspectRatio="16:9"
+                    background="#ffffff"
+                    fit="cover"
+                    position="center"
+                    loading={index <= 2 ? "eager" : "lazy"}
+                    decoding={index <= 2 ? "sync" : "async"}
+                    class="w-full rounded-md"
+                  />
+                  <div>
+                    <h2 class="text-2xl font-semibold leading-snug tracking-tight">
+                      {guide.data.title}
+                    </h2>
+                  </div>
+                </div>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </main>
+  </Container>
+</Layout>
