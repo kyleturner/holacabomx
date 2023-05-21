@@ -15,7 +15,8 @@ const features = [
     description:
       "Unwind and soak up the sun on world-class beaches, including our secret spots and hidden gems.",
     icon: "bx:bxs-sun",
-    image: beachesImage
+    image: beachesImage,
+    url: "",
   },
   {
     title: "Food for every occasion",
@@ -23,20 +24,23 @@ const features = [
       "Michelin-star dining, local authentic cuisine, the best sushi we've ever had, & our top picks for best marg in town. Mouth watering yet?",
     icon: "bx:bxs-pizza",
     image: foodImage,
+    url: "",
   },
   {
     title: "Delicious cocktails & vibrant nightlife",
     description:
       "Craft cocktail lover? Best sports bar? Live music seeker? Late-night DJ popups?",
     icon: "bx:bxs-moon",
-    image: cocktailsImage
+    image: cocktailsImage,
+    url: "",
   },
   {
     title: "Must-see spots & private events",
     description:
       "Historical, cultural, off the beaten path, invite only, or just amazing, these are the ones you won't want to miss!",
     icon: "bx:bxs-crown",
-    image: eventsImage
+    image: eventsImage,
+    url: "",
   },
   {
     title: "Local pro tips & tricks",
@@ -51,6 +55,7 @@ const features = [
       "Boating, whale-watching, surfing, snorkeling, golfing, ATV-rides & more. Let us connect you with the best experiences (and price).",
     icon: "bx:bxs-ship",
     image: eventsImage,
+    url: "",
   },
   {
     title: "Hotels & Airbnbs",
@@ -58,16 +63,33 @@ const features = [
       "Unwind in paradise. Find your perfect stay with our partnering hotels and premium Airbnb hosts.",
     icon: "bx:bxs-building",
     image: hotelsImage,
+    url: "",
   },
   {
     title: "Exclusive transportation services",
     description:
       "Experience the ultimate in comfort and luxury with our hand-picked private transportation services.",
     icon: "bx:bxs-taxi",
-    image: hotelsImage
+    image: hotelsImage,
+    url: "",
   },
 ];
 ---
+
+<style>
+  img {
+      opacity: 1.0;
+      transition: opacity 1s ease-in-out;
+      -moz-transition: opacity 1s ease-in-out;
+      -webkit-transition: opacity 1s ease-in-out;
+  }
+  img:hover {
+    opacity: 0.5;
+    transition: opacity .55s ease-in-out;
+    -moz-transition: opacity .55s ease-in-out;
+    -webkit-transition: opacity .55s ease-in-out;
+  }
+</style>
 
 <div class="mt-16 md:mt-0">
   <h2 id="learn-more-scroll-id" class="text-4xl lg:text-5xl font-bold lg:tracking-tight">
@@ -84,23 +106,25 @@ const features = [
   {
     features.map((item) => (
       <div>
-        <Picture
-        src={item.image}
-        alt="Hola Cabo"
-        widths={[256, 512]}
-        aspectRatio="1:1"
-        sizes="(max-width: 256px) 100vw, 256"
-        loading="eager"
-        />  
-      <div class="flex gap-4 items-start mt-8">
-        <div class="mt-1 bg-color-brand-primary rounded-full  p-2 w-8 h-8 shrink-0">
-          <Icon class="text-white" name={item.icon} />
-        </div>
-        <div>
-          <h3 class="font-semibold text-lg">{item.title}</h3>{" "}
-          <p class="text-slate-500 mt-2 leading-relaxed">{item.description}</p>
-        </div>
-      </div>
+        <a href={item.url}>
+          <Picture
+          src={item.image}
+          alt="Hola Cabo"
+          widths={[256, 512]}
+          aspectRatio="1:1"
+          sizes="(max-width: 256px) 100vw, 256"
+          loading="eager"
+          />  
+          <div class="flex gap-4 items-start mt-8">
+            <div class="mt-1 bg-color-brand-primary rounded-full  p-2 w-8 h-8 shrink-0">
+              <Icon class="text-white" name={item.icon} />
+            </div>
+            <div>
+              <h3 class="font-semibold text-lg">{item.title}</h3>{" "}
+              <p class="text-slate-500 mt-2 leading-relaxed">{item.description}</p>
+            </div>
+          </div>
+        </a>
     </div>
     ))
   }
