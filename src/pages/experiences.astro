@@ -54,15 +54,7 @@ publishedExperiencesEntries.sort(function (a, b) {
                     </h2>
 
                     <div class="flex gap-2 mt-3">
-                      <span class="text-gray-400">
-                        {experiencesPostEntry.data.author}
-                      </span>
-                      <span class="text-gray-400">• </span>
-                      <time
-                        class="text-gray-400"
-                        datetime={experiencesPostEntry.data.publishDate.toISOString()}>
-                        {experiencesPostEntry.data.publishDate.toDateString()}
-                      </time>
+                      <span class="text-gray-400">{experiencesPostEntry.data.snippet}</span>
                     </div>
                   </div>
                 </div>

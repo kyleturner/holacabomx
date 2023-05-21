@@ -1,6 +1,6 @@
 ---
 draft: false
-title: " Guide to Bar & Club Crawling Cabo San Lucas"
+title: "The must hit spots during your night out in Cabo"
 snippet: "To help you plan your ultimate night out in Cabo San Lucas, we've put together this guide to the best bars and clubs in town."
 image: {
     src: "https://a.cdn-hotels.com/gdcs/production199/d753/349cec1c-91f4-4643-92e0-e2552667626e.jpg?impolicy=fcrop&w=1600&h=1066&q=high",
