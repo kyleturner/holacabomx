@@ -1,10 +1,15 @@
 ---
+import Link from "@components/ui/link.astro";
+import { Icon } from "astro-icon";
 ---
+
 <div class="mt-16 mb-16">
-  <h2
-      class="header-text text-3xl lg:text-4xl xl:text-5xl font-bold lg:tracking-tight xl:tracking-tighter mb-16">
+  <h2 class="text-3xl lg:text-4xl xl:text-5xl font-bold lg:tracking-tight xl:tracking-tighter mb-16">
       On the go with Hola Cabo
     </h2>
   <figure data-behold-id="UubyJC2sjbi7UeEzcPI5"></figure>
   <script src="https://w.behold.so/widget.js" type="module"></script>
+  <div class="grid gap-16 max-w-xl mx-auto mt-16">
+    <Link target="_blank" class="text-center pl-8 pr-8" href="https://instagram.com/holacabo"><Icon class="h-4 w-4 mr-2" style="display:inline-block;" name="simple-icons:instagram" />See more on Instagram</Link>
+  </div>
 </div>

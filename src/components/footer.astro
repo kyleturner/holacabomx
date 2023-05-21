@@ -1,31 +1,152 @@
 ---
 import Link from "./ui/link.astro";
+import { Picture } from "@astrojs/image/components";
+import heroImage from "assets/holacabo-white-transparent.png";
+import { Icon } from "astro-icon";
+
+const linksColumnOne = [
+  {
+    "name": "about us",
+    "url": "/about"
+  },
+  {
+    "name": "our experiences",
+    "url": "/experiences"
+  },
+  {
+    "name": "contact",
+    "url": "/contact"
+  }
+]
+const linksColumnTwo = [
+  {
+    "name": "Cabo San Lucas",
+    "url": "/about"
+  },
+  {
+    "name": "San Jose del Cabo",
+    "url": "/about"
+  },
+  {
+    "name": "Todos Santos",
+    "url": "/about"
+  },
+  {
+    "name": "see all guides",
+    "url": "/guides/all"
+  }
+]
 ---
 
-<footer>
-  <div
-  class="bg-color-brand-primary p-16 md:px-20 md:py-20 mt-20 mx-auto flex flex-col">
-    <h2 class="text-slate-900 text-4xl md:text-6xl tracking-tight">
-      Ready for your best vacation yet?
-    </h2>
-    <p class="text-white mt-4 text-lg md:text-xl">
-      Discover what we have to offer by searching our extensive Baja Sur database of everything listed above.
-    </p>
-    <div class="flex mt-5">
-      <Link href="#" style="inverted">Search Los Cabos</Link>
+<style>
+.container{
+  max-width: 1170px;
+  margin:auto;
+}
+.row{
+  display: flex;
+  flex-wrap: wrap;
+}
+ul{
+  list-style: none;
+}
+.footer {
+  padding: 70px 0;
+}
+.footer-col{
+   width: 25%;
+   padding: 0 15px;
+}
+.footer-col h4{
+  font-size: 18px;
+  color: #fff;
+  text-transform: capitalize;
+  margin-bottom: 35px;
+  font-weight: 500;
+  position: relative;
+}
+.footer-col h4::before{
+  content: '';
+  position: absolute;
+  left:0;
+  bottom: -10px;
+  background-color: #7ab3ad;
+  height: 2px;
+  box-sizing: border-box;
+  width: 50px;
+}
+.footer-col ul li:not(:last-child){
+  margin-bottom: 10px;
+}
+.footer-col ul li a{
+  font-size: 16px;
+  text-transform: capitalize;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 300;
+  color: #bbbbbb;
+  display: block;
+  transition: all 0.3s ease;
+}
+.footer-col ul li a:hover{
+  color: #ffffff;
+  padding-left: 8px;
+}
+@media(max-width: 767px){
+  .footer-col{
+    width: 50%;
+    margin-bottom: 30px;
+  }
+}
+@media(max-width: 574px){
+  .footer-col{
+    width: 100%;
+  }
+}
+</style>
+
+<footer class="footer bg-color-dark">
+  <div class="container">
+   <div class="row">
+    <div class="footer-col">
+      <Picture
+      src={heroImage}
+      alt="Hola Cabo"
+      widths={[128, 400, 512]}
+      aspectRatio="1:1"
+      sizes="(max-width: 128px) 100vw, 128px"
+      loading="eager"
+      format="avif"
+      />
     </div>
+     <div class="footer-col">
+       <h4>explore</h4>
+       <ul>
+       {
+        linksColumnOne.map((item) => (
+        <li><a href={item.url}>{item.name}</a></li> 
+        ))
+       }
+       </ul>
+     </div>
+     <div class="footer-col">
+       <h4>guides</h4>
+       <ul>
+        {
+          linksColumnTwo.map((item) => (
+          <li><a href={item.url}>{item.name}</a></li> 
+          ))
+         }
+       </ul>
+     </div>
+     <div class="footer-col">
+       <h4>follow us</h4>
+       <div class="social-links">
+         <a href="https://www.instagram.com/holacabo"><Icon class="h-4 w-4 mt-3 ml-3" name="simple-icons:instagram" /></a>
+         <a href="https://www.facebook.com/holacabo"><Icon class="h-4 w-4 mt-3 ml-3" name="simple-icons:facebook" /></a>
+         <a href="mailto:holacabomx@gmail.com?subject=Hola!"><Icon class="h-4 w-4 mt-3 ml-3" name="simple-icons:maildotru" /></a>
+       </div>
+     </div>
+   </div>
   </div>
-<!-- 
-  <p class="text-center text-sm text-slate-500">
-    Copyright © {new Date().getFullYear()} Hola Cabo. All rights reserved.
-  </p>
-  <p class="text-center text-xs text-slate-500 mt-1">
-    Built on <a
-      href="https://web3templates.com"
-      target="_blank"
-      rel="noopener"
-      class="hover:underline">
-      Web3 Templates
-    </a>
-  </p> -->
 </footer>

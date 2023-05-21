@@ -6,23 +6,13 @@ import Dropdown from "./dropdown.astro";
 import { Astronav, MenuItems, MenuIcon } from "astro-navbar";
 import { Icon } from "astro-icon";
 import { Picture } from "@astrojs/image/components";
-import heroImage from "assets/holacabo.png";
-
-// Filter experiences entries with 'draft: false' & date before current date
-const publishedGuides = await getCollection("guides", ({ data }) => {
-  return !data.draft && data.publishDate < new Date();
-});
-
+import heroImage from "assets/holacabo-whitebg.png";
 
 const menuitems = [
   {
     title: "Welcome",
     path: "/"
   },
-  //   {
-  //   title: "Discover",
-  //   path: "/discover",
-  // },
   {
     title: "Digital Guides",
     path: "#",
@@ -79,7 +69,6 @@ const menuitems = [
                     lastItem={index === menuitems.length - 1}
                   />
                 )}
-
                 {!item.children && (
                   <li>
                     <a
@@ -93,14 +82,12 @@ const menuitems = [
             ))
           }
           <li>
-            <Link
-            href="https://instagram.com/holacabo"
-            target="_blank"
-            class="flex lg:px-3 py-3 text-slate-200 hover:text-slate-600"
-            rel="noopener">
-            <Icon class="h-4 md:h-6" name="simple-icons:instagram" />
-          </Link>    
-          </li>
+          <div class="social-links xl:ml-16">
+            <a href="https://www.instagram.com/holacabo"><Icon class="h-4 w-4 mt-3 ml-3" name="simple-icons:instagram" /></a>
+            <a href="https://www.facebook.com/holacabo"><Icon class="h-4 w-4 mt-3 ml-3" name="simple-icons:facebook" /></a>
+            <a href="mailto:holacabomx@gmail.com?subject=Hola!"><Icon class="h-4 w-4 mt-3 ml-3" name="simple-icons:maildotru" /></a>
+          </div>
+        </li>
         </ul>
       </MenuItems>
     </Astronav>

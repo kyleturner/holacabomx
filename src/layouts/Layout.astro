@@ -27,11 +27,43 @@ const makeTitle = title
     scroll-behavior: smooth;
   }
   .color-brand-primary { 
-    color: #17867b;
+    color: #096259;
+  }
+  .color-brand-primary-light {
+    color: #7ab3ad;
   }
   .bg-color-brand-primary { 
-    background-color: #17867b;
+    background-color: #096259;
   }
+  .bg-color-brand-primary-light {
+    background-color: #7ab3ad;
+  }
+  .bg-color-dark {
+    background-color: #24262b;
+  }
+  .header-text {
+    background-color: rgba(42,54,59, 0.6); 
+    color: white;
+    padding: 20px;
+  }
+</style>
+<style is:global>
+.social-links a {
+  display: inline-block;
+  height: 40px;
+  width: 40px;
+  background-color: #7ab3ad;
+  margin:0 10px 10px 0;
+  text-align: center;
+  line-height: 40px;
+  border-radius: 50%;
+  color: #ffffff;
+  transition: all 0.5s ease;
+}
+.social-links a:hover {
+  color: #24262b;
+  background-color: #ffffff;
+}
 </style>
 
 <!DOCTYPE html>
@@ -41,7 +73,7 @@ const makeTitle = title
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <link rel="preload" as="image" href="public/hero3.jpeg" alt="HolaCabo" />
+    <link rel="preload" as="image" href="public/hero3.jpeg"/>
     <SEO
       title={makeTitle}
       description="Say hello to the best of Los Cabos with HolaCabo. Food • Cocktails • Lifestyle • Events"
