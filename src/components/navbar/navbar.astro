@@ -6,7 +6,7 @@ import Dropdown from "./dropdown.astro";
 import { Astronav, MenuItems, MenuIcon } from "astro-navbar";
 import { Icon } from "astro-icon";
 import { Picture } from "@astrojs/image/components";
-import heroImage from "assets/holacabo-whitebg.png";
+import heroImage from "assets/holacabo.svg";
 
 const menuitems = [
   {
@@ -43,11 +43,20 @@ const menuitems = [
 ];
 ---
 
+<style>
+  .brand-logo:hover {
+    content: url("src/assets/holacabo_hover.svg");
+    width: 56px;
+    height: auto;
+  }
+</style>
+
 <Container>
   <header class="flex flex-col lg:flex-row justify-between items-center my-5">
     <Astronav>
       <div class="flex w-full lg:w-auto items-center justify-between lg:gap-2 md:gap-2">
-        <Picture
+        <img class="brand-logo" src={heroImage} width="56px" />
+        <!-- <Picture
         src={heroImage}
         alt="Hola Cabo"
         widths={[200, 400, 512]}
@@ -55,7 +64,7 @@ const menuitems = [
         sizes="(max-width: 48px) 100vw, 48px"
         loading="eager"
         format="avif"
-        />
+        /> -->
         <a href="/" class="text-lg">
           <span class="font-bold text-slate-800">Hola</span>
           <span class="text-slate-500">Cabo</span>

@@ -8,18 +8,18 @@ export interface Props {
   title: string;
 }
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
+function capitalizeFirstLetter(string) {
+    return string && string[0].toUpperCase() + string.slice(1);
+}
 
-const resolvedImageWithDomain = new URL(
-  "public/hero3.jpeg",
-  Astro.site
-).toString();
+const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
+const resolvedImageWithDomain = new URL("public/hero3.jpeg", Astro.site).toString();
 
 const { title } = Astro.props;
 
 const makeTitle = title
-  ? title + " | " + "HolaCabo"
-  : "HolaCabo - Your Locals Guide to Los Cabos";
+  ? capitalizeFirstLetter(title) + " | " + "HolaCabo"
+  : "HolaCabo: The locals guide to Baja";
 ---
 
 <style is:global>
@@ -27,19 +27,25 @@ const makeTitle = title
     scroll-behavior: smooth;
   }
   .color-brand-primary { 
-    color: #096259;
+    color: #2a9d8f;
   }
   .color-brand-primary-light {
     color: #7ab3ad;
   }
   .bg-color-brand-primary { 
-    background-color: #096259;
+    background-color: #2a9d8f;
   }
   .bg-color-brand-primary-light {
     background-color: #7ab3ad;
   }
+  .bg-color-secondary {
+    background-color: #f4a261;
+  }
+  .bg-color-tertiary {
+    background-color: #e76f51;
+  }
   .bg-color-dark {
-    background-color: #24262b;
+    background-color: #264653;
   }
   .header-text {
     background-color: rgba(42,54,59, 0.6); 
@@ -52,7 +58,7 @@ const makeTitle = title
   display: inline-block;
   height: 40px;
   width: 40px;
-  background-color: #7ab3ad;
+  background-color: #264653;
   margin:0 10px 10px 0;
   text-align: center;
   line-height: 40px;
@@ -62,7 +68,7 @@ const makeTitle = title
 }
 .social-links a:hover {
   color: #24262b;
-  background-color: #ffffff;
+  background-color: #2a9d8f;
 }
 </style>
 
@@ -73,7 +79,7 @@ const makeTitle = title
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <link rel="preload" as="image" href="public/hero3.jpeg"/>
+    <link rel="preload" as="image" href="hero3.jpeg"/>
     <SEO
       title={makeTitle}
       description="Say hello to the best of Los Cabos with HolaCabo. Food • Cocktails • Lifestyle • Events"
@@ -85,9 +91,7 @@ const makeTitle = title
           title: `HolaCabo`,
           image: resolvedImageWithDomain,
         },
-        image: {
-          alt: "Welcome to paradise",
-        },
+        image: { alt: "Welcome to paradise" },
       }}
     />
   </head>
