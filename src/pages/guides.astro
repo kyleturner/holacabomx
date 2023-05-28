@@ -19,9 +19,12 @@ publishedTeasers.sort(function (a, b) {
 <style>
 
 .image-hover {
-      opacity: 1.0;
-      position: relative;
-      overflow: hidden;
+    width: 100%;
+    min-height: 220px;
+    opacity: 1.0;
+    position: relative;
+    display:block;
+    overflow: hidden;
   }
   .image-hover img {
     transition: transform .55s ease-in-out;
@@ -75,13 +78,13 @@ publishedTeasers.sort(function (a, b) {
                       background="#ffffff"
                       fit="cover"
                       position="center"
-                      loading={index <= 2 ? "eager" : "lazy"}
-                      decoding={index <= 2 ? "sync" : "async"}
+                      loading={index <= 4 ? "eager" : "lazy"}
+                      decoding={index <= 4 ? "sync" : "async"}
                       class="w-full rounded-md"
                       style={guide.data.draft ? "opacity: 0.3;" : "opacity: 1.0;" }
                     />
                   </div>
-                  {guide.data.draft && (<h4 class="font-semibold text-2xl" style="position: absolute; text-align:center;width: 100%;top:35%;">COMING SOON</h4>)}
+                  {guide.data.draft && (<h4 class="font-semibold text-2xl" style="position: absolute; text-align:center;width:100%;top:35%;">COMING SOON</h4>)}
                   <div>
                     <h2 class="text-2xl font-semibold leading-snug tracking-tight">
                       {guide.data.title}

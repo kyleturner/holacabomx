@@ -6,6 +6,7 @@ const experiencesCollection = defineCollection({
   schema: z.object({
     draft: z.boolean(),
     title: z.string(),
+    subtitle: z.string(),
     snippet: z.string(),
     image: z.object({
       src: z.string(),
@@ -23,6 +24,7 @@ const guidesCollection = defineCollection({
     draft: z.boolean(),
     paid: z.boolean(),
     title: z.string(),
+    subtitle: z.string(),
     snippet: z.string(),
     image: z.object({
       src: z.string(),
@@ -40,6 +42,7 @@ const teasersCollection = defineCollection({
     draft: z.boolean(),
     paid: z.boolean(),
     title: z.string(),
+    subtitle: z.string(),
     snippet: z.string(),
     image: z.object({
       src: z.string(),
@@ -49,6 +52,14 @@ const teasersCollection = defineCollection({
     author: z.string().default('Hola Cabo'),
     category: z.string(),
     tags: z.array(z.string()),
+    testimonials: z.array(
+      z.object({
+        description: z.string(),
+        featured: z.boolean().default(false),
+        author: z.string(),  
+        avatar: z.string(),  
+      })
+    ),
     plan: z.object({
       name: z.string(),
       price: z.number(),

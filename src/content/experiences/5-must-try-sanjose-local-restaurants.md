@@ -1,6 +1,7 @@
 ---
 draft: false
 title: "5 Must-Try Restaurants in San Jose del Cabo That Only Locals Know About"
+subtitle: ""
 snippet: "Discover the hidden culinary gems of San Jose del Cabo with our expert guide. From hole-in-the-wall taquerias to upscale seafood restaurants, we've got the inside scoop on the best spots that only the locals know about. Get ready to embark on a culinary journey that will leave your taste buds wanting more."
 image: {
     src: "https://www.eternal-expat.com/wp-content/uploads/2021/03/IMG_7429.jpg",

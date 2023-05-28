@@ -1,6 +1,7 @@
 ---
 draft: false
 title: "Off the Beaten Path: Exploring Hidden Waterfalls in the Mountains of Los Cabos"
+subtitle: ""
 snippet: "Los Cabos is famous for its beaches and ocean views, but there's so much more to explore beyond the coast. One of the most stunning natural wonders you can find in the area is the hidden waterfalls tucked away in the mountains."
 image: {
     src: "https://www.ernstopia.com/wp-content/uploads/2021/05/Santiago-9091-blog.jpg",

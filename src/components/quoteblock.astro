@@ -1,0 +1,54 @@
+---
+import { Picture } from "@astrojs/image/components";
+
+// Get the entry directly from the prop on render
+const { entry } = Astro.props;
+// const { Content } = await entry.render();
+---
+<style>
+  .quoteblock {
+    display: inline-flex;
+  }
+  .quoteblock img {
+    vertical-align: middle;
+    margin-top: 5px;
+  }
+  .quoteblock p {
+    display:table-cell; 
+    margin-top:0px;
+  }
+  .quote {
+    font-style: italic;
+    font-weight: 500;
+    vertical-align: middle;
+    line-height: 24px;
+  }
+  .avatar {
+    min-width: 88px;
+    width: 88px;
+    height: 88px;
+    background-color:skyblue;
+    border-radius: 44px;
+    vertical-align: middle;
+  }
+</style>
+
+<div class="quoteblock mb-6">
+  <Picture
+        src={entry.avatar}
+        alt=""
+        sizes="(max-width: 800px) 100vw, 800px"
+        widths={[200, 400, 800]}
+        aspectRatio="1:1"
+        background="#ffffff"
+        fit="cover"
+        position="center"
+        loading={"lazy"}
+        decoding={"async"}
+        class="avatar"
+      />
+  <p class="ml-4 text-md text-gray-500">
+    <span class="quote">"{entry.description}"</span>
+    <br>- {entry.author}
+  </p>
+</div>
