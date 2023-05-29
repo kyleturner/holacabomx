@@ -9,7 +9,7 @@ image: {
 }
 publishDate: "2022-11-07 15:39"
 category: "Explore"
-author: "HolaCabo"
+author: "Hola Cabo"
 tags: [outdoors, waterfalls, mountains]
 ---
 

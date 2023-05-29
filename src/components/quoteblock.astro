@@ -1,9 +1,7 @@
 ---
 import { Picture } from "@astrojs/image/components";
 
-// Get the entry directly from the prop on render
 const { entry } = Astro.props;
-// const { Content } = await entry.render();
 ---
 <style>
   .quoteblock {
@@ -33,7 +31,7 @@ const { entry } = Astro.props;
   }
 </style>
 
-<div class="quoteblock mb-6">
+<div class={entry.featured ? "quoteblock" : "quoteblock mb-6"}>
   <Picture
         src={entry.avatar}
         alt=""

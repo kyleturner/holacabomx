@@ -5,6 +5,8 @@ import Container from "@components/container.astro";
 import Quoteblock from "@components/quoteblock.astro";
 import { Picture } from "@astrojs/image/components";
 import Pricing from "@components/pricing.astro";
+import FAQ from "@components/faq.astro";
+import Link from "@components/ui/link.astro";
 
 // Generate a new path for every collection entry
 export async function getStaticPaths() {
@@ -19,12 +21,11 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 const { Content } = await entry.render();
 ---
-
 <style>
   .textOverlay {
     position: absolute; 
-    bottom: 2%; 
-    padding: 32px;
+    bottom: 2%;
+    margin: 20px;
   }
 </style>
 <Layout title={entry.data.title}>
@@ -33,70 +34,65 @@ const { Content } = await entry.render();
       <Picture
       src={entry.data.image.src}
       alt={entry.data.image.alt}
-      sizes="(max-width: auto) 100vw, 800px"
-      widths={[200, 400, 800]}
+      widths={[600, 1000]}
       aspectRatio="16:9"
       background="#ffffff"
       fit="cover"
       position="center"
       loading={"eager"}
       decoding={"sync"}
-      class="w-full mt-16"
+      class="w-full mt-8"
     />
-    <div class="textOverlay">
-      <h1 class="header-text xl:text-7xl lg:text-6xl md:text-5xl sm:text-5xl lg:tracking-tight xl:tracking-tighter font-bold">{entry.data.subtitle}</h1>
-      <p class="header-text text-gray-300 text-lg md:text-lg">{entry.data.snippet}</p>
+    <div class="textOverlay header-text">
+      <h1 class="p-2 xl:text-7xl lg:text-6xl md:text-5xl sm:text-5xl lg:tracking-tight xl:tracking-tighter font-bold">{entry.data.subtitle}</h1>
+      <h2 class="p-2 text-xl text-gray-100 mb-4">{entry.data.snippet}</h2>
+      <Link href={entry.data.plan.button.link} style="primary">{entry.data.plan.button.text}</Link>
     </div>
   </div>
     <div class="mx-auto max-w-3xl mt-14">
-      <span class="text-blue-400 uppercase tracking-wider text-sm font-medium">
+      <span class="color-primary uppercase tracking-wider text-sm font-medium">
         {entry.data.category}
       </span>
       <h1
-        class="text-4xl lg:text-5xl font-bold lg:tracking-tight mt-1 lg:leading-tight">
+        class="text-7xl color-primary-dark font-bold lg:tracking-tight mt-1 lg:leading-tight">
         {entry.data.title}
       </h1>
-      <div class="flex gap-2 mt-3 items-center flex-wrap md:flex-nowrap">
-        <span class="text-gray-400">
-          {entry.data.author}
-        </span>
-        <span class="text-gray-400 hidden md:block">•</span>
-        <div class="w-full md:w-auto flex flex-wrap gap-3">
-          {
-            entry.data.tags.map((tag) => (
-              <span class="text-sm text-gray-500">#{tag}</span>
-            ))
-          }
-        </div>
-      </div>
     </div>
-    <div class="mx-auto prose prose-lg mt-6 max-w-3xl">
-      <div class="w-full md:w-auto flex">
-        {
-          entry.data.testimonials.filter(t => t.featured).map((testimonial) => (
-            <Quoteblock entry={testimonial}/>
-          ))
-        }
-      </div>
+    <div class="mx-auto prose prose-lg mt-8 max-w-3xl">
+      <!-- Featured Testimonial -->
+      <!-- <div class="w-full md:w-auto flex">
+        { entry.data.testimonials.filter(t => t.featured).map(t => (<Quoteblock entry={t}/>)) }
+      </div> -->
+      <!-- Markdown Guide Teaser Content -->
       <Content />
-      <!-- Testimonials -->
-      <h2>What others are saying about this guide</h2>
-      {
-          entry.data.testimonials.filter(t => t.featured == false).map((testimonial) => (
-            <Quoteblock entry={testimonial}/>
-          ))
-        }
+      <!-- Highlights -->
+      <div class="grid grid-cols-2 gap-4">
+      { entry.data.highlights.map(highlight => 
+        (<div class="min-w-full">
+          <img style="aspect-ratio:3/2"  class="fadeIn h-min mb-4" width="300" src={highlight.image} />
+          <h4 class="color-primary-dark mt-0">{highlight.title}</h4>
+          <p class="text-sm">{highlight.text}</p>
+        </div>)
+      )}
       </div>
     </div>
-    <div class="grid gap-10 mx-auto max-w-screen-lg mt-12">
-      {<Pricing plan={entry.data.plan} />}
+    <!-- Guide Pricing Table -->
+    <div class="mx-auto mt-16 max-w-3xl">
+      {<Pricing data={entry.data} />}
     </div>
-    <div class="text-center mt-8">
+    <div class="mx-auto prose prose-lg mt-16 max-w-3xl">
+      <!-- FAQ -->
+      <div class="w-full md:w-auto flex mt-16">
+        {<FAQ entry={entry} />}
+      </div>
+    </div>
+    <!-- Back Button -->
+    <div class="text-center mt-24">
       <a
         href="/guides"
-        class="bg-gray-100 px-5 py-3 rounded-md hover:bg-gray-200 transition"
-        >← Back to guides</a
-      >
+        class="bg-gray-100 px-5 py-3 rounded-md hover:bg-gray-200 transition">
+        ← Back to all guides
+      </a>
     </div>
   </Container>
 </Layout>

@@ -1,0 +1,36 @@
+---
+import Quoteblock from "@components/quoteblock.astro";
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+---
+
+<div>
+    <h1 class="color-primary-dark">FAQ</h1>
+
+    <!-- Testimonials -->
+    <h2 class="text-3xl font-bold"><i>What are others saying about this guide?</i></h2>
+    { entry.data.testimonials.filter(t => t.featured == false).map(t => (<Quoteblock entry={t}/>)) }
+
+    <h2 class="text-3xl font-bold"><i>Why pay $20 for information I can find online?</i></h2>
+    <p>Great question. While yes, you can find information on the internet and social media platforms, our paid guide offers a few distinct advantages that we think make it well worth your small investment:</p>
+
+    <h3>Curated & Fresh Information</h3>
+    <p>Our team invests significant time and effort into curating the content of our paid guide. We know information online can be outdated or inaccurate. We meticulously research, fact-check, and verify the information we provide to ensure its accuracy, relevance, and reliability. We save you the hassle and time of getting lost in a sea of stale sources and questionable reviews, presenting you with trustworthy and up-to-date recommendations in one convenient package.</p>
+
+    <h3>Insider Knowledge & Local Expertise</h3>
+    <p>Our paid guide taps into the expertise of local insiders who intimately know Cabo San Lucas. We go beyond the surface-level information available online to bring you exclusive insights, hidden gems, and off-the-beaten-path experiences that may not be widely known or readily accessible. By accessing our guide, you gain access to a wealth of insider knowledge that will enhance your visit to Cabo San Lucas in ways that a simple internet search cannot replicate.</p>
+
+    <h3>Exclusive Access & Community</h3>
+    <p>By joining our paid guide community, you become part of an exclusive network of fellow travelers & locals. We create opportunities to connect, share experiences, and exchange valuable tips and recommendations with like-minded adventurers.</p>
+
+    <h2 class="text-3xl font-bold"><i>How do I access the guide?</i></h2>
+    <p>Upon purchase, you will receive the link for direct access to the guide via your email inbox.</p>
+    <p>You can refer back to this email or <a href="">visit this page to request a new guide</a> using the same email originally used to purchase the guide.</p>
+
+    <h2 class="text-3xl font-bold"><i>How do I receive regular updates?</i></h2>
+    <p>Anytime we update the guide you have purchased, you will receive a notification via email with direct access to the latest guide.</p>
+
+    <h2 class="text-3xl font-bold"><i>Can I contact Hola Cabo for support?</i></h2>
+    <p>Of course! We're here for our community. Please email <a href="mailto:holocabomx@gmail.com">holocabomx@gmail.com</a> and we will be in touch as soon as possible.</p>
+</div>

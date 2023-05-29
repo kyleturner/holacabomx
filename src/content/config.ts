@@ -52,6 +52,13 @@ const teasersCollection = defineCollection({
     author: z.string().default('Hola Cabo'),
     category: z.string(),
     tags: z.array(z.string()),
+    highlights: z.array(
+      z.object({
+        title: z.string(),
+        text: z.string(),
+        image: z.string()
+      })
+    ),
     testimonials: z.array(
       z.object({
         description: z.string(),
@@ -62,7 +69,9 @@ const teasersCollection = defineCollection({
     ),
     plan: z.object({
       name: z.string(),
+      detail: z.string(),
       price: z.number(),
+      frequency: z.string(),
       features: z.array(z.string()),
       button: z.object({
         text: z.string(),

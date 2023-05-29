@@ -1,42 +1,45 @@
 ---
 import { Tick } from "@components/ui/icons";
 import Link from "@components/ui/link.astro";
+import heroImage from "assets/holacabo.svg";
 
-const { plan } = Astro.props;
+const { data } = Astro.props;
 ---
 
-<div style="max-width:800px; margin: 0 auto; ">
-  <h1>Ready for the keys to {plan.name}?</h1>
-  <div
-    class="flex flex-col w-full order-first lg:order-none border-2 border-[#D8DEE9] border-opacity-50 py-5 px-6 rounded-md">
-    <div>
-      <h4 class="text-lg font-medium text-gray-400">{plan.name}</h4>
-      <p class="mt-3 text-4xl font-bold text-black md:text-4xl">
-        {
-          plan.price && typeof plan.price === "object"
-            ? plan.price.monthly
-            : plan.price
-        }
-      </p>
+<div id="pricing-table" style="margin: 0 auto;">
+  <h1 class="text-6xl color-primary-dark font-bold mb-8">Get your keys to {data.title} today.</h1>
+  <div id="pricing-table-inner"
+    class="w-full order-first lg:order-none border-2 border-[#D8DEE9] border-opacity-50 py-5 px-6 rounded-md">
+    <div class="w-full items-center gap-2 flex flex-row flex-wrap">
+      <img class="flex-none brand-logo" src={heroImage} width="72px" />
+      <div class="flex-col">
+        <h4 class="flex-none text-lg font-bold text-black">{data.plan.name}</h4>
+        <h4 class="flex-auto text-lg text-gray-400 mt-0">{data.plan.detail}</h4>
+      </div>
     </div>
-    <ul class="grid mt-8 text-left gap-y-4">
-      {
-        plan.features.map((item) => (
-          <li class="flex items-start gap-3 text-gray-800">
-            <Tick class="w-6 h-6" />
-            <span>{item}</span>
-          </li>
-        ))
-      }
-    </ul>
-    <div class="flex mt-8">
-      <Link
-        class="bg-color-brand-primary"
-        href={plan.button.link || "#"}
-        block
-        style={plan.popular ? "primary" : "outline"}>
-        {plan.button.text || "Purchase"}
-      </Link>
+    <div class="flex flex-col">
+      <h2 class="text-xl font-bold color-primary mt-8">Limited Time Offer</h2>
+      <p class="mt-3 text-4xl font-bold text-black md:text-4xl">
+        ${data.plan.price.toFixed(2)} {data.plan.frequency}
+      </p>
+      <ul class="grid mt-8 text-left gap-y-4">
+        {
+          data.plan.features.map((item) => (
+            <li class="flex items-start gap-3 text-gray-800">
+              <Tick />
+              <span>{item}</span>
+            </li>
+          ))
+        }
+      </ul>
+      <div class="flex mt-8">
+        <Link
+          href={data.plan.button.link}
+          block
+          style={"primary"}>
+          Continue to Checkout
+        </Link>
+      </div>
     </div>
   </div>
 </div>

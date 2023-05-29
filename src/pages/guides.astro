@@ -58,7 +58,7 @@ publishedTeasers.sort(function (a, b) {
     <Sectionhead>
       <Fragment slot="title">Digital Guides</Fragment>
       <Fragment slot="desc">
-        Paid guides with exclusive content and deals only available here.
+        Paid guides with exclusive content and deals only available with Hola Cabo.
       </Fragment>
     </Sectionhead>
     <main class="mt-16">
@@ -86,9 +86,7 @@ publishedTeasers.sort(function (a, b) {
                   </div>
                   {guide.data.draft && (<h4 class="font-semibold text-2xl" style="position: absolute; text-align:center;width:100%;top:35%;">COMING SOON</h4>)}
                   <div>
-                    <h2 class="text-2xl font-semibold leading-snug tracking-tight">
-                      {guide.data.title}
-                    </h2>
+                    {guide.data.draft ? (<h2 class="text-2xl text-slate-300  font-semibold leading-snug tracking-tight">{guide.data.title}</h2>) : (<h2 class="text-2xl font-semibold leading-snug tracking-tight">{guide.data.title}</h2>)}
                   </div>
                 </div>
               </a>

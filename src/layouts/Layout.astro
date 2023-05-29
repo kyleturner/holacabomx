@@ -18,24 +18,27 @@ const resolvedImageWithDomain = new URL("public/hero3.jpeg", Astro.site).toStrin
 const { title } = Astro.props;
 
 const makeTitle = title
-  ? capitalizeFirstLetter(title) + " | " + "HolaCabo"
-  : "HolaCabo: The locals guide to Baja";
+  ? capitalizeFirstLetter(title) + " | " + "Hola Cabo"
+  : "Hola Cabo: The locals guide to Baja";
 ---
 
 <style is:global>
   html {
     scroll-behavior: smooth;
   }
-  .color-brand-primary { 
+  .color-primary { 
     color: #2a9d8f;
   }
-  .color-brand-primary-light {
+  .color-primary-light {
     color: #7ab3ad;
   }
-  .bg-color-brand-primary { 
+  .color-primary-dark { 
+    color: #264653;
+  }
+  .bg-color-primary { 
     background-color: #2a9d8f;
   }
-  .bg-color-brand-primary-light {
+  .bg-color-primary-light {
     background-color: #7ab3ad;
   }
   .bg-color-secondary {
@@ -51,6 +54,18 @@ const makeTitle = title
     background-color: rgba(42,54,59, 0.6); 
     color: white;
     padding: 20px;
+  }
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  .fadeIn {
+    animation: 1.5s fadeIn;
   }
 </style>
 <style is:global>
