@@ -111,43 +111,45 @@ const features = [
   }
 </style>
 
-<div class="mt-16 md:mt-0">
-  <h2 id="learn-more-scroll-id" class="text-4xl lg:text-5xl font-bold lg:tracking-tight">
-    We've got you covered
-  </h2>
-  <p class="text-lg mt-4 text-slate-600">
-    Bringing you the best in every category because we love this place so much.
-  </p>
-</div>
-<div class="mt-8"><Link href="/experiences">See all experiences →</Link>
-</div>
+<div class="max-w-screen-xl px-10">
+  <div class="mt-16 md:mt-0">
+    <h2 id="learn-more-scroll-id" class="text-4xl lg:text-5xl font-bold lg:tracking-tight">
+      We've got you covered
+    </h2>
+    <p class="text-lg mt-4 text-slate-600">
+      Bringing you the best in every category because we love this place so much.
+    </p>
+  </div>
+  <div class="mt-8"><Link href="/experiences">See all experiences →</Link>
+  </div>
 
-<div class="grid sm:grid-cols-2 md:grid-cols-3 mt-16 gap-16 mb-16">
-  {
-    features.map((item) => (
-      <div>
-        <a href={item.url}>
-          <div class="image-hover">
-            <Picture
-            src={item.image}
-            alt="Hola Cabo"
-            widths={[256, 512]}
-            aspectRatio="1:1"
-            sizes="(max-width: 256px) 100vw, 256"
-            loading="eager"
-            />  
-          </div>
-          <div class="flex gap-4 items-start mt-8">
-            <div class="mt-1 bg-color-primary rounded-full  p-2 w-8 h-8 shrink-0">
-              <Icon class="text-white" name={item.icon} />
+  <div class="grid sm:grid-cols-2 md:grid-cols-3 mt-16 gap-16 mb-16">
+    {
+      features.map((item) => (
+        <div>
+          <a href={item.url}>
+            <div class="image-hover">
+              <Picture
+              src={item.image}
+              alt="Hola Cabo"
+              widths={[256, 512]}
+              aspectRatio="1:1"
+              sizes="(max-width: 256px) 100vw, 256"
+              loading="eager"
+              />  
             </div>
-            <div>
-              <h3 class="font-semibold text-lg">{item.title}</h3>{" "}
-              <p class="text-slate-500 mt-2 leading-relaxed">{item.description}</p>
+            <div class="flex gap-4 items-start mt-8">
+              <div class="mt-1 bg-color-primary rounded-full  p-2 w-8 h-8 shrink-0">
+                <Icon class="text-white" name={item.icon} />
+              </div>
+              <div>
+                <h3 class="font-semibold text-lg">{item.title}</h3>{" "}
+                <p class="text-slate-500 mt-2 leading-relaxed">{item.description}</p>
+              </div>
             </div>
-          </div>
-        </a>
-    </div>
-    ))
-  }
+          </a>
+      </div>
+      ))
+    }
+  </div>
 </div>

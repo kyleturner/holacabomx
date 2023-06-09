@@ -7,6 +7,8 @@ import { Picture } from "@astrojs/image/components";
 import Pricing from "@components/pricing.astro";
 import FAQ from "@components/faq.astro";
 import Link from "@components/ui/link.astro";
+import { Icon } from "astro-icon";
+import cactusImage from "assets/cactus.svg";
 
 // Generate a new path for every collection entry
 export async function getStaticPaths() {
@@ -24,7 +26,7 @@ const { Content } = await entry.render();
 <style>
   .textOverlay {
     position: absolute; 
-    bottom: 2%;
+    bottom: 8%;
     margin: 20px;
   }
 </style>
@@ -34,14 +36,13 @@ const { Content } = await entry.render();
       <Picture
       src={entry.data.image.src}
       alt={entry.data.image.alt}
-      widths={[600, 1000]}
+      widths={[600, 800]}
       aspectRatio="16:9"
       background="#ffffff"
       fit="cover"
       position="center"
       loading={"eager"}
       decoding={"sync"}
-      class="w-full mt-8"
     />
     <div class="textOverlay header-text">
       <h1 class="p-2 xl:text-7xl lg:text-6xl md:text-5xl sm:text-5xl lg:tracking-tight xl:tracking-tighter font-bold">{entry.data.subtitle}</h1>
@@ -77,8 +78,13 @@ const { Content } = await entry.render();
       </div>
     </div>
     <!-- Guide Pricing Table -->
-    <div class="mx-auto mt-16 max-w-3xl">
-      {<Pricing data={entry.data} />}
+    <div class="px-0 items-center justify-center bg-color-primary-light mt-16" style="width:100%; position: relative;">
+      <div class="invisible xl:visible 2xl:visibile">
+        <img src={cactusImage} width="300px" style="position: absolute; right: 20px; bottom: -20px;" />
+      </div>
+      <div class="mx-auto max-w-3xl bg-white p-16">
+        {<Pricing data={entry.data} />}
+      </div>
     </div>
     <div class="mx-auto prose prose-lg mt-16 max-w-3xl">
       <!-- FAQ -->

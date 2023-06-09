@@ -2,11 +2,12 @@
 import { Tick } from "@components/ui/icons";
 import Link from "@components/ui/link.astro";
 import heroImage from "assets/holacabo.svg";
+import { Icon } from "astro-icon";
 
 const { data } = Astro.props;
 ---
 
-<div id="pricing-table" style="margin: 0 auto;">
+<div id="pricing-table" style="margin: 0 auto;">  
   <h1 class="text-6xl color-primary-dark font-bold mb-8">Get your keys to {data.title} today.</h1>
   <div id="pricing-table-inner"
     class="w-full order-first lg:order-none border-2 border-[#D8DEE9] border-opacity-50 py-5 px-6 rounded-md">

@@ -7,12 +7,12 @@ import Sectionhead from "@components/sectionhead.astro";
 
 // Filter entries with 'draft: false' & date before current date
 const publishedTeasers = await getCollection("teasers", ({ data }) => {
-  return data.publishDate < new Date();
+  return data.publishDate;
 });
 
 // Sort content entries by publication date
 publishedTeasers.sort(function (a, b) {
-  return b.data.publishDate.valueOf() - a.data.publishDate.valueOf();
+  return a.data.publishDate.valueOf() - b.data.publishDate.valueOf();
 });
 ---
 

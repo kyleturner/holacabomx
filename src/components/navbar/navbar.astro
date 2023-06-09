@@ -19,21 +19,21 @@ const menuitems = [
     children: [
       { title: "Top 5 Tacos in San Jose", path: "/experiences" },
       { title: "Expat pro tips to living in Baja", path: "/experiences" },
-      { title: "•••", path: "", },
-      { title: "See All", path: "/experiences" },
+      { title: "___", path: "", disabled: true },
+      { title: "See All Experiences", path: "/experiences" },
     ]
   },
   {
     title: "Digital Guides",
     path: "#",
     children: [
-      { title: "Cabo San Lucas", path: "/guides/cabo" },
-      { title: "San Jose del Cabo", path: "/guides/sanjose" },
-      { title: "Todos Santos", path: "/guides/todos" },
-      { title: "East Cape", path: "/guides/east-cape" },
-      { title: "Valle de Guadalupe", path: "/guides/valle-guadalupe" },
-      { title: "•••", path: "", },
-      { title: "See All", path: "/guides" },
+      { title: "Cabo San Lucas", path: "/guides/cabo", disabled: false },
+      { title: "San Jose del Cabo (coming soon)", path: "/guides/sanjose", disabled: true },
+      { title: "East Cape (coming soon)", path: "/guides/east-cape", disabled: true },
+      { title: "Todos Santos (coming soon)", path: "/guides/todos", disabled: true },
+      { title: "Valle de Guadalupe (coming soon)", path: "/guides/valle-guadalupe", disabled: true },
+      { title: "___", path: "", disabled: true },
+      { title: "See All Guides", path: "/guides", enabled: true },
     ],
   },
   {
@@ -52,7 +52,7 @@ const menuitems = [
 </style>
 
 <Container>
-  <header class="flex flex-col lg:flex-row justify-between items-center my-5">
+  <header class="px-5 flex flex-col lg:flex-row justify-between items-center my-5">
     <Astronav>
       <div class="flex w-full lg:w-auto items-center justify-between lg:gap-2 md:gap-2">
         <img class="brand-logo" src={heroImage} width="56px" />
