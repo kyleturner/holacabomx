@@ -4,6 +4,7 @@ import { Picture } from "@astrojs/image/components";
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/container.astro";
 import Sectionhead from "@components/sectionhead.astro";
+// import SearchBar from "@components/searchBar.astro";
 
 // Filter experiences entries with 'draft: false' & date before current date
 const publishedExperiencesEntries = await getCollection("experiences", ({ data }) => {
@@ -24,13 +25,13 @@ publishedExperiencesEntries.sort(function (a, b) {
         Our view of the latest Baja Sur happenings.
       </Fragment>
     </Sectionhead>
-    <main class="mt-16">
-      <ul class="grid gap-16 max-w-4xl mx-auto">
+    <main class="p-8">
+      <ul class="grid gap-16 md:grid-cols-2 mx-auto">
         {
           publishedExperiencesEntries.map((experiencesPostEntry, index) => (
             <li>
               <a href={`/experiences/${experiencesPostEntry.slug}`}>
-                <div class="grid md:grid-cols-2 gap-5 md:gap-10 items-center">
+                <div class="grid gap-5 md:gap-10 items-center">
                   <Picture
                     src={experiencesPostEntry.data.image.src}
                     alt={experiencesPostEntry.data.image.alt}

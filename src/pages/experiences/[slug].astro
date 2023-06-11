@@ -1,8 +1,23 @@
 ---
 import { getCollection } from "astro:content";
 import Layout from "@layouts/Layout.astro";
+import Card from "@components/ui/card.astro";
 import Container from "@components/container.astro";
 
+import Hero from "@components/hero.astro";
+import Sectionhead from "@components/sectionhead.astro";
+import BlockEntry from "@components/blockEntry.astro";
+import Link from "@components/ui/link.astro";
+
+// TODO: Import custom map for plotting points featured in experience
+// import { GeoMap } from 'astro-geo-map';
+
+// TODO: Pull inspo for formatting of feature from this article
+// Inspirations: https://www.islandlifemexico.com/tulum-visitors-guide/
+
+/**
+ * Data Mapping
+ */
 // Generate a new path for every collection entry
 export async function getStaticPaths() {
   const experiencesEntries = await getCollection("experiences");
@@ -19,44 +34,87 @@ const { Content } = await entry.render();
 
 <Layout title={entry.data.title}>
   <Container>
-    <div class="mx-auto max-w-3xl mt-14">
-      <span class="color-primary uppercase tracking-wider text-sm font-medium">
-        {entry.data.category}
-      </span>
-      <h1
-        class="text-4xl lg:text-5xl font-bold lg:tracking-tight mt-1 lg:leading-tight">
-        {entry.data.title}
-      </h1>
-      <div class="flex gap-2 mt-3 items-center flex-wrap md:flex-nowrap">
-        <span class="text-gray-400">
-          {entry.data.author}
-        </span>
-        <span class="text-gray-400">•</span>
-        <time
+    <!-- Section: Hero -->
+    <div class="mx-auto relative">
+      <Hero
+        title={entry.data.title} 
+        subtitle={entry.data.subtitle} 
+        backgroundColor="white"
+        backgroundImage="/hero3.jpeg"
+        center={true} />
+    </div>
+    <!-- Inner Container with Padding -->
+    <div class="mx-auto prose prose-lg max-w-5xl">
+      <!-- Header -->
+      <Sectionhead category="San Jose">
+        <Fragment slot="title">{entry.data.snippet}</Fragment>
+        <!-- References to Blocks Content -->
+        <Fragment slot="buttons">
+          <div class="flex">
+            {
+              entry.data.blocks.map((block) => (
+                  <Link style="primary" 
+                  class="p-2 pl-6 pr-6 mr-1 bg-color-primary" 
+                  href={"#" + block.anchor}>
+                  <p class="text-xs  m-0">{block.category.toUpperCase()}</p>
+                  <p class="m-0 text-lg">{block.name}</p>
+                  </Link>
+              ))
+            }
+            </div>
+        </Fragment>
+        <!-- Tags -->
+        <Fragment slot="tags">
+          <div>
+            {
+              entry.data.tags.map((tag) => (
+                <span class="text-sm text-gray-500">#{tag} • </span> 
+              ))
+            }
+          </div>
+        </Fragment>
+        <Fragment slot="desc">
+          <time
           class="text-gray-400"
           datetime={entry.data.publishDate.toISOString()}>
+          Last Updated: 
           {entry.data.publishDate.toDateString()}
         </time>
-        <span class="text-gray-400 hidden md:block">•</span>
-        <div class="w-full md:w-auto flex flex-wrap gap-3">
-          {
-            entry.data.tags.map((tag) => (
-              <span class="text-sm text-gray-500">#{tag}</span>
-            ))
-          }
-        </div>
+        </Fragment>
+      </Sectionhead>
+
+      <div>
+        {
+          entry.data.blocks.map((block) => (
+            <BlockEntry id={block.anchor}>
+              <Fragment slot="category">{block.category}</Fragment>
+              <Fragment slot="name">{block.name}</Fragment>
+              <Fragment slot="description">{block.description}</Fragment>
+              <Fragment slot="links">
+                {block.links.map((link) => (
+                  <Link style="muted" 
+                  class="mt-2 mb-2 p-4 mr-4" 
+                  href={link.href}>{link.title}</Link>
+                ))}
+              </Fragment>
+            </BlockEntry>
+          ))
+        }
       </div>
+
+      <!-- Injected Page Contents -->
+      <Content />
+
+      <!-- TODO: Map view including lat,long positions of the locations featured in this page -->
+      <!-- <Card title="Map of Experiences">TODO: Map inside here</Card> -->
     </div>
 
-    <div class="mx-auto prose prose-lg mt-6 max-w-3xl">
-      <Content />
-    </div>
-    <div class="text-center mt-8">
+    <!-- Page Sub-Footer -->
+    <div class="text-center mt-32">
       <a
         href="/experiences"
         class="bg-gray-100 px-5 py-3 rounded-md hover:bg-gray-200 transition"
-        >← Back to Experiences</a
-      >
+        >← Back to Experiences</a>
     </div>
   </Container>
 </Layout>

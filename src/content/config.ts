@@ -16,6 +16,17 @@ const experiencesCollection = defineCollection({
     author: z.string().default('Hola Cabo'),
     category: z.string(),
     tags: z.array(z.string()),
+    blocks: z.array(z.object({
+      category: z.string(),
+      name: z.string(),
+      anchor: z.string(),
+      link: z.string(),
+      description: z.string(),
+      links: z.array(z.object({
+        title: z.string(),
+        href: z.string(),
+      }))
+    })),
   }),
 });
 

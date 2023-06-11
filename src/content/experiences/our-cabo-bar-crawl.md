@@ -11,6 +11,7 @@ publishDate: "2022-11-09 16:39"
 category: "Cabo San Lucas"
 author: "Hola Cabo"
 tags: [bars, clubs]
+blocks: []
 ---
 
 Cabo San Lucas is famous for its vibrant nightlife scene, with bars and clubs to suit every taste and mood. Whether you're looking for a romantic evening with your partner, a wild night out with friends, or a laid-back atmosphere to enjoy a few drinks and some live music, Cabo has something for everyone.

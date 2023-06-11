@@ -1,0 +1,35 @@
+---
+const { id, links } = Astro.props;
+import { Picture } from "@astrojs/image/components";
+---
+
+<div id={id} class:list={["mt-16", "text-center", "grid"]}>
+  <!-- Category -->
+  <span class="color-primary uppercase tracking-wider text-sm font-medium"><slot name="category">Category</slot></span>
+  
+  <!-- <h1 class="text-4xl lg:text-5xl font-bold lg:tracking-tight mb-2 pt-4 pb-2"><slot name="category">Category</slot></h1> -->
+  <!-- <h2 class="text-md color-primary p-0 m-4 mt-0"><slot name="name">Name</slot></h2> -->
+  
+  <!-- Name -->
+  <h1 class="text-4xl lg:text-5xl font-bold lg:tracking-tight mb-4 pt-4 pb-2"><slot name="name">Name</slot></h1>
+  
+  <div class="mx-auto relative">
+    <!-- TODO: Inject photo stuff here -->
+    <Picture
+        src="/hero3.jpeg"
+        alt="Hola Cabo"
+        widths={[256, 512, 1024]}
+        aspectRatio="4:3"
+        sizes="(max-width: 1024px) 100vw, 1024px"
+        loading="eager"
+    />  
+  </div>
+  <!-- Description -->
+  <div class="contents m-4">
+    <slot name="description">Description Block</slot>
+  </div>
+  <!-- Links -->
+  <div class="flex justify-center mt-4">
+    <slot name="links">Links Block</slot>
+  </div>
+</div>

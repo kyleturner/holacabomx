@@ -1,0 +1,7 @@
+<!-- ---
+import Search from './Search';
+const allExperiences = await Astro.glob('../experiences/*.{md,mdx}');
+const experiences = allExperiences.filter(experience => (!experience.frontmatter.draft && experience.frontmatter.slug));
+---
+
+<Search client:load searchList={experiences}></Search> -->

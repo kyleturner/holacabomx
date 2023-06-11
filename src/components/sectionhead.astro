@@ -1,12 +1,17 @@
 ---
-const { align = "center" } = Astro.props;
+const { 
+  align = "center",
+  category,
+} = Astro.props;
+import Divider from "@components/ui/divider.astro";
 ---
 
 <div class:list={["mt-16", align === "center" && "text-center"]}>
-  <h1 class="text-4xl lg:text-5xl font-bold lg:tracking-tight">
-    <slot name="title">Title</slot>
-  </h1>
-  <p class="text-lg mt-4 text-slate-600">
-    <slot name="desc">Some description goes here</slot>
-  </p>
+  { category && (<span class="color-primary uppercase tracking-wider text-sm font-medium">{"SAN JOSE"}</span>) }
+  <h1 class="text-4xl lg:text-5xl font-bold lg:tracking-tight mb-4 pt-4 pb-4"><slot name="title"></slot></h1>
+  <!-- <div class="grid grid-flow-col auto-rows-max gap-3"><slot name="tags"></slot></div> -->
+  <slot name="buttons"></slot>
+  <!-- <p class="text-sm mt-4 mb-0 text-slate-600"><slot name="desc"></slot></p> -->
+  <Divider image="/src/assets/holacabo.svg" clazz="p-0" />
+  
 </div>

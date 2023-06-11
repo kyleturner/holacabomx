@@ -1,12 +1,27 @@
 ---
 import Link from "@components/ui/link.astro";
 import { Icon } from "astro-icon";
+import Divider from "@components/ui/divider.astro";
+
+const { 
+  title, 
+  subtitle, 
+  backgroundImage, 
+  backgroundColor, 
+  center,
+  children 
+} = Astro.props
+
+const defaultCSS = "home grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24 mb-16"
+const centerCSS = "text-center home lg:grid-cols-2 place-items-center pt-16 md:pt-12 md:pb-24"
+const cssClass = center ? centerCSS : defaultCSS
 ---
+
 <!-- Styles scoped to this component, only. -->
 <style>
 .home {
-  background-color: rgba(5, 5, 5, 1.0);
-  background-image: url("/hero3.jpeg");
+  background-color: var(--backgroundColor);
+  background-image: var(--backgroundImage);
   background-position: center;
   background-repeat: no-repeat; 
   background-size: cover;
@@ -16,34 +31,18 @@ import { Icon } from "astro-icon";
 </style>
 
 <main 
-  class="home grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24 mb-16" onload="this.style.opacity=1">
-  <div class="py-6 md:order-1 hidden md:block">
-  </div>
-  <div>
-    <h1
-      class="header-text text-5xl lg:text-6xl xl:text-7xl font-bold lg:tracking-tight xl:tracking-tighter">
-      Your local scoop on the best of Baja Sur
-    </h1>
-    <p class="header-text text-xl text-white max-w-xl">
-      Unlock the ultimate guides to unforgettable experiences in Cabo San Lucas, San Jose, Todos Santos, East Cape & more.
-    </p>
-    <div class="mt-6 flex flex-col sm:flex-row gap-3">
-      <Link
-        href="/teasers/cabo"
-        class="flex gap-1 items-center justify-center bg-color-primary"
-        rel="noopener">
-        <Icon class="text-white w-5 h-5" name="bx:bxs-cloud-download" />
-        Download Our Member's Guide to Cabo
-      </Link>
-      <Link
-        size="lg"
-        style="outline"
-        rel="noopener"
-        href="#learn-more-scroll-id"
-        class="flex gap-1 items-center justify-center">
-        <Icon class="text-black w-5 h-5" name="bx:bxs-down-arrow-alt" />
-        Learn More
-      </Link>
+  style={{'--backgroundImage': `url(${backgroundImage})`, '--backgroundColor': `${backgroundColor}`}} 
+  class={cssClass} 
+  onload="this.style.opacity=1">
+    <div class="py-32 md:order-1"></div>
+    <div>
+      <h1 class="header-text text-5xl lg:text-6xl xl:text-7xl font-bold lg:tracking-tight xl:tracking-tighter">{title}</h1>
+      {center ? (<Divider 
+        image="/src/assets/holacabo-white-transparent.png" 
+        clazz="text-white p-0 bg-color-transparent"/> ) : ("")}
+      <p class="header-text text-xl text-white">{subtitle}</p>
+      <div class="mt-6 flex flex-col sm:flex-row gap-3">
+        <slot></slot>
+      </div>
     </div>
-  </div>
 </main>

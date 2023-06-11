@@ -39,7 +39,7 @@ const { Content } = await entry.render();
       position="center"
       loading={"eager"}
       decoding={"sync"}
-      class="w-full mt-16"
+      class="w-full"
     />
     <div class="textOverlay">
       <h1 class="header-text xl:text-7xl lg:text-6xl md:text-5xl sm:text-5xl lg:tracking-tight xl:tracking-tighter font-bold">{entry.data.subtitle}</h1>
@@ -47,7 +47,7 @@ const { Content } = await entry.render();
     </div>
   </div>
     <div class="mx-auto max-w-3xl mt-14">
-      <span class="text-blue-400 uppercase tracking-wider text-sm font-medium">
+      <span class="color-primary uppercase tracking-wider text-sm font-medium">
         {entry.data.category}
       </span>
       <h1

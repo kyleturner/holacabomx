@@ -1,5 +1,7 @@
 ---
 import Container from "@components/container.astro";
+import Link from "@components/ui/link.astro";
+import { Icon } from "astro-icon";
 import Features from "@components/features.astro";
 import Hero from "@components/hero.astro";
 import Photos from "@components/photos.astro";
@@ -8,7 +10,29 @@ import Layout from "@layouts/Layout.astro";
 ---
 
 <Layout title="">
-    <Hero />
+      <Hero 
+        title="Your local scoop on the best of Baja Sur" 
+        subtitle="Unlock the ultimate guides to unforgettable experiences in Cabo San Lucas, San Jose, Todos Santos, East Cape & more." 
+        backgroundImage="/hero3.jpeg"
+        backgroundColor="rgba(5, 5, 5, 1.0)"
+      >
+      <Link
+            href="/teasers/cabo"
+            class="flex gap-1 items-center justify-center bg-color-primary"
+            rel="noopener">
+            <Icon class="text-white w-5 h-5" name="bx:bxs-cloud-download" />
+            Download Our Member's Guide to Cabo
+      </Link>
+      <Link
+            size="lg"
+            style="outline"
+            rel="noopener"
+            href="#learn-more-scroll-id"
+            class="flex gap-1 items-center justify-center">
+            <Icon class="text-black w-5 h-5" name="bx:bxs-down-arrow-alt" />
+            Learn More
+      </Link>
+      </Hero>
       <Container>
       <Features />
       <Logos />
