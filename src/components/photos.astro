@@ -1,15 +1,29 @@
 ---
 import Link from "@components/ui/link.astro";
 import { Icon } from "astro-icon";
+
+const isProduction = import.meta.env.PROD;
+
+const metadata = {
+  'title': "The latest directly from the locals",
+  'subtitle': "See what our teams up to lately!"
+}
 ---
 
-<div class="mt-16">
-  <h2 class="text-3xl lg:text-4xl xl:text-5xl font-bold lg:tracking-tight xl:tracking-tighter mb-16">
-      On the go with Hola Cabo
-    </h2>
+<div class="grid px-10 mt-16">
+  <h2 class="text-4xl lg:text-5xl font-bold lg:tracking-tight">
+    {metadata.title}
+  </h2>
+  <p class="text-lg mt-4 text-slate-600 mb-8">
+    {metadata.subtitle}
+  </p>
+  <!-- Only enabled in production environment. -->
+  {(isProduction && (
   <figure data-behold-id="UubyJC2sjbi7UeEzcPI5"></figure>
   <script src="https://w.behold.so/widget.js" type="module"></script>
-  <div class="grid gap-16 max-w-xl mx-auto mt-16">
+  <div class="gap-16 max-w-xl mx-auto mt-16">
     <Link target="_blank" class="text-center pl-8 pr-8" href="https://instagram.com/holacabo"><Icon class="h-4 w-4 mr-2" style="display:inline-block;" name="simple-icons:instagram" />See more on Instagram</Link>
   </div>
+  ))}
+  
 </div>

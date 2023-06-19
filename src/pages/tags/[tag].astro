@@ -1,0 +1,61 @@
+---
+import { getCollection } from "astro:content";
+import ExperienceBlock from "@components/blocks/experienceBlock.astro";
+import Layout from "@layouts/Layout.astro";
+import Container from "@components/container.astro";
+import Sectionhead from "@components/sectionhead.astro";
+import Link from "@components/ui/link.astro";
+
+export async function getStaticPaths() {
+    const allExperiences = await getCollection("experiences", ({ data }) => {
+        return !data.draft && data.publishDate < new Date();
+    });
+    const uniqueTags = [...new Set(allExperiences.map((experience) => experience.data.tags).flat())];
+    return uniqueTags.map((tag) => {
+        const tagged = allExperiences.filter((experience) => experience.data.tags.includes(tag));
+        return {
+            params: { tag },
+            props: { experiences: tagged },
+        };
+    });
+}
+const { tag } = Astro.params;
+const { experiences } = Astro.props;
+const metadata =  {
+    'title': "Experiences in",
+    'ctaPrimary': {
+        'title': 'Back to all experiences ➞',
+        'href': '/experiences'
+    }
+}
+---
+
+<Layout title="tagged-experiences">
+    <Container>
+      <Sectionhead subtitle={true}>
+        <Fragment slot="title">{metadata.title}
+            <Link style="primary" 
+            class="tag" 
+            href={"/tags/" + tag}>{tag}</Link>
+        </Fragment>
+        <Fragment slot="subtitle">
+            <div class="mt-8 mb-8">
+                <Link href={metadata.ctaPrimary.href} style="inverted">{metadata.ctaPrimary.title}</Link> 
+            </div>
+        </Fragment>
+      </Sectionhead>
+      <main class="p-8">
+        <ul class="grid gap-16 md:grid-cols-2 mx-auto">
+            {experiences.map((experience, index) =>  (
+                <li>
+                    <ExperienceBlock 
+                        entry={experience.data} 
+                        slug={experience.slug} 
+                        index={index} />
+                </li>
+            ))}
+        </ul>
+      </main>
+    </Container>
+  </Layout>
+  

@@ -7,36 +7,48 @@ import Hero from "@components/hero.astro";
 import Photos from "@components/photos.astro";
 import Logos from "@components/logos.astro";
 import Layout from "@layouts/Layout.astro";
+
+const metadata = {
+  'title': "Your local scoop on the best of Baja Sur",
+  'subtitle': "Unlock the ultimate guides to unforgettable experiences in Cabo San Lucas, San Jose, Todos Santos, East Cape & more.",
+  'ctaPrimary': {
+      'title': "Download Our Member's Guide to Cabo",
+      'href': "/teasers/cabo"
+  },
+  'ctaSecondary': {
+      'title': "Learn More",
+      'href': "#learn-more-scroll-id"
+  }
+}
 ---
 
 <Layout title="">
       <Hero 
-        title="Your local scoop on the best of Baja Sur" 
-        subtitle="Unlock the ultimate guides to unforgettable experiences in Cabo San Lucas, San Jose, Todos Santos, East Cape & more." 
+        title={metadata.title}
+        subtitle={metadata.subtitle}
         backgroundImage="/hero3.jpeg"
         backgroundColor="rgba(5, 5, 5, 1.0)"
       >
       <Link
-            href="/teasers/cabo"
+            href={metadata.ctaPrimary.href}
             class="flex gap-1 items-center justify-center bg-color-primary"
             rel="noopener">
             <Icon class="text-white w-5 h-5" name="bx:bxs-cloud-download" />
-            Download Our Member's Guide to Cabo
+            {metadata.ctaPrimary.title}
       </Link>
       <Link
+            href={metadata.ctaSecondary.href}
             size="lg"
             style="outline"
             rel="noopener"
-            href="#learn-more-scroll-id"
             class="flex gap-1 items-center justify-center">
             <Icon class="text-black w-5 h-5" name="bx:bxs-down-arrow-alt" />
-            Learn More
+            {metadata.ctaSecondary.title}
       </Link>
       </Hero>
       <Container>
-      <Features />
-      <Logos />
-      <!-- NOTE: Commented out for development to avoid API calls to Instagram widget. -->
-      <!-- <Photos /> -->
+        <Features />
+        <Logos />
+        <Photos />
       </Container>
 </Layout>

@@ -10,7 +10,7 @@ image: {
 publishDate: "2022-11-09 16:39"
 category: "Cabo San Lucas"
 author: "Hola Cabo"
-tags: [bars, clubs]
+tags: [nightlife]
 blocks: []
 ---
 

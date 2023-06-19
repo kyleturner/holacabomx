@@ -1,5 +1,4 @@
 ---
-// @ts-ignore
 import { Icon } from "astro-icon";
 import { Picture } from "@astrojs/image/components";
 import beachesImage from "assets/beaches.jpeg";
@@ -10,6 +9,11 @@ import foodImage from "assets/food.jpeg";
 import transportationImage from "assets/transportation.png";
 import activitiesImage from "assets/activities.png";
 import Link from "@components/ui/link.astro";
+
+const metadata = {
+  'title': "The best of Cabo in every category",
+  'subtitle': "We've got you covered on where to explore, stay, dine, and indulge"
+}
 
 const features = [
   {
@@ -84,6 +88,9 @@ const features = [
       position: relative;
       overflow: hidden;
   }
+  .image-hover-link:hover {
+    color: #2a9d8f;
+  }
   .image-hover img {
     transition: transform .55s ease-in-out;
     -moz-transition: transform .55s ease-in-out;
@@ -111,23 +118,22 @@ const features = [
   }
 </style>
 
-<div class="max-w-screen-xl px-10">
+<div class="max-w-screen-xxl px-10">
   <div class="mt-16 md:mt-0">
     <h2 id="learn-more-scroll-id" class="text-4xl lg:text-5xl font-bold lg:tracking-tight">
-      We've got you covered
+      {metadata.title}
     </h2>
     <p class="text-lg mt-4 text-slate-600">
-      Bringing you the best in every category because we love this place so much.
+      {metadata.subtitle}
     </p>
   </div>
-  <div class="mt-8"><Link href="/experiences">See all experiences →</Link>
-  </div>
+  <div class="mt-8"><Link href="/experiences">See all experiences →</Link></div>
 
-  <div class="grid sm:grid-cols-2 md:grid-cols-3 mt-16 gap-16 mb-16">
+  <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 mt-16 gap-16 mb-16">
     {
       features.map((item) => (
         <div>
-          <a href={item.url}>
+          <a class="image-hover-link" href={item.url}>
             <div class="image-hover">
               <Picture
               src={item.image}
@@ -152,4 +158,5 @@ const features = [
       ))
     }
   </div>
+  <div class="mt-8"><Link href="/experiences">See all experiences →</Link></div>
 </div>

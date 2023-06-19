@@ -1,65 +1,53 @@
 ---
 import { getCollection } from "astro:content";
-import { Picture } from "@astrojs/image/components";
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/container.astro";
 import Sectionhead from "@components/sectionhead.astro";
-// import SearchBar from "@components/searchBar.astro";
+import ExperienceBlock from "@components/blocks/experienceBlock.astro";
+import Link from "@components/ui/link.astro";
+
+const metadata = {
+  'title': "Local Experiences",
+}
 
 // Filter experiences entries with 'draft: false' & date before current date
 const publishedExperiencesEntries = await getCollection("experiences", ({ data }) => {
   return !data.draft && data.publishDate < new Date();
 });
-
 // Sort content entries by publication date
 publishedExperiencesEntries.sort(function (a, b) {
   return b.data.publishDate.valueOf() - a.data.publishDate.valueOf();
 });
+
+// TODO: May want to make this static to control which show up for selection
+const uniqueTags = [...new Set(publishedExperiencesEntries.map((experience) => experience.data.tags).flat())];
 ---
 
 <Layout title="experiences">
   <Container>
     <Sectionhead>
-      <Fragment slot="title">Local Experiences</Fragment>
-      <Fragment slot="desc">
-        Our view of the latest Baja Sur happenings.
+      <Fragment slot="title">{metadata.title}</Fragment>
+      <Fragment slot="buttons">
+        <div class="flex flex-row justify-center mb-8">
+          {
+            uniqueTags.map((tag) => (
+                <Link style="outline" 
+                class="tag text-lg" 
+                href={"/tags/" + tag}>{tag}</Link>
+            ))
+          }
+          </div>
       </Fragment>
     </Sectionhead>
     <main class="p-8">
       <ul class="grid gap-16 md:grid-cols-2 mx-auto">
         {
-          publishedExperiencesEntries.map((experiencesPostEntry, index) => (
+          publishedExperiencesEntries.map((experienceEntry, index) => (
             <li>
-              <a href={`/experiences/${experiencesPostEntry.slug}`}>
-                <div class="grid gap-5 md:gap-10 items-center">
-                  <Picture
-                    src={experiencesPostEntry.data.image.src}
-                    alt={experiencesPostEntry.data.image.alt}
-                    sizes="(max-width: 800px) 100vw, 800px"
-                    widths={[200, 400, 800]}
-                    aspectRatio="16:9"
-                    background="#ffffff"
-                    fit="cover"
-                    position="center"
-                    loading={index <= 2 ? "eager" : "lazy"}
-                    decoding={index <= 2 ? "sync" : "async"}
-                    class="w-full rounded-md"
-                  />
-                  <div>
-                    <span class="color-primary uppercase tracking-wider text-sm font-medium">
-                      {experiencesPostEntry.data.category}
-                    </span>
-
-                    <h2 class="text-3xl font-semibold leading-snug tracking-tight mt-1 ">
-                      {experiencesPostEntry.data.title}
-                    </h2>
-
-                    <div class="flex gap-2 mt-3">
-                      <span class="text-gray-400">{experiencesPostEntry.data.snippet}</span>
-                    </div>
-                  </div>
-                </div>
-              </a>
+              <ExperienceBlock 
+                entry={experienceEntry.data} 
+                slug={experienceEntry.slug} 
+                index={index} />
             </li>
           ))
         }
