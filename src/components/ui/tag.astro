@@ -1,0 +1,8 @@
+---
+const {tag} = Astro.props;
+import Link from "@components/ui/link.astro";
+---
+<Link 
+style="outline" 
+    class="tag text-lg" 
+    href={"/tags/" + tag}>{tag}</Link>
