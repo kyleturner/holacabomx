@@ -8,7 +8,7 @@ import Link from "@components/ui/link.astro";
 import Tag from "@components/ui/tag.astro";
 
 const metadata = {
-  'title': "Local Experiences",
+  'title': "Experiences",
 }
 
 // Filter experiences entries with 'draft: false' & date before current date
@@ -31,14 +31,14 @@ const uniqueTags = [...new Set(publishedExperiencesEntries.map((experience) => e
       <Fragment slot="title">{metadata.title}</Fragment>
       <Fragment slot="buttons">
         <!-- Tags List -->
-        <div class="flex flex-row justify-center mb-8">
+        <div class="flex flex-wrap justify-center mb-8">
           { uniqueTags.map((tag) => (<Tag tag={tag} />)) }
           </div>
       </Fragment>
     </Sectionhead>
     <main class="p-8">
       <!-- All Experience Entries -->
-      <ul class="grid gap-16 md:grid-cols-2 mx-auto">
+      <ul class="grid gap-8 md:gap-16 md:grid-cols-2 mx-auto">
         {
           publishedExperiencesEntries.map((experienceEntry, index) => (
             <li>

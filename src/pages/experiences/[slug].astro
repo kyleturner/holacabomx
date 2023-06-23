@@ -3,6 +3,7 @@ import { getCollection } from "astro:content";
 import Layout from "@layouts/Layout.astro";
 import Card from "@components/ui/card.astro";
 import Container from "@components/container.astro";
+import { Icon } from "astro-icon";
 
 import Hero from "@components/hero.astro";
 import Sectionhead from "@components/sectionhead.astro";
@@ -30,6 +31,17 @@ export async function getStaticPaths() {
 // Get the entry directly from the prop on render
 const { entry } = Astro.props;
 const { Content } = await entry.render();
+
+function getIcon(title) {
+ switch (title) {
+  case "Website":
+    return "bx:bx-world"
+  case "Instagram":
+    return "simple-icons:instagram"
+  case "Make Reservation":
+    return "bx:bxs-time-five"
+ }
+}
 ---
 
 <Layout title={entry.data.title}>
@@ -50,11 +62,11 @@ const { Content } = await entry.render();
         <Fragment slot="title">{entry.data.snippet}</Fragment>
         <!-- References to Blocks Content -->
         <Fragment slot="buttons">
-          <div class="flex">
+          <div class="flex overflow-x-auto">
             {
               entry.data.blocks.map((block) => (
                   <Link style="primary" 
-                  class="p-2 pl-6 pr-6 mr-1 bg-color-primary" 
+                  class="p-2 pl-6 pr-6 mr-3 bg-color-primary" 
                   href={"#" + block.anchor}>
                   <p class="text-xs  m-0">{block.category.toUpperCase()}</p>
                   <p class="m-0 text-lg">{block.name}</p>
@@ -91,11 +103,11 @@ const { Content } = await entry.render();
               <Fragment slot="name">{block.name}</Fragment>
               <Fragment slot="description">{block.description}</Fragment>
               <Fragment slot="links">
+                <div class="flex flex-wrap justify-center">
                 {block.links.map((link) => (
-                  <Link style="muted" 
-                  class="mt-2 mb-2 p-4 mr-4" 
-                  href={link.href}>{link.title}</Link>
+                  <Link style="muted" class="mt-2 mb-2 p-4 mr-4" href={link.href}><Icon style="display:inline-block;" class="h-4 w-4 mr-2" name={getIcon(link.title)} /> {link.title}</Link>
                 ))}
+              </div>
               </Fragment>
             </BlockEntry>
           ))

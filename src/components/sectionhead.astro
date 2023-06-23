@@ -4,7 +4,9 @@ const {
   category,
   subtitle = null,
 } = Astro.props;
+
 import Divider from "@components/ui/divider.astro";
+import heroImage from "assets/holacabo.svg";
 
 const titleClass = subtitle ? "text-4xl lg:text-5xl font-bold lg:tracking-tight mb-2 pt-4 pb-0" : "text-4xl lg:text-5xl font-bold lg:tracking-tight mb-4 pt-4 pb-4"
 ---
@@ -14,5 +16,5 @@ const titleClass = subtitle ? "text-4xl lg:text-5xl font-bold lg:tracking-tight 
   <h1 class={titleClass}><slot name="title"></slot></h1>
   <slot name="buttons"></slot>
   { subtitle && (<slot name="subtitle"></slot>) }
-  <Divider image="/src/assets/holacabo.svg" clazz="p-0" />
+  <Divider image={heroImage} clazz="p-0" />
 </div>
