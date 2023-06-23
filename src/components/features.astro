@@ -12,7 +12,11 @@ import Link from "@components/ui/link.astro";
 
 const metadata = {
   'title': "The best of Cabo in every category",
-  'subtitle': "We've got you covered on where to explore, stay, dine, and indulge"
+  'subtitle': "We've got you covered on where to explore, stay, dine, and indulge",
+  'ctaPrimary': {
+    'title': "See all experiences →",
+    'href': "/experiences"
+  }
 }
 
 const features = [
@@ -101,7 +105,6 @@ const features = [
     -moz-transition: transform .55s ease-in-out;
     -webkit-transition: transform .55s ease-in-out;
   }
-
   .image-hover:after {
       content:'\A';
       position:absolute;
@@ -126,7 +129,7 @@ const features = [
       {metadata.subtitle}
     </p>
   </div>
-  <div class="mt-8"><Link href="/experiences">See all experiences →</Link></div>
+  <div class="mt-8"><Link href={metadata.ctaPrimary.href}>{metadata.ctaPrimary.title}</Link></div>
 
   <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 mt-16 gap-16 mb-16">
     {
@@ -157,5 +160,5 @@ const features = [
       ))
     }
   </div>
-  <div class="mt-8"><Link href="/experiences">See all experiences →</Link></div>
+  <div class="mt-8"><Link href={metadata.ctaPrimary.href}>{metadata.ctaPrimary.title}</Link></div>
 </div>

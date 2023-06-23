@@ -24,23 +24,24 @@ const { experiences } = Astro.props;
 const metadata =  {
     'title': "Experiences in",
     'ctaPrimary': {
-        'title': 'Back to all experiences ➞',
+        'title': '← Back to all experiences',
         'href': '/experiences'
     }
 }
 ---
 
 <Layout title="tagged-experiences">
-    <Container>
+    <Container class="pb-32">
       <Sectionhead subtitle={true}>
-        <Fragment slot="title">{metadata.title}
-            <Link style="primary" 
+        <Fragment slot="title">{metadata.title}&nbsp;<span class="color-primary">{tag}</span>
+            
+            <!-- <Link style="primary" 
             class="tag" 
-            href={"/tags/" + tag}>{tag}</Link>
+            href={"/tags/" + tag}>{tag}</Link> -->
         </Fragment>
         <Fragment slot="subtitle">
-            <div class="mt-8 mb-8">
-                <Link href={metadata.ctaPrimary.href} style="inverted">{metadata.ctaPrimary.title}</Link> 
+            <div class="mt-12 mb-8">
+                <Link href={metadata.ctaPrimary.href} style="muted">{metadata.ctaPrimary.title}</Link> 
             </div>
         </Fragment>
       </Sectionhead>

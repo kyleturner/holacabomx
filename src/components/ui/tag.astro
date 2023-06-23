@@ -1,8 +1,28 @@
 ---
-const {tag} = Astro.props;
+const { tag } = Astro.props;
+import { Icon } from "astro-icon";
 import Link from "@components/ui/link.astro";
+
+// TODO: Tags to icons mapping
+function icon(tag) {
+  switch (tag) {
+    case "nightlife":
+      return "bx:bxs-moon"
+    case "sanjose":
+      return "bx:bxs-city"
+    case "cocktails":
+      return "bx:bxs-drink"
+    case "dine":
+      return "ic:outline-dining"
+    case "explore":
+        return "ic:outline-explore"
+    default:
+      return "bx:bxs-purchase-tag"
+  }
+}
+
 ---
 <Link 
-style="outline" 
+    style="outline" 
     class="tag text-lg" 
-    href={"/tags/" + tag}>{tag}</Link>
+    href={"/tags/" + tag}><Icon class="h-4 w-4 mr-2" style="display:inline-block;" name={icon(tag)} /> {tag}</Link>

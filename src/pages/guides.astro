@@ -1,9 +1,12 @@
 ---
 import { getCollection } from "astro:content";
 import { Picture } from "@astrojs/image/components";
+import { Icon } from "astro-icon";
+import Link from "@components/ui/link.astro";
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/container.astro";
 import Sectionhead from "@components/sectionhead.astro";
+import Cta from "@components/cta.astro";
 
 // Filter entries with 'draft: false' & date before current date
 const publishedTeasers = await getCollection("teasers", ({ data }) => {
@@ -55,12 +58,14 @@ publishedTeasers.sort(function (a, b) {
 
 <Layout title="guides">
   <Container>
-    <Sectionhead>
+    <Sectionhead subtitle={true}>
       <Fragment slot="title">Digital Guides</Fragment>
-      <Fragment slot="desc">
-        Paid guides with exclusive content and deals only available with Hola Cabo.
+      <Fragment slot="subtitle">
+        <h3 class="text-xl font-semibold pt-8 mx-auto max-w-4xl">Access our exclusive paid guide for the best experiences, hidden gems, & deals of Cabo.</h3>
+        <p class="p-8 mx-auto max-w-4xl">Why limit yourself to outdated recommendations & generic travel guides? Our local team has hand-selected top spots and curated this content for years to bring you the best Los Cabos has to offer.</p>
       </Fragment>
     </Sectionhead>
+    
     <main class="mt-16">
       <ul class="grid sm:grid-cols-2 md:grid-cols-2 gap-16 max-w-4xl mx-auto">
         {
@@ -96,4 +101,5 @@ publishedTeasers.sort(function (a, b) {
       </ul>
     </main>
   </Container>
+  <Cta />
 </Layout>

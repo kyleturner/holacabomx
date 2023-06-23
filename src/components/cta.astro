@@ -1,16 +1,14 @@
 ---
+import { Icon } from "astro-icon";
 import Link from "./ui/link.astro";
 ---
 
 <div
-  class="bg-color-primary p-8 md:px-20 md:py-20 mt-20 mx-auto max-w-5xl flex flex-col items-center text-center">
+  class="bg-color-primary p-32 mt-20 mx-auto flex flex-col items-center text-center">
   <h2 class="text-slate-900 text-4xl md:text-6xl tracking-tight">
-    Ready for your best vacation yet?
+    Want to see your restaurant, bar, or activities featured in our guides?
   </h2>
-  <p class="text-white mt-4 text-lg md:text-xl">
-    Discover what we have to offer by searching our extensive Baja Sur database of everything listed above.
-  </p>
-  <div class="flex mt-5">
-    <Link href="#" style="inverted">Search Los Cabos</Link>
+  <div class="flex mt-16">
+    <Link class="pr-32 pl-32" href="/contact" style="inverted"><Icon style="display:inline-block; margin-right:8px;" class="h-4 w-4" name="bx:bxs-envelope" />Contact Hola Cabo</Link>
   </div>
 </div>

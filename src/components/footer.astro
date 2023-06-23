@@ -14,6 +14,14 @@ const linksColumnOne = [
     "url": "/experiences"
   },
   {
+    "name": "our experiences",
+    "url": "/experiences"
+  },
+  {
+    "name": "our experiences",
+    "url": "/experiences"
+  },
+  {
     "name": "contact",
     "url": "/contact"
   }
@@ -21,19 +29,19 @@ const linksColumnOne = [
 const linksColumnTwo = [
   {
     "name": "Cabo San Lucas",
-    "url": "/about"
+    "url": "/guides"
   },
   {
     "name": "San Jose del Cabo",
-    "url": "/about"
+    "url": "/guides"
   },
   {
     "name": "Todos Santos",
-    "url": "/about"
+    "url": "/guides"
   },
   {
     "name": "see all guides",
-    "url": "/guides/all"
+    "url": "/guides"
   }
 ]
 ---
@@ -110,7 +118,7 @@ ul {
 }
 </style>
 
-<footer class="footer bg-color-dark mt-32">
+<footer class="footer bg-color-dark">
   <div class="container">
    <div class="row">
     <div class="footer-col">
@@ -126,7 +134,7 @@ ul {
       />
     </div>
      <div class="footer-col">
-       <h4>explore</h4>
+       <h4>experiences</h4>
        <ul>
        {
         linksColumnOne.map((item) => (
@@ -146,10 +154,11 @@ ul {
        </ul>
      </div>
      <div class="footer-col">
-       <h4>follow us</h4>
+       <h4>connect with us</h4>
        <div class="social-links">
          <a href="https://www.instagram.com/holacabo"><Icon class="h-4 w-4 mt-3 ml-3" name="simple-icons:instagram" /></a>
          <a href="https://www.facebook.com/holacabo"><Icon class="h-4 w-4 mt-3 ml-3" name="simple-icons:facebook" /></a>
+         <a href="/contact"><Icon class="h-4 w-4 mt-3 ml-3" name="bx:bx-send" /></a>
          <a href="mailto:holacabomx@gmail.com?subject=Hola!"><Icon class="h-4 w-4 mt-3 ml-3" name="simple-icons:maildotru" /></a>
        </div>
      </div>
