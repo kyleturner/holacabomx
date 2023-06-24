@@ -11,11 +11,10 @@ import { getExperienceStory } from '@utils/api'
 
 /**
  * Data Mapping
- * 
- * https://docs.astro.build/en/guides/cms/storyblok/#static-site-generation
+ * - Generate dynamic paths to content via API
+ * - Learn more: https://docs.astro.build/en/guides/cms/storyblok/#static-site-generation
  * 
  */
-// Generate dynamic paths to content via API
 export async function getStaticPaths() {
   const stories = await getExperienceStories()
   return stories.map((story) => {
