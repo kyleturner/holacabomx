@@ -9,18 +9,17 @@ import Sectionhead from "@components/sectionhead.astro";
 import Cta from "@components/cta.astro";
 
 // Filter entries with 'draft: false' & date before current date
-const publishedTeasers = await getCollection("teasers", ({ data }) => {
+const teasers = await getCollection("teasers", ({ data }) => {
   return data.publishDate;
 });
 
 // Sort content entries by publication date
-publishedTeasers.sort(function (a, b) {
+teasers.sort(function (a, b) {
   return a.data.publishDate.valueOf() - b.data.publishDate.valueOf();
 });
 ---
 
 <style>
-
 .image-hover {
     width: 100%;
     min-height: 220px;
@@ -69,7 +68,7 @@ publishedTeasers.sort(function (a, b) {
     <main class="mt-16">
       <ul class="grid sm:grid-cols-2 md:grid-cols-2 gap-16 max-w-4xl mx-auto">
         {
-          publishedTeasers.map((guide, index) => (
+          teasers.map((guide, index) => (
             <li>
               <a href={!guide.data.draft ? `/teasers/${guide.slug}` : "#"} style={guide.data.draft ? "pointer-events: none;" : ""}>
                 <div class="grid gap-5" style="position:relative;">

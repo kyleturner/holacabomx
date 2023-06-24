@@ -6,9 +6,9 @@ import sitemap from "@astrojs/sitemap";
 import react from "@astrojs/react";
 import storyblok from '@storyblok/astro';
 import { loadEnv } from 'vite';
-import basicSsl from '@vitejs/plugin-basic-ssl'
-
+import basicSsl from '@vitejs/plugin-basic-ssl';
 const env = loadEnv("", process.cwd(), 'STORYBLOK');
+
 
 // https://astro.build/config
 export default defineConfig({
@@ -16,25 +16,26 @@ export default defineConfig({
   vite: {
     plugins: [basicSsl()],
     server: {
-      https: true,
-    },
+      https: true
+    }
   },
-
-  integrations: [
-    mdx(), 
-    storyblok({
-      accessToken: env.STORYBLOK_TOKEN,
-      components: {
-        experience: "components/storyblok/Experience",
-        experienceItem: "components/storyblok/ExperienceItem"
-        // feature: "storyblock/Feature",
-        // experience: "storyblock/Experience",
-        // teaser: "storyblok/Teaser"
-      },
-      apiOptions: { region: 'us', cache: { clear: 'auto', type: 'memory' }, },
-    }),
-    tailwind(), 
-    image({serviceEntryPoint: "@astrojs/image/sharp"}), 
-    sitemap(), 
-    react()]
+  integrations: [mdx(), storyblok({
+    accessToken: env.STORYBLOK_TOKEN,
+    components: {
+      experience: "components/storyblok/Experience",
+      experienceItem: "components/storyblok/ExperienceItem"
+      // feature: "storyblock/Feature",
+      // experience: "storyblock/Experience",
+      // teaser: "storyblok/Teaser"
+    },
+    apiOptions: {
+      region: 'us',
+      cache: {
+        clear: 'auto',
+        type: 'memory'
+      }
+    }
+  }), tailwind(), image({
+    serviceEntryPoint: "@astrojs/image/sharp"
+  }), sitemap(), react()]
 });
