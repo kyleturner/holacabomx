@@ -7,7 +7,7 @@ image: {
     src: "https://a.cdn-hotels.com/gdcs/production199/d753/349cec1c-91f4-4643-92e0-e2552667626e.jpg?impolicy=fcrop&w=1600&h=1066&q=high",
     alt: "bars in cabo"
 }
-publishDate: "2022-11-09 16:39"
+publishDate: "2023-05-09 16:39"
 category: "Cabo San Lucas"
 author: "Hola Cabo"
 tags: [nightlife]

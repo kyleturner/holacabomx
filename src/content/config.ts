@@ -19,6 +19,10 @@ const experiencesCollection = defineCollection({
     blocks: z.array(z.object({
       category: z.string(),
       name: z.string(),
+      image: z.object({
+        src: z.string(),
+        alt: z.string(),
+      }),
       anchor: z.string(),
       link: z.string(),
       description: z.string(),

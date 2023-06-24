@@ -7,7 +7,7 @@ image: {
     src: "https://www.ernstopia.com/wp-content/uploads/2021/05/Santiago-9091-blog.jpg",
     alt: "beautiful waterfalls"
 }
-publishDate: "2022-11-07 15:39"
+publishDate: "2023-05-07 15:39"
 category: "Explore"
 author: "Hola Cabo"
 tags: [explore, waterfalls]

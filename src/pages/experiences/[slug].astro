@@ -1,70 +1,88 @@
 ---
-import { getCollection } from "astro:content";
-import Layout from "@layouts/Layout.astro";
-import Card from "@components/ui/card.astro";
-import Container from "@components/container.astro";
-import { Icon } from "astro-icon";
+import { getCollection } from "astro:content"
+import Layout from "@layouts/Layout.astro"
+import Card from "@components/ui/card.astro"
+import Container from "@components/container.astro"
+import { Icon } from "astro-icon"
+import { storyblokEditable, renderRichText } from '@storyblok/astro'
 
-import Hero from "@components/hero.astro";
-import Sectionhead from "@components/sectionhead.astro";
-import BlockEntry from "@components/blockEntry.astro";
-import Link from "@components/ui/link.astro";
 
-// TODO: Import custom map for plotting points featured in experience
-// import { GeoMap } from 'astro-geo-map';
+import Hero from "@components/hero.astro"
+import Sectionhead from "@components/sectionhead.astro"
 
+import Link from "@components/ui/link.astro"
+import ExperienceItem from "@components/storyblok/ExperienceItem.astro"
+
+import { useStoryblokApi } from '@storyblok/astro'
+import StoryblokComponent from '@storyblok/astro/StoryblokComponent.astro'
 // TODO: Pull inspo for formatting of feature from this article
 // Inspirations: https://www.islandlifemexico.com/tulum-visitors-guide/
+
+// TODO: https://docs.astro.build/en/guides/cms/storyblok/#static-site-generation
 
 /**
  * Data Mapping
  */
 // Generate a new path for every collection entry
+// export async function getStaticPaths() {
+//   const experiencesEntries = await getCollection("experiences")
+//   return experiencesEntries.map((entry) => ({
+//     params: { slug: entry.slug },
+//     props: { entry },
+//   }));
+// }
+
+// Generate dynamic paths to Storyblok content via API
 export async function getStaticPaths() {
-  const experiencesEntries = await getCollection("experiences");
-  return experiencesEntries.map((entry) => ({
-    params: { slug: entry.slug },
-    props: { entry },
-  }));
+  const sbApi = useStoryblokApi();
+
+  const { data } = await sbApi.get("cdn/stories", {
+    content_type: "experience",
+    version: import.meta.env.DEV ? "draft" : "published",
+  });
+
+  const stories = Object.values(data.stories);
+
+  return stories.map((story) => {
+    return {
+      params: { slug: story.slug },
+    };
+  });
 }
 
-// Get the entry directly from the prop on render
-const { entry } = Astro.props;
-const { Content } = await entry.render();
 
-function getIcon(title) {
- switch (title) {
-  case "Website":
-    return "bx:bx-world"
-  case "Instagram":
-    return "simple-icons:instagram"
-  case "Make Reservation":
-    return "bx:bxs-time-five"
- }
-}
+const sbApi = useStoryblokApi()
+const { slug } = Astro.params
+const { data } = await sbApi.get(`cdn/stories/${slug}`, {
+  version: import.meta.env.DEV ? "draft" : "published",
+})
+
+const story = data.story
+console.log("@@@--------STORY-------@@@")
+console.log(story)
 ---
 
-<Layout title={entry.data.title}>
+<Layout title={story.content.title}>
   <Container class="pb-32">
     <!-- Section: Hero -->
     <div class="mx-auto relative">
       <Hero
-        title={entry.data.title} 
-        subtitle={entry.data.subtitle} 
+        title={story.content.title} 
+        subtitle={story.content.subtitle} 
         backgroundColor="white"
-        backgroundImage="/hero3.jpeg"
+        backgroundImage={story.content.image}
         center={true} />
     </div>
     <!-- Inner Container with Padding -->
     <div class="mx-auto prose prose-lg max-w-5xl">
       <!-- Header -->
       <Sectionhead category="San Jose">
-        <Fragment slot="title">{entry.data.snippet}</Fragment>
+        <Fragment slot="title">{story.content.snippet}</Fragment>
         <!-- References to Blocks Content -->
         <Fragment slot="buttons">
           <div class="flex overflow-x-auto">
             {
-              entry.data.blocks.map((block) => (
+              story.content.blocks.map((block) => (
                   <Link style="primary" 
                   class="p-2 pl-6 pr-6 mr-3 bg-color-primary" 
                   href={"#" + block.anchor}>
@@ -79,7 +97,7 @@ function getIcon(title) {
         <Fragment slot="tags">
           <div>
             {
-              entry.data.tags.map((tag) => (
+              story.content.tags.map((tag) => (
                 <span class="text-sm text-gray-500">#{tag} • </span> 
               ))
             }
@@ -88,34 +106,23 @@ function getIcon(title) {
         <Fragment slot="desc">
           <time
           class="text-gray-400"
-          datetime={entry.data.publishDate.toISOString()}>
+          datetime={story.content.publishDate}>
           Last Updated: 
-          {entry.data.publishDate.toDateString()}
+          {story.content.publishDate}
         </time>
         </Fragment>
       </Sectionhead>
 
       <div>
         {
-          entry.data.blocks.map((block) => (
-            <BlockEntry id={block.anchor}>
-              <Fragment slot="category">{block.category}</Fragment>
-              <Fragment slot="name">{block.name}</Fragment>
-              <Fragment slot="description">{block.description}</Fragment>
-              <Fragment slot="links">
-                <div class="flex flex-wrap justify-center">
-                {block.links.map((link) => (
-                  <Link style="muted" class="mt-2 mb-2 p-4 mr-4" href={link.href}><Icon style="display:inline-block;" class="h-4 w-4 mr-2" name={getIcon(link.title)} /> {link.title}</Link>
-                ))}
-              </div>
-              </Fragment>
-            </BlockEntry>
+          story.content.blocks.map((itemBlok) => (
+            <ExperienceItem blok={itemBlok} />
           ))
         }
       </div>
 
       <!-- Injected Page Contents -->
-      <Content />
+      <!-- <Content /> -->
 
       <!-- TODO: Map view including lat,long positions of the locations featured in this page -->
       <!-- <Card title="Map of Experiences">TODO: Map inside here</Card> -->

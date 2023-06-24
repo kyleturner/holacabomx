@@ -1,0 +1,36 @@
+---
+import { Icon } from "astro-icon"
+import BlockEntry from "@components/blockEntry.astro"
+import Link from "@components/ui/link.astro"
+import { storyblokEditable, renderRichText } from '@storyblok/astro'
+
+const { blok } = Astro.props
+
+function getIcon(title: String) {
+ if (!title) { return null }
+ switch (title) {
+  case "Website":
+    return "bx:bx-world"
+  case "Instagram":
+    return "simple-icons:instagram"
+  case "Make Reservation":
+    return "bx:bxs-time-five"
+  default:
+    return null
+ }
+}
+const content = renderRichText(blok.description)
+---
+
+<BlockEntry id={blok.anchor} blok={blok} {...storyblokEditable(blok)}>
+    <Fragment slot="category">{blok.category}</Fragment>
+    <Fragment slot="name">{blok.name}</Fragment>
+    <Fragment slot="description" set:html={content}></Fragment>
+    <Fragment slot="links">
+        <div class="flex flex-wrap justify-center">
+        {blok.links.map((link) => (
+            <Link style="muted" class="mt-2 mb-2 p-4 mr-4" href={link.href}>{getIcon(link.title) && <Icon style="display:inline-block;" class="h-4 w-4 mr-2" name={getIcon(link.title)} />} {link.title}</Link>
+        ))}
+    </div>
+    </Fragment>
+</BlockEntry>
