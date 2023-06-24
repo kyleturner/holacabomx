@@ -1,5 +1,8 @@
 # Hola Cabo
 
+TODO: Pull inspo for formatting of feature from this article
+Inspirations: https://www.islandlifemexico.com/tulum-visitors-guide/
+
 `pnpm astro dev --host 0.0.0.0`
 
 https://icones.js.org/collection/bxs

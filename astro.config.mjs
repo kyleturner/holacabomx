@@ -31,7 +31,7 @@ export default defineConfig({
         // experience: "storyblock/Experience",
         // teaser: "storyblok/Teaser"
       },
-      apiOptions: { region: 'us' },
+      apiOptions: { region: 'us', cache: { clear: 'auto', type: 'memory' }, },
     }),
     tailwind(), 
     image({serviceEntryPoint: "@astrojs/image/sharp"}), 

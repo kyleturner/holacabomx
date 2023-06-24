@@ -1,65 +1,29 @@
 ---
-import { getCollection } from "astro:content"
 import Layout from "@layouts/Layout.astro"
-import Card from "@components/ui/card.astro"
 import Container from "@components/container.astro"
-import { Icon } from "astro-icon"
-import { storyblokEditable, renderRichText } from '@storyblok/astro'
-
-
 import Hero from "@components/hero.astro"
 import Sectionhead from "@components/sectionhead.astro"
-
 import Link from "@components/ui/link.astro"
 import ExperienceItem from "@components/storyblok/ExperienceItem.astro"
 
-import { useStoryblokApi } from '@storyblok/astro'
-import StoryblokComponent from '@storyblok/astro/StoryblokComponent.astro'
-// TODO: Pull inspo for formatting of feature from this article
-// Inspirations: https://www.islandlifemexico.com/tulum-visitors-guide/
-
-// TODO: https://docs.astro.build/en/guides/cms/storyblok/#static-site-generation
+import { getExperienceStories } from '@utils/api'
+import { getExperienceStory } from '@utils/api'
 
 /**
  * Data Mapping
+ * 
+ * https://docs.astro.build/en/guides/cms/storyblok/#static-site-generation
+ * 
  */
-// Generate a new path for every collection entry
-// export async function getStaticPaths() {
-//   const experiencesEntries = await getCollection("experiences")
-//   return experiencesEntries.map((entry) => ({
-//     params: { slug: entry.slug },
-//     props: { entry },
-//   }));
-// }
-
-// Generate dynamic paths to Storyblok content via API
+// Generate dynamic paths to content via API
 export async function getStaticPaths() {
-  const sbApi = useStoryblokApi();
-
-  const { data } = await sbApi.get("cdn/stories", {
-    content_type: "experience",
-    version: import.meta.env.DEV ? "draft" : "published",
-  });
-
-  const stories = Object.values(data.stories);
-
+  const stories = await getExperienceStories()
   return stories.map((story) => {
-    return {
-      params: { slug: story.slug },
-    };
-  });
+    return { params: { slug: story.slug } }
+  })
 }
-
-
-const sbApi = useStoryblokApi()
 const { slug } = Astro.params
-const { data } = await sbApi.get(`cdn/stories/${slug}`, {
-  version: import.meta.env.DEV ? "draft" : "published",
-})
-
-const story = data.story
-console.log("@@@--------STORY-------@@@")
-console.log(story)
+const story = await getExperienceStory(slug)
 ---
 
 <Layout title={story.content.title}>
@@ -112,7 +76,7 @@ console.log(story)
         </time>
         </Fragment>
       </Sectionhead>
-
+      <!-- Experience Item List -->
       <div>
         {
           story.content.blocks.map((itemBlok) => (
@@ -120,12 +84,6 @@ console.log(story)
           ))
         }
       </div>
-
-      <!-- Injected Page Contents -->
-      <!-- <Content /> -->
-
-      <!-- TODO: Map view including lat,long positions of the locations featured in this page -->
-      <!-- <Card title="Map of Experiences">TODO: Map inside here</Card> -->
     </div>
 
     <!-- Page Sub-Footer -->

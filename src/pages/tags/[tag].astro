@@ -1,24 +1,11 @@
 ---
-import { getCollection } from "astro:content";
 import ExperienceBlock from "@components/blocks/experienceBlock.astro";
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/container.astro";
 import Sectionhead from "@components/sectionhead.astro";
 import Link from "@components/ui/link.astro";
+import { getExperienceStories } from '@utils/api'
 
-export async function getStaticPaths() {
-    const allExperiences = await getCollection("experiences", ({ data }) => {
-        return !data.draft && data.publishDate < new Date();
-    });
-    const uniqueTags = [...new Set(allExperiences.map((experience) => experience.data.tags).flat())];
-    return uniqueTags.map((tag) => {
-        const tagged = allExperiences.filter((experience) => experience.data.tags.includes(tag));
-        return {
-            params: { tag },
-            props: { experiences: tagged },
-        };
-    });
-}
 const { tag } = Astro.params;
 const { experiences } = Astro.props;
 const metadata =  {
@@ -28,13 +15,25 @@ const metadata =  {
         'href': '/experiences'
     }
 }
+
+// Generate dynamic paths to content via API
+export async function getStaticPaths() {
+  const stories = await getExperienceStories()
+  const uniqueTags = [...new Set(stories.map((story) => story.tag_list).flat())];
+  return uniqueTags.map((tag => {
+    const tagged = stories.filter((story) => story.tag_list.includes(tag))
+    return {
+        params: { tag },
+        props: { experiences: tagged }
+    }
+  }))
+}
 ---
 
 <Layout title="tagged-experiences">
     <Container class="pb-32">
       <Sectionhead subtitle={true}>
         <Fragment slot="title">{metadata.title}&nbsp;<span class="color-primary">{tag}</span>
-            
             <!-- <Link style="primary" 
             class="tag" 
             href={"/tags/" + tag}>{tag}</Link> -->
@@ -50,7 +49,7 @@ const metadata =  {
             {experiences.map((experience, index) =>  (
                 <li>
                     <ExperienceBlock 
-                        entry={experience.data} 
+                        entry={experience.content} 
                         slug={experience.slug} 
                         index={index} />
                 </li>
