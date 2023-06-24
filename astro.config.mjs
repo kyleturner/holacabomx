@@ -12,6 +12,13 @@ const env = loadEnv("", process.cwd(), 'STORYBLOK');
 
 // https://astro.build/config
 export default defineConfig({
+  build: {
+    rollupOptions: {
+      external: [
+        /^node:.*/,
+      ]
+    }
+  },
   site: "https://holacabo.mx",
   // vite: {
   //   plugins: [basicSsl()],
