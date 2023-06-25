@@ -29,12 +29,12 @@ const story = await getExperienceStory(slug)
   <Container class="pb-32">
     <!-- Section: Hero -->
     <div class="mx-auto relative">
-      <Hero
+      {story.content.image && <Hero
         title={story.content.title} 
         subtitle={story.content.subtitle} 
         backgroundColor="white"
         backgroundImage={story.content.image}
-        center={true} />
+        center={true} />}
     </div>
     <!-- Inner Container with Padding -->
     <div class="mx-auto prose prose-lg max-w-5xl">
