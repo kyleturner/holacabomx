@@ -34,8 +34,8 @@ export default defineConfig({
     accessToken: env.STORYBLOK_TOKEN,
     bridge: false,
     components: {
-      experience: "components/storyblok/Experience",
-      experienceItem: "components/storyblok/ExperienceItem"
+      experience: "/components/storyblok/Experience",
+      experienceItem: "/components/storyblok/ExperienceItem"
     },
     apiOptions: { region: 'us', https: true }
   }), tailwind(), image({
