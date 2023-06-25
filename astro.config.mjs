@@ -12,6 +12,7 @@ import basicSsl from '@vitejs/plugin-basic-ssl';
 const env = loadEnv("", process.cwd(), 'STORYBLOK');
 
 // https://astro.build/config
+// https://rollupjs.org/introduction/
 export default defineConfig({
   output: 'hybrid',
   adapter: netlify(),

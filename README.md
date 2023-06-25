@@ -5,8 +5,15 @@ Inspirations: https://www.islandlifemexico.com/tulum-visitors-guide/
 
 `pnpm astro dev --host 0.0.0.0`
 
+`pnpm start`
+`netlify dev`
+`local-ssl-proxy --source 3010 --target 3000 --cert localhost.pem --key localhost-key.pem`
+
 https://icones.js.org/collection/bxs
 https://beta.pickaxeproject.com/user/control-panel/HolaCabo_JURPA?admin=A53740GKNWRXMECJ2DBF
+
+https://github.com/withastro/astro/releases
+https://docs.netlify.com/configure-builds/file-based-configuration/
 
 ToC animation: https://kld.dev/toc-animation/#live-demos
 
