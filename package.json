@@ -20,6 +20,7 @@
     "@astrojs/tailwind": "^3.1.3",
     "@fontsource/inter": "^4.5.15",
     "@storyblok/astro": "2.4.0",
+    "@storyblok/js": "2.2.0",
     "@types/react": "^18.2.14",
     "@types/react-dom": "^18.2.6",
     "astro": "^2.7.0",
