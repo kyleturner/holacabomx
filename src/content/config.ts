@@ -64,7 +64,7 @@ const teasersCollection = defineCollection({
 });
 
 // 3. Export a single `collections` object to register your collection(s)
-//    This key should match your collection directory name in "src/content"
+//    This key should match your collection directory name in src / content
 export const collections = {
   guides: guidesCollection,
   teasers: teasersCollection,
