@@ -18,8 +18,9 @@ export default defineConfig({
   build: {
     rollupOptions: {
       external: [
-        /^node:.*/,
-        /^.*storyblok:.*/,
+        'storyblok',
+        '@storyblok/astro',
+        '@storyblok/js',
       ]
     }
   },
