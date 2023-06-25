@@ -9,14 +9,15 @@ import { loadEnv } from 'vite';
 import basicSsl from '@vitejs/plugin-basic-ssl';
 const env = loadEnv("", process.cwd(), 'STORYBLOK');
 
-
 // https://astro.build/config
 export default defineConfig({
   build: {
     rollupOptions: {
       external: [
         /^node:.*/,
-        '@storyblok/js',
+        /^@storyblok:.*/,
+        '@storyblok/astro',
+        'storyblok/js',
       ]
     }
   },
@@ -32,17 +33,8 @@ export default defineConfig({
     components: {
       experience: "components/storyblok/Experience",
       experienceItem: "components/storyblok/ExperienceItem"
-      // feature: "storyblock/Feature",
-      // experience: "storyblock/Experience",
-      // teaser: "storyblok/Teaser"
     },
-    apiOptions: {
-      region: 'us',
-      cache: {
-        clear: 'auto',
-        type: 'memory'
-      }
-    }
+    apiOptions: { region: 'us' }
   }), tailwind(), image({
     serviceEntryPoint: "@astrojs/image/sharp"
   }), sitemap(), react()]
