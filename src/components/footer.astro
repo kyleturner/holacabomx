@@ -1,8 +1,7 @@
 ---
-import Link from "./ui/link.astro";
 import { Picture } from "@astrojs/image/components";
-import heroImage from "assets/holacabo-white-transparent.png";
 import { Icon } from "astro-icon";
+import logoImage from "../assets/holacabo-white-transparent.png";
 
 const linksColumnOne = [
   {
@@ -123,7 +122,7 @@ ul {
    <div class="row">
     <div class="footer-col">
       <Picture
-      src={heroImage}
+      src={logoImage}
       alt="Hola Cabo"
       widths={[128, 400, 512]}
       aspectRatio="1:1"
