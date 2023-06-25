@@ -8,29 +8,20 @@ import storyblok from '@storyblok/astro';
 import { loadEnv } from 'vite';
 import netlify from '@astrojs/netlify/functions';
 
-// import basicSsl from '@vitejs/plugin-basic-ssl';
+import basicSsl from '@vitejs/plugin-basic-ssl';
 const env = loadEnv("", process.cwd(), 'STORYBLOK');
 
 // https://astro.build/config
 export default defineConfig({
-  output: 'server',
+  output: 'hybrid',
   adapter: netlify(),
-  build: {
-    rollupOptions: {
-      // external: [
-      //   'storyblok',
-      //   '@storyblok/astro',
-      //   '@storyblok/js',
-      // ]
+  site: "https://holacabo.mx",
+  vite: {
+    plugins: [basicSsl()],
+    server: {
+      https: true
     }
   },
-  site: "https://holacabo.mx",
-  // vite: {
-  //   plugins: [basicSsl()],
-  //   server: {
-  //     https: true
-  //   }
-  // },
   integrations: [mdx(), storyblok({
     accessToken: env.STORYBLOK_TOKEN,
     bridge: false,
