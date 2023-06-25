@@ -1,9 +1,5 @@
 ---
 const { id, links, blok } = Astro.props;
-
-console.log("blok")
-console.log(blok)
-
 import { Image } from 'astro:assets'
 ---
 
@@ -20,9 +16,8 @@ import { Image } from 'astro:assets'
         width={1024}
         height={1024}
         sizes="(max-width: 1024px) 100vw, 1024px"
-        loading="eager"
+        loading="eager" />
     }
-    />  
   </div>
   <!-- Description -->
   <div class="contents m-4">

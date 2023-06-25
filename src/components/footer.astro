@@ -110,9 +110,12 @@ ul {
     width: 100%;
   }
 }
+.heroHover {
+  max-width:128px;
+}
 .heroHover:hover {
   content: url("/src/assets/holacabo-white-transparent_hover.png");
-  width: 128px;
+  max-width: 128px;
   height: auto;
 }
 </style>
@@ -124,8 +127,8 @@ ul {
       <Image
       src={logoImage}
       alt="Hola Cabo"
-      width={128}
-      height={128}
+      width={512}
+      height={512}
       sizes="(max-width: 128px) 100vw, 512px"
       loading="eager"
       format="avif"
