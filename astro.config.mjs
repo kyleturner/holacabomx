@@ -28,14 +28,7 @@ export default defineConfig({
   //     https: true
   //   }
   // },
-  integrations: [mdx(), storyblok({
-    accessToken: env.STORYBLOK_TOKEN,
-    components: {
-      experience: "components/storyblok/Experience",
-      experienceItem: "components/storyblok/ExperienceItem"
-    },
-    apiOptions: { region: 'us' }
-  }), tailwind(), image({
+  integrations: [mdx(), tailwind(), image({
     serviceEntryPoint: "@astrojs/image/sharp"
   }), sitemap(), react()]
 });
