@@ -9,15 +9,12 @@ const { entry, slug, index } = Astro.props;
         <Image
           src={entry.image}
           alt="Experience Photo"
-          sizes="(max-width: 800px) 100vw, 800px"
           width={800}
           height={600}
-          background="#ffffff"
-          fit="cover"
-          position="center"
           loading={index <= 2 ? "eager" : "lazy"}
           decoding={index <= 2 ? "sync" : "async"}
           class="w-full rounded-md"
+          style="object-fit: cover; min-height:500px; max-height:500px;"
         />
       }
       <div>
