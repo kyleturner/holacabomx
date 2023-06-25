@@ -1,5 +1,5 @@
 ---
-import { Picture } from "@astrojs/image/components";
+import { Image } from 'astro:assets'
 import { Icon } from "astro-icon";
 import logoImage from "../assets/holacabo-white-transparent.png";
 
@@ -121,12 +121,12 @@ ul {
   <div class="container">
    <div class="row">
     <div class="footer-col">
-      <Picture
+      <Image
       src={logoImage}
       alt="Hola Cabo"
-      widths={[128, 400, 512]}
-      aspectRatio="1:1"
-      sizes="(max-width: 128px) 100vw, 128px"
+      width={128}
+      height={128}
+      sizes="(max-width: 128px) 100vw, 512px"
       loading="eager"
       format="avif"
       class="heroHover"

@@ -1,19 +1,17 @@
 ---
-import { Picture } from "@astrojs/image/components";
+import { Image } from 'astro:assets'
 const { entry, slug, index } = Astro.props;
-console.log("ENTRY:::::")
-console.log(entry.image)
 ---
 
 <a href={`/experiences/${slug}`}>
     <div class="grid gap-5 md:gap-10 items-center">
       {entry.image && 
-        <Picture
+        <Image
           src={entry.image}
           alt="Experience Photo"
           sizes="(max-width: 800px) 100vw, 800px"
-          widths={[200, 400, 800]}
-          aspectRatio="16:9"
+          width={800}
+          height={600}
           background="#ffffff"
           fit="cover"
           position="center"

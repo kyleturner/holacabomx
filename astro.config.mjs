@@ -1,6 +1,5 @@
 import { defineConfig } from "astro/config";
 import tailwind from "@astrojs/tailwind";
-import image from "@astrojs/image";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import react from "@astrojs/react";
@@ -14,6 +13,9 @@ const env = loadEnv("", process.cwd(), 'STORYBLOK');
 // https://astro.build/config
 // https://rollupjs.org/introduction/
 export default defineConfig({
+  experimental: {
+    assets: true
+  }, 
   output: 'hybrid',
   adapter: netlify(),
   site: "https://holacabo.mx",
@@ -31,7 +33,5 @@ export default defineConfig({
       experienceItem: "/components/storyblok/ExperienceItem"
     },
     apiOptions: { region: 'us', https: true }
-  }), tailwind(), image({
-    serviceEntryPoint: "@astrojs/image/sharp"
-  }), sitemap(), react()]
+  }), tailwind(), sitemap(), react()]
 });

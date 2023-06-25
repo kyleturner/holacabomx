@@ -1,5 +1,5 @@
 ---
-import { Picture } from "@astrojs/image/components";
+import { Image } from 'astro:assets'
 
 const { entry } = Astro.props;
 ---
@@ -32,12 +32,12 @@ const { entry } = Astro.props;
 </style>
 
 <div class={entry.featured ? "quoteblock" : "quoteblock mb-6"}>
-  <Picture
+  <Image
         src={entry.avatar}
         alt=""
         sizes="(max-width: 800px) 100vw, 800px"
-        widths={[200, 400, 800]}
-        aspectRatio="1:1"
+        width={800}
+        height={800}
         background="#ffffff"
         fit="cover"
         position="center"

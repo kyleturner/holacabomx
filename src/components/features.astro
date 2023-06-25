@@ -1,6 +1,6 @@
 ---
 import { Icon } from "astro-icon";
-import { Picture } from "@astrojs/image/components";
+import { Image } from 'astro:assets'
 import beachesImage from "../assets/beaches.jpeg";
 import cocktailsImage from "../assets/cocktails.jpeg";
 import eventsImage from "../assets/events.jpeg";
@@ -137,11 +137,11 @@ const features = [
         <div>
           <a class="image-hover-link" href={item.url}>
             <div class="image-hover">
-              <Picture
+              <Image
               src={item.image}
               alt="Hola Cabo"
-              widths={[256, 512]}
-              aspectRatio="1:1"
+              width={512}
+              height={512}
               sizes="(max-width: 256px) 100vw, 256"
               loading="eager"
               />  

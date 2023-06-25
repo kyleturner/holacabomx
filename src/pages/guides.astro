@@ -1,6 +1,6 @@
 ---
 import { getCollection } from "astro:content";
-import { Picture } from "@astrojs/image/components";
+import { Image } from 'astro:assets'
 import { Icon } from "astro-icon";
 import Link from "@components/ui/link.astro";
 import Layout from "@layouts/Layout.astro";
@@ -73,12 +73,12 @@ teasers.sort(function (a, b) {
               <a href={!guide.data.draft ? `/teasers/${guide.slug}` : "#"} style={guide.data.draft ? "pointer-events: none;" : ""}>
                 <div class="grid gap-5" style="position:relative;">
                   <div class="image-hover rounded-md">
-                    <Picture
+                    <Image
                       src={guide.data.image.src}
                       alt={guide.data.image.alt}
                       sizes="(max-width: 800px) 100vw, 800px"
-                      widths={[200, 400, 800]}
-                      aspectRatio="16:9"
+                      width={800}
+                      height={800}
                       background="#ffffff"
                       fit="cover"
                       position="center"

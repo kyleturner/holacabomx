@@ -4,7 +4,7 @@ const { id, links, blok } = Astro.props;
 console.log("blok")
 console.log(blok)
 
-import { Picture } from "@astrojs/image/components";
+import { Image } from 'astro:assets'
 ---
 
 <div id={id} class:list={["mt-16", "text-center", "grid"]}>
@@ -14,11 +14,11 @@ import { Picture } from "@astrojs/image/components";
   <h1 class="text-4xl lg:text-5xl font-bold lg:tracking-tight mb-4 pt-4 pb-2"><slot name="name">Name</slot></h1>
   
   <div class="mx-auto relative">
-    { blok.image && <Picture
+    { blok.image && <Image
         src={blok.image}
         alt="Hola Cabo"
-        widths={[256, 512, 1024]}
-        aspectRatio="4:3"
+        width={1024}
+        height={1024}
         sizes="(max-width: 1024px) 100vw, 1024px"
         loading="eager"
     }
