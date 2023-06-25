@@ -15,20 +15,26 @@ export default defineConfig({
     rollupOptions: {
       external: [
         /^node:.*/,
-        /^@storyblok:.*/,
-        '@storyblok/astro',
-        'storyblok/js',
+        /^.*storyblok:.*/,
       ]
     }
   },
   site: "https://holacabo.mx",
-  // vite: {
-  //   plugins: [basicSsl()],
-  //   server: {
-  //     https: true
-  //   }
-  // },
-  integrations: [mdx(), tailwind(), image({
+  vite: {
+    plugins: [basicSsl()],
+    server: {
+      https: true
+    }
+  },
+  integrations: [mdx(), storyblok({
+    accessToken: env.STORYBLOK_TOKEN,
+    bridge: false,
+    components: {
+      experience: "components/storyblok/Experience",
+      experienceItem: "components/storyblok/ExperienceItem"
+    },
+    apiOptions: { region: 'us', https: true }
+  }), tailwind(), image({
     serviceEntryPoint: "@astrojs/image/sharp"
   }), sitemap(), react()]
 });
