@@ -6,11 +6,15 @@ import sitemap from "@astrojs/sitemap";
 import react from "@astrojs/react";
 import storyblok from '@storyblok/astro';
 import { loadEnv } from 'vite';
+import netlify from '@astrojs/netlify/functions';
+
 import basicSsl from '@vitejs/plugin-basic-ssl';
 const env = loadEnv("", process.cwd(), 'STORYBLOK');
 
 // https://astro.build/config
 export default defineConfig({
+  output: 'server',
+  adapter: netlify(),
   build: {
     rollupOptions: {
       external: [
