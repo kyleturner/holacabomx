@@ -7,6 +7,7 @@ import Hero from "@components/hero.astro";
 import Photos from "@components/photos.astro";
 import Logos from "@components/logos.astro";
 import Layout from "@layouts/Layout.astro";
+
 const metadata = {
   'title': "Your local scoop on the best of Baja Sur",
   'subtitle': "Unlock the ultimate guides to unforgettable experiences in Cabo San Lucas, San Jose, Todos Santos, East Cape & more.",
@@ -25,7 +26,7 @@ const metadata = {
       <Hero 
         title={metadata.title}
         subtitle={metadata.subtitle}
-        backgroundImage="/src/assets/hero3.jpeg"
+        backgroundImage="/hero3.jpeg"
         backgroundColor="rgba(5, 5, 5, 1.0)"
       >
       <Link
