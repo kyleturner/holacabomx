@@ -12,7 +12,9 @@ export async function getExperiences() {
 
 export async function getExperienceStories() {
     const storyblok = useStoryblokApi();
-    const response = await storyblok.getStories( {})
+    const response = await storyblok.getStories( {
+        version: import.meta.env.DEV ? "draft" : "published"
+    })
     const stories = response.data.stories
     return stories
 }
