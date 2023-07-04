@@ -20,7 +20,7 @@ const tags = [...new Set(stories.map((story) => story.tag_list).flat())];
 ---
 
 <Layout title="experiences">
-  <Container class="pb-32">
+  <Container class="pb-8 sm:pb-32">
     <Sectionhead>
       <!-- Page Title -->
       <Fragment slot="title">{metadata.title}</Fragment>
@@ -31,7 +31,7 @@ const tags = [...new Set(stories.map((story) => story.tag_list).flat())];
           </div>
       </Fragment>
     </Sectionhead>
-    <main class="p-8">
+    <main class="p-4 sm:p-8">
       <!-- All Experience Entries -->
       <ul class="grid gap-8 md:gap-16 md:grid-cols-2 mx-auto">
         {
