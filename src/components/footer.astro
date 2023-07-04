@@ -4,21 +4,19 @@ import { Icon } from "astro-icon";
 import logoImage from "../assets/holacabo-white-transparent.png";
 
 const linksColumnOne = [
-  // {
-  //   "name": "about us",
-  //   "url": "/about"
-  // },
   {
-    "name": "our experiences",
-    "url": "/experiences"
+    name: "Experience Highlight 1",
+    url: "/experiences/todo-link-here"
   },
   {
-    "name": "our experiences",
-    "url": "/experiences"
+    name: "Experience Highlight 2",
+    url: "/experiences/todo-link-here"
   },
+  { name: "Experience Highlight 3", url: "/experiences/todo-link-here" },
+  { name: "___", url: ""},
   {
-    "name": "see all experiences",
-    "url": "/experiences"
+    name: "see all experiences →",
+    url: "/experiences"
   },
 ]
 const linksColumnTwo = [
@@ -34,8 +32,9 @@ const linksColumnTwo = [
     "name": "Todos Santos",
     "url": "/guides"
   },
+  { name: "___", url: ""},
   {
-    "name": "see all guides",
+    "name": "see all guides →",
     "url": "/guides"
   }
 ]
@@ -158,6 +157,9 @@ ul {
          <a href="https://www.facebook.com/holacabo"><Icon class="h-4 w-4 mt-3 ml-3" name="simple-icons:facebook" /></a>
          <a href="/contact"><Icon class="h-4 w-4 mt-3 ml-3" name="bx:bx-send" /></a>
          <a href="mailto:holacabomx@gmail.com?subject=Hola!"><Icon class="h-4 w-4 mt-3 ml-3" name="simple-icons:maildotru" /></a>
+       </div>
+       <div class="mt-2">
+        <a class="text-sm text-gray-100"href="mailto:holacabomx@gmail.com?subject=Hola!">holacabomx@gmail.com</a>
        </div>
      </div>
    </div>
