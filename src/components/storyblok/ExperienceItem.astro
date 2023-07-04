@@ -28,7 +28,7 @@ const content = renderRichText(blok.description)
     <Fragment slot="description" set:html={content}></Fragment>
     <Fragment slot="links">
         <div class="flex flex-wrap justify-center">
-        {blok.links.map((link) => (
+        {blok.links && blok.links.map((link) => (
             <Link style="muted" class="mt-2 mb-2 p-4 mr-4" href={link.href}>{getIcon(link.title) && <Icon style="display:inline-block;" class="h-4 w-4 mr-2" name={getIcon(link.title)} />} {link.title}</Link>
         ))}
     </div>

@@ -45,7 +45,7 @@ const story = await getExperienceStory(slug)
         <Fragment slot="buttons">
           <div class="flex overflow-x-auto">
             {
-              story.content.blocks.map((block) => (
+              story.content.blocks && story.content.blocks.map((block) => (
                   <Link style="primary" 
                   class="p-2 pl-6 pr-6 mr-3 bg-color-primary" 
                   href={"#" + block.anchor}>
@@ -60,7 +60,7 @@ const story = await getExperienceStory(slug)
         <Fragment slot="tags">
           <div>
             {
-              story.content.tags.map((tag) => (
+              story.tag_list && story.tag_list.map((tag) => (
                 <span class="text-sm text-gray-500">#{tag} • </span> 
               ))
             }
@@ -78,7 +78,7 @@ const story = await getExperienceStory(slug)
       <!-- Experience Item List -->
       <div>
         {
-          story.content.blocks.map((itemBlok) => (
+          story.content.blocks && story.content.blocks.map((itemBlok) => (
             <ExperienceItem blok={itemBlok} />
           ))
         }

@@ -32,7 +32,7 @@ const { title, lastItem, children } = Astro.props;
         <div
           class="px-5 lg:py-2 lg:bg-white lg:rounded-md lg:shadow lg:border flex flex-col">
           {
-            children.map((item) => (
+            children && children.map((item) => (
               <a
                 href={item.path}
                 class={item.disabled ? "py-2 text-gray-300" : "py-2 text-gray-600 hover:text-gray-900"}

@@ -27,7 +27,7 @@ const tags = [...new Set(stories.map((story) => story.tag_list).flat())];
       <Fragment slot="buttons">
         <!-- Tags List -->
         <div class="flex flex-wrap justify-center mb-8">
-          { tags.map((tag) => (<Tag tag={tag} />)) }
+          { tags && tags.map((tag) => (<Tag tag={tag} />)) }
           </div>
       </Fragment>
     </Sectionhead>
@@ -35,7 +35,7 @@ const tags = [...new Set(stories.map((story) => story.tag_list).flat())];
       <!-- All Experience Entries -->
       <ul class="grid gap-8 md:gap-16 md:grid-cols-2 mx-auto">
         {
-          stories.map((experienceEntry, index) => (
+          stories && stories.map((experienceEntry, index) => (
             <li>
               <ExperienceBlock 
                 entry={experienceEntry.content} 

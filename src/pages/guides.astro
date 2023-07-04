@@ -68,7 +68,7 @@ teasers.sort(function (a, b) {
     <main class="mt-16">
       <ul class="grid sm:grid-cols-2 md:grid-cols-2 gap-16 max-w-4xl mx-auto">
         {
-          teasers.map((guide, index) => (
+          teasers && teasers.map((guide, index) => (
             <li>
               <a href={!guide.data.draft ? `/teasers/${guide.slug}` : "#"} style={guide.data.draft ? "pointer-events: none;" : ""}>
                 <div class="grid gap-5" style="position:relative;">
