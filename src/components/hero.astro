@@ -10,8 +10,8 @@ const {
   children 
 } = Astro.props
 
-const defaultCSS = "home grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24 mb-16"
-const centerCSS = "text-center home lg:grid-cols-2 place-items-center pt-16 md:pt-12 md:pb-24"
+const defaultCSS = "home grid place-items-center p-8 sm:pl-36 sm:pr-36 md:pt-12 md:mb-16"
+const centerCSS = "home text-center lg:grid-cols-2 place-items-center p-8 sm:pl-36 md:pr-36 md:pt-16 md:pt-12 md:mb-16"
 const cssClass = center ? centerCSS : defaultCSS
 ---
 
@@ -23,7 +23,6 @@ const cssClass = center ? centerCSS : defaultCSS
   background-position: center;
   background-repeat: no-repeat; 
   background-size: cover;
-  padding: 64px;
   min-height: 700px;
 }
 </style>
@@ -32,7 +31,7 @@ const cssClass = center ? centerCSS : defaultCSS
   style={{'--backgroundImage': `url(${backgroundImage})`, '--backgroundColor': `${backgroundColor}`}} 
   class={cssClass} 
   onload="this.style.opacity=1">
-    <div class="py-32 md:order-1"></div>
+    {center ? <div class="py-16 md:order-1"></div> : ("") }
     <div>
       <h1 class="header-text text-5xl lg:text-6xl xl:text-7xl font-bold lg:tracking-tight xl:tracking-tighter">{title}</h1>
       {center ? (<Divider 
