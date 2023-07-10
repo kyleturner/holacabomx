@@ -1,6 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import Layout from "@layouts/Layout.astro";
+import { Icon } from "astro-icon";
 import Container from "@components/container.astro";
 import Sectionhead from "@components/sectionhead.astro";
 import ExperienceBlock from "@components/blocks/experienceBlock.astro";
@@ -21,10 +22,22 @@ const tags = [...new Set(stories.map((story) => story.tag_list).flat())];
 
 <Layout title="experiences">
   <Container class="pb-8 sm:pb-32">
-    <Sectionhead>
+    <Sectionhead subtitle="true">
       <!-- Page Title -->
       <Fragment slot="title">{metadata.title}</Fragment>
+        <Fragment slot="subtitle"><div class="mt-2 mb-4 color-primary font-medium">First-hand adventures of Baja</div></Fragment>
       <Fragment slot="buttons">
+        
+      <!-- Future: Dropdown menu -->
+        <!-- <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown" class="text-white bg-color-primary hover:bg-color-dark focus:ring-4 focus:outline-none focus:bg-color-dark font-medium rounded-lg text-sm px-20 py-3 text-center inline-flex items-center dark:bg-color-primary dark:hover:bg-color-dark dark:focus:bg-color-dark" type="button">View by Tag <svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+        </svg></button> -->
+      <!-- <div id="dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-72 dark:bg-gray-700">
+          <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
+            { tags && tags.map((tag) => (<li class="block px-4 py-2"><Tag tag={tag} /> </li>)) }
+          </ul>
+      </div> -->
+      
         <!-- Tags List -->
         <div class="flex flex-wrap justify-center mb-8">
           { tags && tags.map((tag) => (<Tag tag={tag} />)) }

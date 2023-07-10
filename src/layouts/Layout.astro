@@ -1,4 +1,5 @@
 ---
+import 'flowbite';
 import { SEO } from "astro-seo";
 import Footer from "@components/footer.astro";
 import Navbar from "@components/navbar/navbar.astro";
@@ -59,7 +60,7 @@ const makeTitle = title
     background-color: #e76f51;
   }
   .bg-color-dark {
-    background-color: #264653;
+    background-color: #0e1e24;
   }
   .bg-color-transparent {
     background-color: rgba(42,54,59, 0.6); 
@@ -89,7 +90,6 @@ const makeTitle = title
     border: solid 1px rgba(116, 126, 131, 0.25);
     border-radius: .25em;
     padding: .25em .75em;
-    font-size: 1em;
     background-color: #F8FCFD;
   }
   .tag:hover {
@@ -138,6 +138,7 @@ const makeTitle = title
         image: { alt: "Welcome to paradise" },
       }}
     />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.7.0/flowbite.min.css" rel="stylesheet" />
   </head>
   <body>
     <Navbar />
@@ -150,5 +151,14 @@ const makeTitle = title
         content-visibility: auto;
       }
     </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.7.0/flowbite.min.js"></script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3RLYD05GZN"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-3RLYD05GZN');
+    </script>
   </body>
 </html>

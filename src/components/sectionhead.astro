@@ -14,7 +14,7 @@ const titleClass = subtitle ? "text-4xl lg:text-5xl font-bold lg:tracking-tight 
 <div class:list={["mt-16", align === "center" && "text-center"]}>
   { category && (<span class="color-primary uppercase tracking-wider text-sm font-medium">{"SAN JOSE"}</span>) }
   <h1 class={titleClass}><slot name="title"></slot></h1>
-  <slot name="buttons"></slot>
   { subtitle && (<slot name="subtitle"></slot>) }
+  <slot name="buttons"></slot>
   <Divider image={heroImage} clazz="p-0" />
 </div>

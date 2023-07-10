@@ -4,6 +4,8 @@ import Link from "@components/ui/link.astro";
 import { Icon } from "astro-icon";
 import Features from "@components/features.astro";
 import Hero from "@components/hero.astro";
+import Newsletter from "@components/newsletter.astro";
+import ExperienceFeature from "@components/experienceFeature.astro";
 import Photos from "@components/photos.astro";
 import Logos from "@components/logos.astro";
 import Layout from "@layouts/Layout.astro";
@@ -12,14 +14,16 @@ const metadata = {
   'title': "Your local scoop on the best of Baja Sur",
   'subtitle': "Unlock the ultimate guides to unforgettable experiences in Cabo San Lucas, San Jose, Todos Santos, East Cape & more.",
   'ctaPrimary': {
-      // 'title': "Download Our Member's Guide to Cabo",
-      // 'href': "/teasers/cabo"
       'title': "See all experiences",
       'href': "/experiences"
   },
   'ctaSecondary': {
-      'title': "Learn More",
+      'title': "Learn more",
       'href': "#learn-more-scroll-id"
+  },
+  'ctaExperienceFeature': {
+    'title': "View experience",
+    'href': "experience/todo-link-goes-here-for-feature-experience"
   }
 }
 ---
@@ -44,13 +48,16 @@ const metadata = {
             style="outline"
             rel="noopener"
             class="flex gap-1 items-center justify-center">
-            <Icon class="text-black w-5 h-5" name="bx:bxs-down-arrow-alt" />
+            <Icon class="text-slate-900 w-5 h-5" name="bx:bxs-down-arrow-alt" />
             {metadata.ctaSecondary.title}
       </Link>
       </Hero>
-      <Container class="md:pb-32">
+      <Container>
+        <ExperienceFeature />
         <Features />
         <Logos />
         <Photos />
+         
+        <Newsletter />
       </Container>
 </Layout>

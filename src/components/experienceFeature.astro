@@ -1,0 +1,42 @@
+---
+import ExperienceBlock from "@components/blocks/experienceBlock.astro";
+import Link from "@components/ui/link.astro";
+import { Icon } from "astro-icon";
+
+const entry = {
+    image: "https://a-us.storyblok.com/f/1013993/3560x4617/88294e7fb3/cabo-the-thompson-cape.jpg", 
+    category: "featured experience", 
+    title: "Awesome title", 
+    snippet: "Awesome snippet goes here for teasing"
+}
+const metadata = {
+  'title': "Restaurants, bars, resorts, beaches, activities, & more",
+  'subtitle': "Hola Cabo's local team brings you the latest in their Baja Sur adventures.",
+  'ctaExperienceFeature': {
+    'title': "View experience",
+    'href': "experience/todo-link-goes-here-for-feature-experience"
+  }
+}
+---
+
+<section class="bg-white dark:bg-gray-900">
+    <div class="gap-8 items-center py-8 px-4 mx-auto max-w-screen-xl xl:gap-4 md:grid md:grid-cols-2 sm:py-16 lg:px-6">
+        <div class="px-2 md:px-16">
+            <ExperienceBlock 
+            entry={entry} 
+            slug={metadata.ctaExperienceFeature.href} 
+            index={1} />
+        </div>
+        <div class="mt-4 md:mt-0">
+            <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-slate-900 dark:text-white">{metadata.title}</h2>
+            <p class="mb-6 font-light text-slate-500 md:text-lg dark:text-slate-400">{metadata.subtitle}</p>
+            <Link
+              href={metadata.ctaExperienceFeature.href}
+              class="inline-flex gap-1 items-center justify-center bg-color-primary"
+              rel="noopener">
+                <Icon class="text-white w-5 h-5" name="bx:bxs-right-arrow-alt" />
+                {metadata.ctaExperienceFeature.title}
+            </Link>
+        </div>
+    </div>
+</section>

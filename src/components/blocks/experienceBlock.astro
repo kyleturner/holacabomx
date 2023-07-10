@@ -8,7 +8,7 @@ const { entry, slug, index } = Astro.props;
       {entry.image && 
         <Image
           src={entry.image}
-          alt="Experience Photo"
+          alt={"Experience Feature Photo for '" + entry.title + "'"}
           width={800}
           height={600}
           loading={index <= 2 ? "eager" : "lazy"}

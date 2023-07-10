@@ -14,7 +14,7 @@ const metadata = {
   'title': "The best of Cabo in every category",
   'subtitle': "We've got you covered on where to explore, stay, dine, and indulge",
   'ctaPrimary': {
-    'title': "See all experiences →",
+    'title': "See all experiences",
     'href': "/experiences"
   }
 }
@@ -127,26 +127,27 @@ const features = [
 
 <div class="max-w-screen-xxl px-4 sm:px-10">
   <div class="mt-16 md:mt-0">
-    <h2 id="learn-more-scroll-id" class="text-4xl lg:text-5xl font-bold lg:tracking-tight">
+    <h2 id="learn-more-scroll-id" class="text-4xl lg:text-5xl font-bold lg:tracking-tight text-slate-900">
       {metadata.title}
     </h2>
     <p class="text-lg mt-4 text-slate-600">
       {metadata.subtitle}
     </p>
   </div>
-  <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 mt-16 gap-16 mb-16">
+  <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mt-16 gap-16 mb-16">
     {
       features.map((item) => (
         <div>
           <a class="image-hover-link" href={item.url}>
-          <div class="image-hover" style="max-width: 512px; height: 512px;">
+          <div class="image-hover" style="max-width: 256px; height: 256px;">
               <Image
               src={item.image}
-              alt="Hola Cabo"
-              width={1024}
-              height={1024}
+              alt={"Icon for " + item.title}
+              width={512}
+              height={512}
               quality="max"
               loading="eager"
+              class="w-full rounded-md"
               />  
             </div>
             <div class="flex gap-4 items-start mt-8">
@@ -154,7 +155,7 @@ const features = [
                 <Icon class="text-white" name={item.icon} />
               </div>
               <div>
-                <h3 class="font-semibold text-lg">{item.title}</h3>{" "}
+                <h2 class="font-semibold text-xl">{item.title}</h2>{" "}
                 <p class="text-slate-500 mt-2 leading-relaxed">{item.description}</p>
               </div>
             </div>
@@ -163,5 +164,12 @@ const features = [
       ))
     }
   </div>
-  <div class="mt-8"><Link href={metadata.ctaPrimary.href}>{metadata.ctaPrimary.title}</Link></div>
+
+  <Link
+      href={metadata.ctaPrimary.href}
+      class="inline-flex gap-1 items-center justify-center bg-color-primary"
+      rel="noopener">
+      <Icon class="text-white w-5 h-5" name="bx:bxs-right-arrow-alt" />
+      {metadata.ctaPrimary.title}
+  </Link>
 </div>

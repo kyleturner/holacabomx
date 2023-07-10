@@ -9,6 +9,8 @@ Inspirations: https://www.islandlifemexico.com/tulum-visitors-guide/
 `netlify dev`
 `local-ssl-proxy --source 3010 --target 3000 --cert localhost.pem --key localhost-key.pem`
 
+https://flowbite.com/blocks/marketing/cta/
+
 https://icones.js.org/collection/bxs
 https://beta.pickaxeproject.com/user/control-panel/HolaCabo_JURPA?admin=A53740GKNWRXMECJ2DBF
 

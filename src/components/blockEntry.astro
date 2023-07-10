@@ -12,10 +12,11 @@ import { Image } from 'astro:assets'
   <div class="mx-auto relative">
     { blok.image && <Image
         src={blok.image}
-        alt="Hola Cabo"
+        alt={"Featured image for " + blok.name}
         width={1024}
         height={1024}
         sizes="(max-width: 1024px) 100vw, 1024px"
+        class="w-full rounded-md"
         loading="eager" />
     }
   </div>
