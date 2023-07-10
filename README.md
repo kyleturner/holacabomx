@@ -19,6 +19,10 @@ https://docs.netlify.com/configure-builds/file-based-configuration/
 
 ToC animation: https://kld.dev/toc-animation/#live-demos
 
+Analytics: https://analytics.google.com/analytics/web/?pli=1&authuser=2#/a160649799w225494549p213597005/admin/ga4-setup-assistant
+
+SEO Report: https://seositecheckup.com/seo-audit/main--holacabo2.netlify.app#image-size
+
 Astro + Netlify
 
 ## Installation
