@@ -125,7 +125,7 @@ const features = [
   }
 </style>
 
-<div class="max-w-screen-xxl px-4 sm:px-10">
+<div class="max-w-screen-xxl px-4 sm:px-10 pt-16" style="position: relative;">
   <div class="mt-16 md:mt-0">
     <h2 id="learn-more-scroll-id" class="text-4xl lg:text-5xl font-bold lg:tracking-tight text-slate-900">
       {metadata.title}
@@ -134,12 +134,12 @@ const features = [
       {metadata.subtitle}
     </p>
   </div>
-  <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mt-16 gap-16 mb-16">
+  <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 mt-16 gap-16 mb-16">
     {
       features.map((item) => (
         <div>
           <a class="image-hover-link" href={item.url}>
-          <div class="image-hover" style="max-width: 256px; height: 256px;">
+          <div class="image-hover" style="max-width: 512px; height: 512px;">
               <Image
               src={item.image}
               alt={"Icon for " + item.title}
@@ -164,7 +164,6 @@ const features = [
       ))
     }
   </div>
-
   <Link
       href={metadata.ctaPrimary.href}
       class="inline-flex gap-1 items-center justify-center bg-color-primary"

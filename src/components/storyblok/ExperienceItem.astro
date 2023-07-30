@@ -5,16 +5,19 @@ import Link from "@components/ui/link.astro"
 import { storyblokEditable, renderRichText } from '@storyblok/astro'
 
 const { blok } = Astro.props
+const id = `${blok.component}-${blok.name}`
 
 function getIcon(title: String) {
  if (!title) { return null }
- switch (title) {
-  case "Website":
+ switch (title.toLowerCase()) {
+  case "website":
     return "bx:bx-world"
-  case "Instagram":
+  case "instagram":
     return "simple-icons:instagram"
-  case "Make Reservation":
-    return "bx:bxs-time-five"
+  case "facebook":
+    return "simple-icons:facebook"
+  case "make reservation", "opentable":
+    return "bx:bx-restaurant"
   default:
     return null
  }
@@ -22,15 +25,29 @@ function getIcon(title: String) {
 const content = renderRichText(blok.description)
 ---
 
-<BlockEntry id={blok.anchor} blok={blok} {...storyblokEditable(blok)}>
+<BlockEntry id={id} blok={blok} {...storyblokEditable(blok)}>
     <Fragment slot="category">{blok.category}</Fragment>
     <Fragment slot="name">{blok.name}</Fragment>
     <Fragment slot="description" set:html={content}></Fragment>
+    <Fragment slot="features">
+      <div>
+        <!-- <h3>Details</h3> -->
+        <table>
+          <thead>
+            <tr>{blok.features && blok.features.thead.map((th) => <th>{th.value}</th> )}</tr>
+          </thead>
+          <tbody>
+            {blok.features && blok.features.tbody.map((tr) => <tr>{tr.body.map((td) => <td>{td.value}</td>)}</tr> )}
+          </tbody>
+        </table>
+      </div>
+    </Fragment>
     <Fragment slot="links">
-        <div class="flex flex-wrap justify-center">
+      <div class="flex flex-wrap">
+        {blok.link && <Link style="muted" class="text-xs mb-2 p-1 mr-1" href={blok.link}>{getIcon("website") && <Icon style="display:inline-block;" class="h-3 w-3 mr-1" name={getIcon("website")} />}Website</Link> }
         {blok.links && blok.links.map((link) => (
-            <Link style="muted" class="mt-2 mb-2 p-4 mr-4" href={link.href}>{getIcon(link.title) && <Icon style="display:inline-block;" class="h-4 w-4 mr-2" name={getIcon(link.title)} />} {link.title}</Link>
+          <Link style="muted" class="text-xs mb-2 p-1 mr-1" href={link.href}>{getIcon(link.title) && <Icon style="display:inline-block;" class="h-3 w-3 mr-1" name={getIcon(link.title)} />} {link.title}</Link>
         ))}
-    </div>
+      </div>
     </Fragment>
 </BlockEntry>

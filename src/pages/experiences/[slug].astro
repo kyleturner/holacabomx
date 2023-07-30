@@ -26,7 +26,7 @@ const story = await getExperienceStory(slug)
 ---
 
 <Layout title={story.content.title}>
-  <Container class="pb-8 sm:pb-32">
+  <Container class="pb-8 sm:pb-16">
     <!-- Section: Hero -->
     <div class="mx-auto relative">
       {story.content.image && <Hero
@@ -48,9 +48,9 @@ const story = await getExperienceStory(slug)
               story.content.blocks && story.content.blocks.map((block) => (
                   <Link style="primary" 
                   class="p-2 pl-6 pr-6 mr-3 bg-color-primary" 
-                  href={"#" + block.anchor}>
-                  <p class="text-xs  m-0">{block.category.toUpperCase()}</p>
-                  <p class="m-0 text-lg">{block.name}</p>
+                  href={"#" + `${block.component}-${block.name}`}>
+                  {block.category && <p class="text-xs m-0">{block.category.toUpperCase()}</p>}
+                  <p class="m-0 text-sm">{block.name}</p>
                   </Link>
               ))
             }
@@ -76,7 +76,7 @@ const story = await getExperienceStory(slug)
         </Fragment>
       </Sectionhead>
       <!-- Experience Item List -->
-      <div>
+      <div class="w-full">
         {
           story.content.blocks && story.content.blocks.map((itemBlok) => (
             <ExperienceItem blok={itemBlok} />

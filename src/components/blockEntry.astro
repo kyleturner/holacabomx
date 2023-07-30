@@ -1,31 +1,32 @@
 ---
 const { id, links, blok } = Astro.props;
 import { Image } from 'astro:assets'
+import Tag from "@components/ui/tag.astro";
 ---
 
-<div id={id} class:list={["mt-16", "text-center", "grid"]}>
-  <!-- Category -->
-  <span class="color-primary uppercase tracking-wider text-sm font-medium"><slot name="category">Category</slot></span>  
-  <!-- Name -->
-  <h1 class="text-4xl lg:text-5xl font-bold lg:tracking-tight mb-4 pt-4 pb-2"><slot name="name">Name</slot></h1>
-  
-  <div class="mx-auto relative">
+<div id={id} class:list={["grid", "grid-cols-1", "sm:grid-cols-2", "grid-flow-row-dense", "gap-x-8", "gap-y-0", "mb-16"]}>
+  <!-- Category & Name -->
+  <div class="col-span-2 h-8 sm:h-20">
+    <span class="color-primary uppercase tracking-wider text-sm font-medium"><slot name="category">Category</slot></span>  
+    <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold lg:tracking-tight"><slot name="name">Name</slot></h1>
+  </div>
+  <!-- Image & Links -->
+  <div class="col-span-2 sm:col-span-1">
     { blok.image && <Image
         src={blok.image}
         alt={"Featured image for " + blok.name}
-        width={1024}
-        height={1024}
-        sizes="(max-width: 1024px) 100vw, 1024px"
-        class="w-full rounded-md"
+        width={512}
+        height={512}
+        class="rounded-md"
         loading="eager" />
     }
+    <div class="flex justify-center mt-0 sm:mt-4">
+      <slot name="links">Links Block</slot>
+    </div>
   </div>
-  <!-- Description -->
-  <div class="contents m-4">
+  <!-- Description & Features -->
+  <div class="col-span-1">
     <slot name="description">Description Block</slot>
-  </div>
-  <!-- Links -->
-  <div class="flex justify-center mt-4">
-    <slot name="links">Links Block</slot>
-  </div>
+    <slot name="features">Features Block</slot>
+  </div>  
 </div>

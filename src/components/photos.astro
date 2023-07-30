@@ -1,8 +1,10 @@
 ---
 import Link from "@components/ui/link.astro";
 import { Icon } from "astro-icon";
+import waveSVG from "assets/waves3.svg";
 
-const isProduction = import.meta.env.PROD;
+const isProduction = true;
+// const isProduction = import.meta.env.PROD;
 
 const metadata = {
   'title': "Latest photos directly from our team",
@@ -10,7 +12,8 @@ const metadata = {
 }
 ---
 
-<div class="grid px-4 sm:px-10 mt-16 md:pb-32">
+<div class="grid px-4 sm:px-10 mt-16 md:pb-32" style="position: relative;">
+  <img src={waveSVG.src} width="200px" style="position:absolute;top:-5%;right:5%; float:right; opacity: 10%;" />
   <h2 class="text-4xl lg:text-5xl text-slate-900 font-extrabold  lg:tracking-tight">
     {metadata.title}
   </h2>

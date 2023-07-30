@@ -1,5 +1,13 @@
-<section class="py-16 bg-color-dark dark:bg-color-dark bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/hero-pattern.svg')] dark:bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/hero-pattern-dark.svg')] ">
+---
+
+import surferSVG from "../assets/surfer.svg";
+import surfboardSVG from "../assets/surfboard.svg";
+---
+<!-- dark:bg-color-dark bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/hero-pattern.svg')] dark:bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/hero-pattern-dark.svg')] -->
+<section class="py-16 bg-color-dark bg-fixed">
     <div class="px-4 mx-auto max-w-screen-xl text-center lg:py-16 z-10 relative">
+        <img src={surferSVG.src} width="200px" style="position:absolute;top:-10%;left:13%; opacity: 25%;" />
+        <!-- <img src={surfboardSVG.src} width="200px" style="position:absolute;z-index: 0;"  /> -->
         <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl lg:text-6xl dark:text-white">Stay in Baja know</h1>
         <p class="mb-8 text-lg font-normal text-slate-200 lg:text-xl sm:px-16 lg:px-48 dark:text-slate-200">We drop reviews & local deals through Hola Cabo's newsletter before anywhere else. Share your email below, we promise not to spam and not to share.</p>
 
