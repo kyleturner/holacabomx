@@ -19,37 +19,33 @@ const stories = await getExperienceStories()
 const tags = [...new Set(stories.map((story) => story.tag_list).flat())];
 
 const tagsHTML = tags.map(function(tag) {
-  return (`<li class='block px-4 py-2'><a class='filters' href='/tags/${tag}'>${tag}</a></li>`)
+  return (`<li class='block px-4 py-2'><button class='w-full leading-10  text-left hover:text-primary text-lg' href='/tags/${tag}'>${tag}</button></li>`)
 })
 ---
-<script>
-  // document.getElementById("filters").innerHTML = tagsHTML;
-</script>
 
 <Layout title="experiences">
-  <Container class="pb-8 sm:pb-32">
+  <Container class="pb-8 sm:pb-32 relative">
+    <!-- Filters Dropdown -->
+    <div class="absolute right-8 top-8">
+      <button class="text-white bg-primary hover:bg-primaryDark focus:ring-4 rounded-lg px-3 py-3 text-center" id="dropdownDefaultButton" data-dropdown-toggle="dropdown">
+        <Icon class="w-8 h-8" name="bx:bx-filter" />
+      </button>
+      <div id="dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow-2xl w-72 dark:bg-gray-700">
+        <p class="p-2 bg-primaryDark text-white font-medium">Filter experiences by...</p>
+        <ul class="py-2" aria-labelledby="dropdownDefaultButton" id="filters" set:html={tagsHTML}></ul>
+      </div>
+    </div>
+
     <Sectionhead subtitle="true">
       <!-- Page Title -->
       <Fragment slot="title">{metadata.title}</Fragment>
-        <Fragment slot="subtitle"><div class="mt-2 mb-4 color-primary font-medium">First-hand adventures of Baja</div></Fragment>
-      <Fragment slot="buttons">
-        
-      <!-- Future: Dropdown menu -->
-        <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown" class="text-white bg-color-primary hover:bg-color-dark focus:ring-4 focus:outline-none focus:bg-color-dark font-medium rounded-lg text-sm px-20 py-3 text-center inline-flex items-center dark:bg-color-primary dark:hover:bg-color-dark dark:focus:bg-color-dark" type="button">Filters <svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
-        </svg></button>
-      <div id="dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-72 dark:bg-gray-700">
-        <ul class="py-2" aria-labelledby="dropdownDefaultButton" id="filters" set:html={tagsHTML}></ul>
-      </div>
-      
-        <!-- Tags List -->
-        <!-- <div class="flex flex-wrap justify-center mb-8">
-          { tags && tags.map((tag) => (<Tag tag={tag} />)) }
-          </div> -->
-      </Fragment>
+        <Fragment slot="subtitle"><div class="mt-3 mb-3 color-primary font-medium">First-hand adventures of Baja Sur</div></Fragment>
+      <!-- Buttons -->
+      <Fragment slot="buttons"></Fragment>
     </Sectionhead>
+
+    <!-- All Experience Entries -->
     <main class="p-4 sm:p-8">
-      <!-- All Experience Entries -->
       <ul class="grid gap-8 md:gap-16 md:grid-cols-2 mx-auto">
         {
           stories && stories.map((experienceEntry, index) => (
