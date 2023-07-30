@@ -39,18 +39,18 @@ const story = await getExperienceStory(slug)
     <!-- Inner Container with Padding -->
     <div class="mx-auto prose prose-lg max-w-5xl p-4 sm:p-8">
       <!-- Header -->
-      <Sectionhead category="San Jose">
+      <Sectionhead category={story.content.category} subtitle={story.content.subtitle}>
         <Fragment slot="title">{story.content.snippet}</Fragment>
         <!-- References to Blocks Content -->
         <Fragment slot="buttons">
-          <div class="flex overflow-x-auto">
+          <div class="flex justify-center overflow-x-auto mt-8">
             {
               story.content.blocks && story.content.blocks.map((block) => (
                   <Link style="primary" 
-                  class="p-2 pl-6 pr-6 mr-3 bg-color-primary" 
+                  class="p-0 sm:p-2 sm:p-2 pl-3 pr-3 sm:pl-6 sm:pr-6 mr-3 bg-color-primary" 
                   href={"#" + `${block.component}-${block.name}`}>
-                  {block.category && <p class="text-xs m-0">{block.category.toUpperCase()}</p>}
-                  <p class="m-0 text-sm">{block.name}</p>
+                  {block.category && <p class="hidden sm:block text-xs m-0">{block.category.toUpperCase()}</p>}
+                  <p class="m-0 text-sm align-middle">{block.name}</p>
                   </Link>
               ))
             }

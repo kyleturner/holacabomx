@@ -7,17 +7,18 @@ import { Icon } from "astro-icon";
 const entry = {
     image: "https://a-us.storyblok.com/f/1013993/3560x4617/88294e7fb3/cabo-the-thompson-cape.jpg", 
     category: "featured experience", 
-    title: "Awesome title", 
-    snippet: "Awesome snippet goes here for teasing"
+    title: "Best Spots to Stay Cool", 
+    snippet: "Covering our favorite restaurants & bars that crank that A/C"
 }
 const metadata = {
   'title': "Restaurants, bars, resorts, beaches, activities, & more",
   'subtitle': "Hola Cabo's local team brings you the latest in their Baja Sur adventures.",
   'ctaExperienceFeature': {
     'title': "View experience",
-    'href': "experience/todo-link-goes-here-for-feature-experience"
+    'href': "best-places-to-escape-the-heat-this-summer-in-los-cabos"
   }
 }
+const fullHref = "/experiences/" + metadata.ctaExperienceFeature.href
 ---
 
 <section class="bg-color-primary-dark dark:bg-gray-900">
@@ -33,7 +34,7 @@ const metadata = {
             <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-white dark:text-white">{metadata.title}</h2>
             <p class="mb-6 font-light text-slate-300 md:text-lg dark:text-slate-400">{metadata.subtitle}</p>
             <Link
-              href={metadata.ctaExperienceFeature.href}
+              href={fullHref}
               class="inline-flex gap-1 items-center justify-center bg-color-primary"
               rel="noopener">
                 <Icon class="text-white w-5 h-5" name="bx:bxs-right-arrow-alt" />

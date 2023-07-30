@@ -12,7 +12,7 @@ const titleClass = subtitle ? "text-4xl lg:text-5xl font-bold lg:tracking-tight 
 ---
 
 <div class:list={[align === "center" && "text-center"]}>
-  { category && (<span class="color-primary uppercase tracking-wider text-sm font-medium">{"SAN JOSE"}</span>) }
+  { category && (<span class="color-primary uppercase tracking-wider text-sm font-medium">{category}</span>) }
   <h1 class={titleClass}><slot name="title"></slot></h1>
   { subtitle && (<slot name="subtitle"></slot>) }
   <slot name="buttons"></slot>

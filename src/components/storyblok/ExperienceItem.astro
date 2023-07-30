@@ -31,7 +31,6 @@ const content = renderRichText(blok.description)
     <Fragment slot="description" set:html={content}></Fragment>
     <Fragment slot="features">
       <div>
-        <!-- <h3>Details</h3> -->
         <table>
           <thead>
             <tr>{blok.features && blok.features.thead.map((th) => <th>{th.value}</th> )}</tr>
