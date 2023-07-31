@@ -2,12 +2,11 @@
 import { Icon } from "astro-icon";
 import { Image } from 'astro:assets'
 import beachesImage from "../assets/beaches.jpeg";
-import cocktailsImage from "../assets/cocktails.jpeg";
+import cocktailsImage from "../assets/feature-drinks-alt.jpg";
 import eventsImage from "../assets/events.jpeg";
 import hotelsImage from "../assets/hotels.jpeg";
 import foodImage from "../assets/food.jpeg";
-import transportationImage from "../assets/transportation.png";
-import activitiesImage from "../assets/activities.png";
+import activitiesImage from "../assets/featured-photo-1.jpg";
 import Link from "@components/ui/link.astro";
 
 const metadata = {
@@ -74,14 +73,14 @@ const features = [
     image: hotelsImage,
     url: "/tags/stay",
   },
-  {
-    title: "Exclusive transportation services",
-    description:
-      "Experience the ultimate in comfort and luxury with our select private transportation services.",
-    icon: "bx:bxs-taxi",
-    image: transportationImage,
-    url: "/tags/transportation",
-  },
+  // {
+  //   title: "Exclusive transportation services",
+  //   description:
+  //     "Experience the ultimate in comfort and luxury with our select private transportation services.",
+  //   icon: "bx:bxs-taxi",
+  //   image: transportationImage,
+  //   url: "/tags/transportation",
+  // },
 ];
 ---
 
@@ -139,7 +138,7 @@ const features = [
       features.map((item) => (
         <div>
           <a class="image-hover-link" href={item.url}>
-          <div class="image-hover" style="max-width: 512px; height: 512px;">
+          <div class="image-hover hover:rounded-md" style="max-width: 512px; height: 512px;">
               <Image
               src={item.image}
               alt={"Icon for " + item.title}
