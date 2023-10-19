@@ -136,25 +136,25 @@ const features = [
   <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 mt-16 gap-16 mb-16">
     {
       features.map((item) => (
-        <div>
+        <div class="mx-auto">
           <a class="image-hover-link" href={item.url}>
-          <div class="image-hover hover:rounded-md" style="max-width: 512px; height: 512px;">
+          <div class="image-hover hover:rounded-md" style="max-width: 384px; height: 384px;">
               <Image
               src={item.image}
               alt={"Icon for " + item.title}
-              width={512}
-              height={512}
+              width={768}
+              height={768}
               quality="max"
               loading="eager"
               class="w-full rounded-md"
               />  
             </div>
             <div class="flex gap-4 items-start mt-8">
-              <div class="mt-1 bg-color-primary rounded-full  p-2 w-8 h-8 shrink-0">
+              <div class="mt-1 bg-color-primary rounded-full p-2 w-8 h-8 shrink-0">
                 <Icon class="text-white" name={item.icon} />
               </div>
               <div>
-                <h2 class="font-semibold text-xl">{item.title}</h2>{" "}
+                <h2 class="font-semibold text-lg">{item.title}</h2>{" "}
                 <p class="text-slate-500 mt-2 leading-relaxed">{item.description}</p>
               </div>
             </div>
