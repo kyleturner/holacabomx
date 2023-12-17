@@ -1,0 +1,61 @@
+---
+import { Icon } from "astro-icon";
+import Layout from "@layouts/Layout.astro";
+import Container from "@components/container.astro";
+import Contactform from "@components/contactform.astro";
+import Link from "@components/ui/link.astro";
+import { Icon } from "astro-icon";
+import waveSVG from "assets/waves3.svg";
+
+// const isProduction = true;
+const isProduction = import.meta.env.PROD;
+
+const metadata = {
+  'title': "Our latest photos",
+  'subtitle': "See what the Hola Cabo team has been up to lately."
+}
+---
+
+
+<!-- Styles scoped to this component, only. -->
+<style>
+.home {
+  background-color: rgba(5, 5, 5, 1.0);
+  background-image: url("/src/assets/background-photo-cover-3.jpg");
+  background-position: bottom;
+  background-repeat: no-repeat; 
+  background-size: cover;
+  padding: 64px;
+  min-height: 400px;
+}
+</style>
+
+<Layout title="Contact">
+  <main 
+  class="home grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24 mb-8" onload="this.style.opacity=1">
+  <div class="py-6 md:order-1 hidden md:block">
+  </div>
+  <div>
+    <h1 class="header-text text-5xl lg:text-6xl xl:text-7xl font-bold lg:tracking-tight xl:tracking-tighter">
+      Photos
+    </h1>
+    <p class="header-text text-xl text-white max-w-xl">
+        See what the Hola Cabo team has been up to lately.
+    </p>
+  </div>
+</main>
+  <Container class="pb-32 p-4 sm:p-8 pt-0">
+    <div class="grid px-4 sm:px-10 mt-16 md:pb-32" style="position: relative;">
+        <img src={waveSVG.src} width="200px" style="position:absolute;top:-5%;right:5%; float:right; opacity: 10%;" />
+        <!-- Only enabled in production environment. -->
+        {(isProduction && (
+        <figure data-behold-id="UubyJC2sjbi7UeEzcPI5"></figure>
+        <script src="https://w.behold.so/widget.js" type="module"></script>
+        <div class="gap-16 max-w-xl mx-auto mt-16">
+          <Link target="_blank" class="text-center pl-8 pr-8" href="https://instagram.com/holacabo"><Icon class="h-4 w-4 mr-2" style="display:inline-block;" name="simple-icons:instagram" />See more on Instagram</Link>
+        </div>
+        ))}
+        
+      </div>
+  </Container>
+</Layout>

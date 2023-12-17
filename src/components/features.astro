@@ -1,6 +1,5 @@
 ---
 import { Icon } from "astro-icon";
-import { Image } from 'astro:assets'
 import beachesImage from "../assets/beaches.jpeg";
 import proTipsImage from "../assets/feature-protips.jpg";
 import cocktailsImage from "../assets/feature-drinks-alt.jpg";
@@ -8,10 +7,9 @@ import eventsImage from "../assets/events.jpeg";
 import hotelsImage from "../assets/hotels.jpeg";
 import foodImage from "../assets/food.jpeg";
 import activitiesImage from "../assets/featured-photo-1.jpg";
-import Link from "@components/ui/link.astro";
 
 const metadata = {
-  'title': "We cover the best of Cabo in every category",
+  'title': "Covering the best of Cabo in every category",
   'subtitle': "Explore, stay, dine, and indulge your way around town with our expert coverage of the local scene, latest deals, and hidden gems.",
   'ctaPrimary': {
     'title': "See all experiences",
@@ -21,14 +19,14 @@ const metadata = {
 
 const features = [
   {
-    title: "Top beaches & escapes",
+    title: "Beaches & escapes",
     description: "Unwind and soak up the sun on world-class beaches, including the most popular to our secret spots & hidden locations.",
     icon: "bx:bxs-sun",
     image: beachesImage,
     url: "/tags/explore",
   },
   {
-    title: "Food for every occasion",
+    title: "Food",
     description:
       "Michelin-star dining, local authentic cuisine, the best sushi we've ever had, & our top picks for best marg in town. Is your mouth watering yet?",
     icon: "bx:bxs-pizza",
@@ -36,30 +34,22 @@ const features = [
     url: "/tags/dine",
   },
   {
-    title: "Delicious cocktails & vibrant nightlife",
+    title: "Cocktails & nightlife",
     description: "Seeking the best marg in town? A place to watch the game? Live music or pop-up concerts? Us too!",
     icon: "bx:bxs-moon",
     image: cocktailsImage,
     url: "/tags/nightlife",
   },
   {
-    title: "Must-experience locations & seasonal events",
+    title: "Hotels & Airbnbs",
     description:
-      "Explore the history, the culture, the off the beaten path, the vibrant events, and the amazing places that make Los Cabos special.",
-    icon: "bx:bxs-crown",
-    image: eventsImage,
-    url: "/tags/explore",
+      "Unwind in paradise. Find your perfect stay with our partnering hotels and premium Airbnb hosts.",
+    icon: "bx:bxs-building",
+    image: hotelsImage,
+    url: "/tags/stay",
   },
   {
-    title: "Local pro tips & tricks",
-    description:
-      "Navigating customs, culture, language, currency, renting a condo, or buying a home - let us help make your transition to \"No Bad Days\" life as seamless as possibile.",
-    icon: "bx:bxs-lock",
-    image: proTipsImage,
-    url: "/tags/locals"
-  },
-  {
-    title: "Endless activities for all ages",
+    title: "Activities",
     description:
       "Boating, whale-watching, surfing, snorkeling, golfing, ATV-rides & more. Let us connect you with the best experiences (and price).",
     icon: "bx:bxs-ship",
@@ -67,63 +57,24 @@ const features = [
     url: "/tags/explore",
   },
   {
-    title: "Hand-picked hotels & Airbnbs",
+    title: "Events",
     description:
-      "Unwind in paradise. Find your perfect stay with our partnering hotels and premium Airbnb hosts.",
-    icon: "bx:bxs-building",
-    image: hotelsImage,
-    url: "/tags/stay",
+      "Explore the history, the culture, the off the beaten path, the vibrant events, and the amazing places that make Los Cabos special.",
+    icon: "bx:bxs-crown",
+    image: eventsImage,
+    url: "/tags/explore",
   },
-  // {
-  //   title: "Exclusive transportation services",
-  //   description:
-  //     "Experience the ultimate in comfort and luxury with our select private transportation services.",
-  //   icon: "bx:bxs-taxi",
-  //   image: transportationImage,
-  //   url: "/tags/transportation",
-  // },
+  {
+    title: "Local living",
+    description:
+      "Navigating customs, culture, language, currency, renting a condo, or buying a home - let us help make your transition to \"No Bad Days\" life as seamless as possibile.",
+    icon: "bx:bxs-lock",
+    image: proTipsImage,
+    url: "/tags/locals"
+  },
+
 ];
 ---
-
-<style is:global>
-  .image-hover {
-      opacity: 1.0;
-      position: relative;
-      overflow: hidden;
-
-  }
-  .image-hover-link:hover {
-    color: #2a9d8f;
-  }
-  .image-hover img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    vertical-align: middle;
-    transition: transform .55s ease-in-out;
-    -moz-transition: transform .55s ease-in-out;
-    -webkit-transition: transform .55s ease-in-out;
-  }
-  .image-hover:hover img {
-    transform: scale(1.25);
-    transition: transform .55s ease-in-out;
-    -moz-transition: transform .55s ease-in-out;
-    -webkit-transition: transform .55s ease-in-out;
-  }
-  .image-hover:after {
-      content:'\A';
-      position:absolute;
-      width:100%; height:100%;
-      top:0; left:0;
-      background:rgba(0,0,0,0.6);
-      opacity:0;
-      transition: all 0.5s;
-      -webkit-transition: all 0.5s;
-  }
-  .image-hover:hover:after {
-      opacity:1;
-  }
-</style>
 
 <div class="max-w-screen-xxl px-4 sm:px-10 pt-16" style="position: relative;">
   <div class="mt-16 md:mt-0">
@@ -134,7 +85,7 @@ const features = [
       {metadata.subtitle}
     </p>
   </div>
-  <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 mt-16 gap-16 mb-16">
+  <!-- <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 mt-16 gap-16 mb-16">
     {
       features.map((item) => (
         <div class="mx-auto">
@@ -151,11 +102,14 @@ const features = [
               />  
             </div>
             <div class="flex gap-4 items-start mt-8">
-              <div class="mt-1 bg-color-primary rounded-full p-2 w-8 h-8 shrink-0">
-                <Icon class="text-white" name={item.icon} />
+              <div class="">
+                <div class="mt-1 bg-color-primary rounded-full p-2 w-8 h-8 shrink-0">
+                  <Icon class="text-white" name={item.icon} />
+                </div>
+                
               </div>
               <div>
-                <h2 class="font-semibold text-lg">{item.title}</h2>{" "}
+                <h2 class="font-semibold text-xl">{item.title}</h2>{" "}
                 <p class="text-slate-500 mt-2 leading-relaxed">{item.description}</p>
               </div>
             </div>
@@ -163,12 +117,58 @@ const features = [
       </div>
       ))
     }
-  </div>
-  <Link
+  </div> -->
+  <div id="gallery" class="mt-8 mb-8" data-carousel="slide">
+    <div class="relative overflow-hidden rounded-lg" style="height:720px; max-height:720px; width:100%">
+      { features.map((feature) => (
+        <div class="hidden duration-700 ease-in-out" data-carousel-item>
+          <a class="image-hover-link" href={feature.url}>
+            <img src={feature.image.src} class="absolute h-auto w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"/>
+            <div class=""></div>
+            <div class="flex bg-gray-800/60 p-8 gap-4 items-start mt-8 absolute max-w-xl">
+              <div class="">
+                <div class="mt-1 bg-color-primary rounded-full p-2 w-8 h-8 shrink-0">
+                  <Icon class="text-white" name={feature.icon} />
+                </div>
+              </div>
+              <div>
+                <h2 class="font-semibold text-xl text-white">{feature.title}</h2>{" "}
+                <p class="text-slate-200 mt-2">{feature.description}</p>
+              </div>
+            </div>
+          </a>
+          </div>
+        ))}
+      <!-- <div class="hidden duration-1000 ease-in-out bg-primaryDark" data-carousel-item>
+        <div class="mx-auto grid place-content-center place-items-center">
+          <h3 class="text-white text-center">Interested in a sponsored feature of your business or event?</h3>
+          <img src="/src/assets/holacabo-white-transparent.png?origWidth=1025&amp;origHeight=1024&amp;" width="128px" style="">
+          <Link style="inverted" href="/contact">Contact us today!</Link>
+        </div>
+      </div> -->
+    </div>
+    <button type="button" class="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
+        <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/90 dark:bg-gray-800/30 group-hover:bg-primary dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+            <svg class="w-4 h-4 dark:text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                <path stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/>
+            </svg>
+            <span class="sr-only">Previous</span>
+        </span>
+    </button>
+    <button type="button" class="absolute top-0 right-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
+        <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/90 dark:bg-gray-800/30 group-hover:bg-primary dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+            <svg class="w-4 h-4 dark:text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                <path stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
+            </svg>
+            <span class="sr-only">Next</span>
+        </span>
+    </button>
+  </div>    
+  <!-- <Link
       href={metadata.ctaPrimary.href}
       class="inline-flex gap-1 items-center justify-center bg-color-primary"
       rel="noopener">
       <Icon class="text-white w-5 h-5" name="bx:bxs-right-arrow-alt" />
       {metadata.ctaPrimary.title}
-  </Link>
+  </Link> -->
 </div>

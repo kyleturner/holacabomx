@@ -6,19 +6,19 @@ import { Icon } from "astro-icon";
 
 const entry = {
     image: "https://a-us.storyblok.com/f/1013993/1200x1556/9b0ad35157/cabo-the-thompson-cape.jpg", 
-    category: "featured experience", 
-    title: "Best Spots to Stay Cool", 
+    category: "", 
+    title: "", 
     snippet: "Covering our favorite restaurants & bars that crank that A/C"
 }
 const metadata = {
-  'title': "Restaurants, bars, resorts, beaches, activities, & more",
-  'subtitle': "Hola Cabo's local team brings you the latest in their Baja Sur adventures.",
+  'title': "Giving tourists and locals the inside scoop on Cabo living",
+  'subtitle': "Visiting for the first time? Thinking about moving here full time? We've got you covered on how to navigate and live like a local.",
   'ctaExperienceFeature': {
-    'title': "View experience",
-    'href': "best-places-to-escape-the-heat-this-summer-in-los-cabos"
+    'title': "View photos",
+    'href': "photos"
   }
 }
-const fullHref = "/experiences/" + metadata.ctaExperienceFeature.href
+const fullHref = metadata.ctaExperienceFeature.href
 ---
 
 <section class="bg-color-primary-dark dark:bg-gray-900">
@@ -27,12 +27,13 @@ const fullHref = "/experiences/" + metadata.ctaExperienceFeature.href
             <ExperienceBlock 
             dark={true}
             entry={entry} 
-            slug={metadata.ctaExperienceFeature.href} 
+            slug={""} 
             index={1} />
         </div>
         <div class="mt-4 md:mt-0">
-            <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-white dark:text-white">{metadata.title}</h2>
+            <h2 class="mb-4 text-4xl tracking-tight font-bold text-white dark:text-white">{metadata.title}</h2>
             <p class="mb-6 font-light text-slate-300 md:text-lg dark:text-slate-400">{metadata.subtitle}</p>
+            <p class="mb-6 font-light text-slate-300 md:text-lg dark:text-slate-400">See our photos page for a glimpse through the eyes of Hola Cabo's team.</p>
             <Link
               href={fullHref}
               class="inline-flex gap-1 items-center justify-center bg-color-primary"
