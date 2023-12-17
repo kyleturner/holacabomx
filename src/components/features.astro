@@ -2,6 +2,7 @@
 import { Icon } from "astro-icon";
 import { Image } from 'astro:assets'
 import beachesImage from "../assets/beaches.jpeg";
+import proTipsImage from "../assets/feature-protips.jpg";
 import cocktailsImage from "../assets/feature-drinks-alt.jpg";
 import eventsImage from "../assets/events.jpeg";
 import hotelsImage from "../assets/hotels.jpeg";
@@ -54,7 +55,7 @@ const features = [
     description:
       "Navigating customs, culture, language, currency, renting a condo, or buying a home - let us help make your transition to \"No Bad Days\" life as seamless as possibile.",
     icon: "bx:bxs-lock",
-    image: beachesImage,
+    image: proTipsImage,
     url: "/tags/locals"
   },
   {
@@ -133,12 +134,12 @@ const features = [
       {metadata.subtitle}
     </p>
   </div>
-  <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 mt-16 gap-16 mb-16">
+  <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 mt-16 gap-16 mb-16">
     {
       features.map((item) => (
         <div class="mx-auto">
           <a class="image-hover-link" href={item.url}>
-          <div class="image-hover hover:rounded-md" style="max-width: 384px; height: 384px;">
+          <div class="image-hover rounded hover:rounded" style="max-width: 340px; height: auto; max-height: 340px;">
               <Image
               src={item.image}
               alt={"Icon for " + item.title}

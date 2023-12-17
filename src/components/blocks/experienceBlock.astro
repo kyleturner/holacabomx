@@ -3,7 +3,7 @@ import { Image } from 'astro:assets'
 
 const { entry, slug, index, dark } = Astro.props;
 const cssTitle = dark ? "text-white text-3xl font-semibold leading-snug tracking-tight mt-1" : "text-3xl font-semibold leading-snug tracking-tight mt-1";
-const cssSubtitle = dark ? "text-slate-300" : "text-slate-600";
+const cssSubtitle = dark ? "text-slate-300 text-sm" : "text-slate-600 text-sm";
 ---
 
 <a href={`/experiences/${slug}`}>
@@ -24,12 +24,12 @@ const cssSubtitle = dark ? "text-slate-300" : "text-slate-600";
         <span class="color-primary uppercase tracking-wider text-sm font-medium">
           {entry.category}
         </span>
-        <h2 class={cssTitle}>
+        { entry.title && <h2 class={cssTitle}>
           {entry.title}
-        </h2>
-        <div class="flex gap-2 mt-3">
-          <span class={cssSubtitle}>{entry.snippet}</span>
-        </div>
+        </h2>}
+        {entry.subtitle &&  <div class="flex gap-2 mt-3 text-sm">
+          <span class={cssSubtitle}>{entry.subtitle}</span>
+        </div>}
       </div>
     </div>
   </a>

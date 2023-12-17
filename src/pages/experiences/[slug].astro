@@ -5,7 +5,7 @@ import Hero from "@components/hero.astro"
 import Sectionhead from "@components/sectionhead.astro"
 import Link from "@components/ui/link.astro"
 import ExperienceItem from "@components/storyblok/ExperienceItem.astro"
-
+import { renderRichText } from '@storyblok/astro'
 import { getExperienceStories } from '@utils/api'
 import { getExperienceStory } from '@utils/api'
 
@@ -23,6 +23,12 @@ export async function getStaticPaths() {
 }
 const { slug } = Astro.params
 const story = await getExperienceStory(slug)
+console.log("regular content:")
+console.log(story.content.snippet)
+console.log("rich content: ")
+const snippet = renderRichText(story.content.snippet)
+console.log(snippet)
+console.log("3*******")
 ---
 
 <Layout title={story.content.title}>
@@ -40,16 +46,16 @@ const story = await getExperienceStory(slug)
     <div class="mx-auto prose prose-lg max-w-5xl p-4 sm:p-8">
       <!-- Header -->
       <Sectionhead category={story.content.category} subtitle={story.content.subtitle}>
-        <Fragment slot="title">{story.content.snippet}</Fragment>
+        <Fragment slot="snippet" set:html={story.content.snippet}></Fragment>
         <!-- References to Blocks Content -->
         <Fragment slot="buttons">
-          <div class="flex justify-center overflow-x-auto mt-8">
+          <div class="flex flex-auto overflow-x-auto mt-8 buttons">
             {
               story.content.blocks && story.content.blocks.map((block) => (
                   <Link style="primary" 
                   class="p-0 sm:p-2 sm:p-2 pl-3 pr-3 sm:pl-6 sm:pr-6 mr-3 bg-color-primary" 
                   href={"#" + `${block.component}-${block.name}`}>
-                  {block.category && <p class="hidden sm:block text-xs m-0">{block.category.toUpperCase()}</p>}
+                  {block.category && <p class="hidden sm:block text-xs m-0 text-slate-700 text-bold">{block.category.toUpperCase()}</p>}
                   <p class="m-0 text-sm align-middle">{block.name}</p>
                   </Link>
               ))
