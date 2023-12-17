@@ -14,7 +14,7 @@ function capitalizeFirstLetter(string) {
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
-const resolvedImageWithDomain = new URL("public/hero3.jpeg", Astro.site).toString();
+const resolvedImageWithDomain = new URL("public/hero3.jpg", Astro.site).toString();
 
 const { title } = Astro.props;
 
@@ -172,7 +172,7 @@ const makeTitle = title
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <link rel="preload" as="image" href="/hero3.jpeg"/>
+    <link rel="preload" as="image" href="/hero3.jpg"/>
     <SEO
       title={makeTitle}
       description="Say hello to the best of Los Cabos with HolaCabo. Food • Cocktails • Lifestyle • Events"
