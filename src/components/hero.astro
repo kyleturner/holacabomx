@@ -1,5 +1,6 @@
 ---
 import Divider from "@components/ui/divider.astro";
+import logoImage from "../assets/holacabo-white-transparent.png";
 
 const { 
   title, 
@@ -13,6 +14,8 @@ const {
 const defaultCSS = "home grid place-items-center p-8 sm:pr-64 sm:pl-8 md:pb-8 sm:pt-12 sm:bg-fixed sm:bg-center sm:bg-cover"
 const centerCSS = "home text-center lg:grid-cols-2 place-items-center p-8 sm:pl-36 sm:pr-36 pt-0 md:pt-12 sm:bg-fixed sm:bg-center sm:bg-cover"
 const cssClass = center ? centerCSS : defaultCSS
+
+
 ---
 
 <!-- Styles scoped to this component, only. -->
@@ -35,7 +38,7 @@ const cssClass = center ? centerCSS : defaultCSS
     <div>
       <h1 class="header-text text-5xl lg:text-6xl xl:text-7xl font-bold lg:tracking-tight xl:tracking-tighter">{title}</h1>
       {center ? (<Divider 
-        image="/src/assets/holacabo-white-transparent.png" 
+        image={logoImage.src} 
         clazz="text-white p-0 bg-color-transparent"/> ) : ("")}
       <p class="header-text text-xl text-white">{subtitle}</p>
       <div class="mt-6 flex flex-col sm:flex-row gap-3">
