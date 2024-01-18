@@ -25,8 +25,9 @@ const { slug } = Astro.params
 const story = await getExperienceStory(slug)
 console.log("regular content:")
 console.log(story.content.snippet)
-console.log("rich content: ")
+console.log("rich content????? ")
 const snippet = renderRichText(story.content.snippet)
+// const snippet = story.content.snippet
 console.log(snippet)
 console.log("3*******")
 ---
@@ -46,7 +47,8 @@ console.log("3*******")
     <div class="mx-auto prose max-w-5xl p-4 sm:p-8">
       <!-- Header -->
       <Sectionhead category={story.content.category} subtitle={story.content.subtitle}>
-        <Fragment slot="snippet" set:html={story.content.snippet}></Fragment>
+        <!-- <Fragment slot="snippet" set:html={story.content.snippet}></Fragment> -->
+        <Fragment slot="snippet" set:html={snippet}>{snippet}</Fragment>
         <!-- References to Blocks Content -->
         {story.content.blocks && story.content.blocks.length > 1 && 
           <Fragment slot="buttons">
@@ -54,10 +56,11 @@ console.log("3*******")
               {
                 story.content.blocks && story.content.blocks.map((block) => (
                     <Link style="muted" 
-                    class="p-0 sm:p-2 sm:p-2 pl-3 pr-3 sm:pl-6 sm:pr-6 mr-3" 
+                    class="p-2 text-primary w-32 h-32" 
+                    // class="p-0 sm:p-2 sm:p-2 pl-3 pr-3 sm:pl-6 sm:pr-6 mr-3 text-primary" 
                     href={"#" + `${block.component}-${block.name}`}>
-                    {block.category && <p class="hidden sm:block text-xs m-0 text-slate-700 text-bold">{block.category.toUpperCase()}</p>}
-                    <p class="m-0 text-sm align-middle">{block.name}</p>
+                    {block.category && <p class="hidden sm:block text-xs m-0 text-slate-700">{block.category.toUpperCase()}</p>}
+                    <p class="m-0 text-xs align-middle">{block.name}</p>
                     </Link>
                 ))
               }
@@ -83,6 +86,9 @@ console.log("3*******")
         </time>
         </Fragment>
       </Sectionhead>
+      
+      <Fragment slot="snippet" set:html={snippet}></Fragment>
+
       <!-- Experience Item List -->
       <div class="w-full">
         {

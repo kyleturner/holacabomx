@@ -17,7 +17,7 @@ const galleryClass = hasGallery ? "relative w-full" : "hidden"
     <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold lg:tracking-tight"><slot name="name">Name</slot></h1>
   </div>
   <!-- Image & Links -->
-  <div class="col-span-2 sm:col-span-1">
+  <div class="mt-4 sm:mt-0 col-span-2 sm:col-span-1">
     { blok.image && <div class="m-0 p-0"><Image
         src={blok.image}
         alt={"Featured image for " + blok.name}
