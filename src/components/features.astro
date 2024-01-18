@@ -8,6 +8,7 @@ import hotelsImage from "../assets/hotels.jpg";
 import foodImage from "../assets/food.jpg";
 import activitiesImage from "../assets/featured-photo-1.jpg";
 
+
 const metadata = {
   'title': "Covering the best of Cabo in every category",
   'subtitle': "Explore, stay, dine, and indulge your way around town with our expert coverage of the local scene, latest deals, and hidden gems.",
@@ -28,7 +29,7 @@ const features = [
   {
     title: "Food",
     description:
-      "Michelin-star dining, local authentic cuisine, the best sushi we've ever had, & our top picks for best marg in town. Is your mouth watering yet?",
+      "Local authentic cuisine of restaurants ft. the best sushi, pastor tacos, & mezcalitas we've ever had.",
     icon: "bx:bxs-pizza",
     image: foodImage,
     url: "/tags/dine",
@@ -75,9 +76,8 @@ const features = [
 
 ];
 ---
-
 <div class="max-w-screen-xxl px-4 sm:px-10 pt-16" style="position: relative;">
-  <div class="mt-16 md:mt-0">
+  <div>
     <h2 id="learn-more-scroll-id" class="text-4xl lg:text-5xl font-bold lg:tracking-tight text-slate-900">
       {metadata.title}
     </h2>
@@ -85,85 +85,38 @@ const features = [
       {metadata.subtitle}
     </p>
   </div>
-  <!-- <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 mt-16 gap-16 mb-16">
-    {
-      features.map((item) => (
-        <div class="mx-auto">
-          <a class="image-hover-link" href={item.url}>
-          <div class="image-hover rounded hover:rounded" style="max-width: 340px; height: auto; max-height: 340px;">
-              <Image
-              src={item.image}
-              alt={"Icon for " + item.title}
-              width={768}
-              height={768}
-              quality="max"
-              loading="eager"
-              class="w-full rounded-md"
-              />  
-            </div>
-            <div class="flex gap-4 items-start mt-8">
-              <div class="">
-                <div class="mt-1 bg-color-primary rounded-full p-2 w-8 h-8 shrink-0">
-                  <Icon class="text-white" name={item.icon} />
-                </div>
-                
+  <div class="relative w-full h-[720px]">
+    <div id="carousel" class="mt-8 mb-8 relative h-full overflow-hidden rounded-lg" data-carousel="static">
+        { features.map((feature, index) => (
+          <div class="hidden relative transition duration-1000 ease-in-out hover:scale-105" data-carousel-item>
+            <a href={feature.url}>
+              <img src={feature.image.src} class="absolute block w-full min-h-[720px] max-h-max -translate-x-1/2 lg:-translate-y-1/2 top-1/2 left-1/2"/>
+              <div class=" p-12 items-start mb-5 lg:mb-10 absolute max-w-xl lg:max-w-2xl bg-color-primary-dark">
+                <div class="bg-color-primary rounded-full p-2 mt-1 mb-1 w-8 h-8 shrink-0"><Icon class="text-white" name={feature.icon} /></div>
+                <h2 class="font-semibold text-2xl text-primary m-w-72 mt-1 mb-1 inline-block align-middle">{feature.title}</h2>
+                <div class="inline-block align-middle"><p class="text-slate-200 text-lg">{feature.description}</p></div>
               </div>
-              <div>
-                <h2 class="font-semibold text-xl">{item.title}</h2>{" "}
-                <p class="text-slate-500 mt-2 leading-relaxed">{item.description}</p>
-              </div>
-            </div>
-          </a>
-      </div>
-      ))
-    }
-  </div> -->
-  <div id="gallery" class="mt-8 mb-8" data-carousel="slide">
-    <div class="relative overflow-hidden rounded-lg" style="height:720px; max-height:720px; width:100%">
-      { features.map((feature) => (
-        <div class="hidden duration-700 ease-in-out" data-carousel-item>
-          <a class="image-hover-link" href={feature.url}>
-            <img src={feature.image.src} class="absolute h-auto w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"/>
-            <div class=""></div>
-            <div class="flex bg-gray-800/60 p-8 gap-4 items-start mt-8 absolute max-w-xl">
-              <div class="">
-                <div class="mt-1 bg-color-primary rounded-full p-2 w-8 h-8 shrink-0">
-                  <Icon class="text-white" name={feature.icon} />
-                </div>
-              </div>
-              <div>
-                <h2 class="font-semibold text-xl text-white">{feature.title}</h2>{" "}
-                <p class="text-slate-200 mt-2">{feature.description}</p>
-              </div>
-            </div>
-          </a>
+            </a>
           </div>
-        ))}
-      <!-- <div class="hidden duration-1000 ease-in-out bg-primaryDark" data-carousel-item>
-        <div class="mx-auto grid place-content-center place-items-center">
-          <h3 class="text-white text-center">Interested in a sponsored feature of your business or event?</h3>
-          <img src="/src/assets/holacabo-white-transparent.png?origWidth=1025&amp;origHeight=1024&amp;" width="128px" style="">
-          <Link style="inverted" href="/contact">Contact us today!</Link>
-        </div>
-      </div> -->
-    </div>
-    <button type="button" class="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
-        <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/90 dark:bg-gray-800/30 group-hover:bg-primary dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-            <svg class="w-4 h-4 dark:text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                <path stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/>
-            </svg>
-            <span class="sr-only">Previous</span>
-        </span>
-    </button>
-    <button type="button" class="absolute top-0 right-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
-        <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/90 dark:bg-gray-800/30 group-hover:bg-primary dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-            <svg class="w-4 h-4 dark:text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                <path stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
-            </svg>
-            <span class="sr-only">Next</span>
-        </span>
-    </button>
-  </div>    
+          ))}
+      <button type="button" class="absolute top-10 left-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
+          <span class="inline-flex items-center justify-center lg:w-20 lg:h-20 w-10 h-10 rounded-full bg-white/90 dark:bg-gray-800/30 group-hover:bg-primary dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+              <svg class="w-3 h-3 lg:w-6 lg:h-6 dark:text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                  <path stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/>
+              </svg>
+              <span class="sr-only">Previous</span>
+          </span>
+      </button>
+      <button type="button" class="absolute top-10 right-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
+          <span class="inline-flex items-center justify-center lg:w-20 lg:h-20 w-10 h-10 rounded-full bg-white/90 dark:bg-gray-800/30 group-hover:bg-primary dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+              <svg class="w-3 h-3 lg:w-6 lg:h-6 dark:text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                  <path stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
+              </svg>
+              <span class="sr-only">Next</span>
+          </span>
+      </button>
+    </div>    
+  </div>
   <!-- <Link
       href={metadata.ctaPrimary.href}
       class="inline-flex gap-1 items-center justify-center bg-color-primary"

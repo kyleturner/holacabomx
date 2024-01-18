@@ -3,6 +3,7 @@
 TODO: Pull inspo for formatting of feature from this article
 Inspirations: https://www.islandlifemexico.com/tulum-visitors-guide/
 
+`nvm use 18.1.0`
 `pnpm astro dev --host 0.0.0.0`
 
 `pnpm start`

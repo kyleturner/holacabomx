@@ -11,7 +11,7 @@ import tagSVG from "../assets/tag.svg";
 
 // Static metadata
 const metadata = {
-  'title': "Experiences",
+  'title': "experiences",
 }
 // All experiences
 const stories = await getExperienceStories()
@@ -32,12 +32,12 @@ const tagsHTML = tags.map(function(tag) {
         <Icon class="w-6 h-6 sm:w-8 sm:h-8" name="bx:bx-filter" />
       </button>
       <div id="dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow-2xl w-72 dark:bg-gray-700">
-        <p class="p-2 bg-primaryDark text-white font-light">Filter</p>
+        <p class="p-4 bg-primaryDark text-white">Filter</p>
         <ul class="py-2" aria-labelledby="dropdownDefaultButton" id="filters" set:html={tagsHTML}></ul>
       </div>
     </div>
 
-    <Sectionhead subtitle="true">
+    <Sectionhead category="experiences" subtitle="true">
       <!-- Page Title -->
       <Fragment slot="title">{metadata.title}</Fragment>
         <Fragment slot="subtitle"><div class="mt-3 mb-3 color-primary font-medium">First-hand adventures of Baja Sur</div></Fragment>

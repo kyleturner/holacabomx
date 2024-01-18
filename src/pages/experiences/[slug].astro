@@ -43,25 +43,27 @@ console.log("3*******")
         center={true} />}
     </div>
     <!-- Inner Container with Padding -->
-    <div class="mx-auto prose prose-lg max-w-5xl p-4 sm:p-8">
+    <div class="mx-auto prose max-w-5xl p-4 sm:p-8">
       <!-- Header -->
       <Sectionhead category={story.content.category} subtitle={story.content.subtitle}>
         <Fragment slot="snippet" set:html={story.content.snippet}></Fragment>
         <!-- References to Blocks Content -->
-        <Fragment slot="buttons">
-          <div class="flex flex-auto overflow-x-auto mt-8 buttons">
-            {
-              story.content.blocks && story.content.blocks.map((block) => (
-                  <Link style="primary" 
-                  class="p-0 sm:p-2 sm:p-2 pl-3 pr-3 sm:pl-6 sm:pr-6 mr-3 bg-color-primary" 
-                  href={"#" + `${block.component}-${block.name}`}>
-                  {block.category && <p class="hidden sm:block text-xs m-0 text-slate-700 text-bold">{block.category.toUpperCase()}</p>}
-                  <p class="m-0 text-sm align-middle">{block.name}</p>
-                  </Link>
-              ))
-            }
-            </div>
-        </Fragment>
+        {story.content.blocks && story.content.blocks.length > 1 && 
+          <Fragment slot="buttons">
+            <div class="flex flex-auto overflow-x-auto mt-8 buttons">
+              {
+                story.content.blocks && story.content.blocks.map((block) => (
+                    <Link style="muted" 
+                    class="p-0 sm:p-2 sm:p-2 pl-3 pr-3 sm:pl-6 sm:pr-6 mr-3" 
+                    href={"#" + `${block.component}-${block.name}`}>
+                    {block.category && <p class="hidden sm:block text-xs m-0 text-slate-700 text-bold">{block.category.toUpperCase()}</p>}
+                    <p class="m-0 text-sm align-middle">{block.name}</p>
+                    </Link>
+                ))
+              }
+              </div>
+          </Fragment>
+        }
         <!-- Tags -->
         <Fragment slot="tags">
           <div>
