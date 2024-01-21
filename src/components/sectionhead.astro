@@ -13,7 +13,7 @@ const snippetClass = subtitle ? "lg:tracking-tight mb-2 pt-4 pb-0" : "lg:trackin
 
 <div class:list={[align === "center" && "text-center"]}>
   
-  { category && (<h1 class="text-5xl lg:text-6xl xl:text-7xl font-bold lg:tracking-tight xl:tracking-tighter">{category}</h1>) }
+  { category && (<h1 class="text-5xl lg:text-6xl xl:text-7xl font-bold">{category}</h1>) }
   <!-- { subtitle  && <p class={snippetClass}><slot name="snippet"></slot></p>} -->
   <!-- { subtitle && (<slot name="subtitle"></slot>) } -->
   <slot name="buttons"></slot>

@@ -19,17 +19,19 @@ const stories = await getExperienceStories()
 // Unique set of tags for UI filtering
 const tags = [...new Set(stories.map((story) => story.tag_list).flat())];
 
-const tagsHTML = tags.map(function(tag) {
+const tagsListHTML = tags.map(function(tag) {
   return (`<li class='flex inline-block ml-2 px-1 sm:px-4 py-2 sm:py-2'><img src=${tagSVG.src} width="22px" /><a class='ml-2 w-full leading-8 sm:leading-10  text-left hover:text-primary text-md sm:text-lg' href='/tags/${tag}'>${tag}</a></li>`)
 })
+const allExperiencesItem = `<li class='flex inline-block ml-2 px-1 sm:px-4 py-2 sm:py-2'><a class='ml-2 w-full leading-8 sm:leading-10  text-left hover:text-primary text-md sm:text-lg' href='/experiences'>All Experiences</a></li>`
+const tagsHTML = [ ...[allExperiencesItem], ...tagsListHTML]
 ---
 
 <Layout title="experiences">
   <Container class="pb-8 sm:pb-32 relative">
     <!-- Filters Dropdown -->
-    <div class="absolute right-8 top-8">
-      <button class="text-white bg-primary hover:bg-primaryDark focus:ring-4 rounded-lg px-3 py-3 text-center" id="dropdownDefaultButton" data-dropdown-toggle="dropdown">
-        <Icon class="w-6 h-6 sm:w-8 sm:h-8" name="bx:bx-filter" />
+    <div class="absolute right-4 top-4 sm:right-32">
+      <button class="text-white bg-primary hover:bg-primaryDark focus:ring-6 rounded-xl px-3 py-3 text-center" id="dropdownDefaultButton" data-dropdown-toggle="dropdown">
+        <Icon class="w-5 h-5 sm:w-8 sm:h-8" name="bx:bx-filter" />
       </button>
       <div id="dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow-2xl w-72 dark:bg-gray-700">
         <p class="p-4 bg-primaryDark text-white">Filter</p>

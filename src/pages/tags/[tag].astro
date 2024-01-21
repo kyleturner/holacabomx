@@ -1,12 +1,25 @@
 ---
 import ExperienceBlock from "@components/blocks/experienceBlock.astro";
+import { Icon } from "astro-icon";
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/container.astro";
 import Sectionhead from "@components/sectionhead.astro";
 import Link from "@components/ui/link.astro";
 import { getExperienceStories } from '@utils/api'
+import tagSVG from "../../assets/tag.svg";
 
 const { tag } = Astro.params;
+// Unique set of tags for UI filtering
+
+// All experiences
+const stories = await getExperienceStories()
+const tags = [...new Set(stories.map((story) => story.tag_list).flat())];
+
+const tagsListHTML = tags.map(function(tag) {
+  return (`<li class='flex inline-block ml-2 px-1 sm:px-4 py-2 sm:py-2'><img src=${tagSVG.src} width="22px" /><a class='ml-2 w-full leading-8 sm:leading-10  text-left hover:text-primary text-md sm:text-lg' href='/tags/${tag}'>${tag}</a></li>`)
+})
+const allExperiencesItem = `<li class='flex inline-block ml-2 px-1 sm:px-4 py-2 sm:py-2'><a class='ml-2 w-full leading-8 sm:leading-10  text-left hover:text-primary text-md sm:text-lg' href='/experiences'>All Experiences</a></li>`
+const tagsHTML = [ ...[allExperiencesItem], ...tagsListHTML]
 const { experiences } = Astro.props;
 const metadata =  {
     'title': "Experiences:",
@@ -32,6 +45,16 @@ export async function getStaticPaths() {
 
 <Layout title={tag}>
     <Container class="pb-8 sm:pb-32">
+       <!-- Filters Dropdown -->
+      <div class="absolute right-4 top-32 sm:right-32">
+        <button class="text-white bg-primary hover:bg-primaryDark focus:ring-6 rounded-xl px-3 py-3 text-center" id="dropdownDefaultButton" data-dropdown-toggle="dropdown">
+          <Icon class="w-5 h-5 sm:w-8 sm:h-8" name="bx:bx-filter" />
+        </button>
+        <div id="dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow-2xl w-72 dark:bg-gray-700">
+          <p class="p-4 bg-primaryDark text-white">Filter</p>
+          <ul class="py-2" aria-labelledby="dropdownDefaultButton" id="filters" set:html={tagsHTML}></ul>
+        </div>
+      </div>
       <Sectionhead category={tag}>
         <Fragment slot="title">{metadata.title}&nbsp;<span class="color-primary">{tag}</span>
         </Fragment>
@@ -40,7 +63,10 @@ export async function getStaticPaths() {
                 <Link href={metadata.ctaPrimary.href} style="muted">{metadata.ctaPrimary.title}</Link> 
             </div>
         </Fragment>
+        <Fragment slot="buttons"></Fragment>
       </Sectionhead>
+   
+
       <main class="p-4 sm:p-8">
         <ul class="grid gap-8 md:gap-16 md:grid-cols-2 mx-auto">
             {experiences.map((experience, index) =>  (
